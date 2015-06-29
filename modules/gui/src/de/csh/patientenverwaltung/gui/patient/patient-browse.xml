@@ -21,6 +21,7 @@
             <properties include=".*"/>
         </filter>
         <table id="patientsTable"
+               multiselect="true"
                width="100%">
             <actions>
                 <action id="create"/>
@@ -48,6 +49,9 @@
                         action="patientsTable.edit"/>
                 <button id="removeBtn"
                         action="patientsTable.remove"/>
+                <button id="patientenakteDruckenButton"
+                        caption="Patientenakte drucken"
+                        icon="icons/reports-print.png"/>
             </buttonsPanel>
         </table>
     </layout>

@@ -9,6 +9,7 @@ import java.util.Date;
 import com.haulmont.chile.core.annotations.MetaProperty;
 import com.haulmont.cuba.core.entity.StandardEntity;
 import com.haulmont.chile.core.annotations.NamePattern;
+import de.csh.patientenverwaltung.util.AgeCalculator;
 
 /**
  * @author mario
@@ -53,7 +54,16 @@ public class Patient extends StandardEntity {
     @Transient
     @MetaProperty
     public String getAlter() {
-        return "42";
+        return AgeCalculator.getAge(geburtsdatum);
+    }
+
+
+
+
+    @Transient
+    @MetaProperty
+    public String getPatientenakteName() {
+        return "Patientenakte " + name + ", " + vorname;
     }
 
     public void setAnschrift(String anschrift) {
