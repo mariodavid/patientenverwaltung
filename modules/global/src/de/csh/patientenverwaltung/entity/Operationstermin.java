@@ -3,19 +3,18 @@
  */
 package de.csh.patientenverwaltung.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
-import javax.persistence.Column;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+
+import com.haulmont.chile.core.annotations.MetaProperty;
 import com.haulmont.cuba.core.entity.StandardEntity;
+import com.haulmont.cuba.core.global.AppBeans;
+import com.haulmont.cuba.core.global.DatatypeFormatter;
+import de.csh.patientenverwaltung.util.AgeCalculator;
+
 import java.util.Set;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 
 /**
  * @author mario
@@ -25,14 +24,14 @@ import javax.persistence.ManyToMany;
 public class Operationstermin extends StandardEntity {
     private static final long serialVersionUID = -4173261225269925712L;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "PATIENT_ID")
     protected Patient patient;
 
-    @Column(name = "AUGE", nullable = false)
+    @Column(name = "AUGE")
     protected String auge;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "RAUM_ID")
     protected Raum raum;
 
@@ -110,6 +109,17 @@ public class Operationstermin extends StandardEntity {
 
     public Date getEnde() {
         return ende;
+    }
+
+
+    @Transient
+    @MetaProperty
+    public String getDatumMitWochentag() {
+        String dateStr = AppBeans.get(DatatypeFormatter.class).formatDate(datum);
+        SimpleDateFormat simpleDateformat = new SimpleDateFormat("E");
+        String wochentag = simpleDateformat.format(datum);
+
+        return dateStr + " (" + wochentag + ".)";
     }
 
 

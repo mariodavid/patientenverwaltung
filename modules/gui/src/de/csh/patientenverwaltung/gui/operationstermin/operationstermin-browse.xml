@@ -6,13 +6,13 @@
         lookupComponent="operationsterminsTable"
         messagesPack="de.csh.patientenverwaltung.gui.operationstermin">
     <dsContext>
-        <collectionDatasource id="operationsterminsDs"
-                              class="de.csh.patientenverwaltung.entity.Operationstermin"
-                              view="operationstermin-view">
+        <groupDatasource id="operationsterminsDs"
+                         class="de.csh.patientenverwaltung.entity.Operationstermin"
+                         view="operationstermin-view">
             <query>
                 <![CDATA[select e from pa$Operationstermin e]]>
             </query>
-        </collectionDatasource>
+        </groupDatasource>
     </dsContext>
     <layout expand="operationsterminsTable"
             spacing="true">
@@ -20,20 +20,28 @@
                 datasource="operationsterminsDs">
             <properties include=".*"/>
         </filter>
-        <table id="operationsterminsTable"
-               width="100%">
+        <groupTable id="operationsterminsTable"
+                    fixedGrouping="true"
+                    width="100%">
             <actions>
                 <action id="create"/>
                 <action id="edit"/>
                 <action id="remove"/>
             </actions>
             <columns>
-                <column id="patient"/>
-                <column id="auge"/>
-                <column id="raum"/>
-                <column id="datum"/>
+                <group>
+                    <column id="datumMitWochentag"
+                            caption="Datum"/>
+                </group>
+                <column id="datum"
+                        visible="false"/>
                 <column id="beginn"/>
                 <column id="ende"/>
+                <column id="patient"/>
+                <column id="auge"
+                        collapsed="true"/>
+                <column id="raum"
+                        collapsed="true"/>
             </columns>
             <rows datasource="operationsterminsDs"/>
             <rowsCount/>
@@ -46,6 +54,6 @@
                 <button id="removeBtn"
                         action="operationsterminsTable.remove"/>
             </buttonsPanel>
-        </table>
+        </groupTable>
     </layout>
 </window>

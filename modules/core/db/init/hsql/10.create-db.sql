@@ -48,9 +48,9 @@ create table PA_OPERATIONSTERMIN (
     DELETE_TS timestamp,
     DELETED_BY varchar(50),
     --
-    PATIENT_ID varchar(36) not null,
-    AUGE varchar(50) not null,
-    RAUM_ID varchar(36) not null,
+    PATIENT_ID varchar(36),
+    AUGE varchar(50),
+    RAUM_ID varchar(36),
     DATUM date not null,
     BEGINN time not null,
     ENDE time not null,
