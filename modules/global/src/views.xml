@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <views xmlns="http://schemas.haulmont.com/cuba/5.5/view.xsd">
-    <view class="de.csh.patientenverwaltung.entity.Termin"
-          name="termin-view">
+    <view class="de.csh.patientenverwaltung.entity.Voruntersuchungstermin"
+          name="voruntersuchungstermin-view">
         <property name="zeitpunkt"/>
         <property name="patient"
                   view="_local"/>
@@ -30,6 +30,18 @@
             <property name="ende"/>
         </property>
         <property name="arbeitszeiten"
+                  view="_local"/>
+    </view>
+    <view class="de.csh.patientenverwaltung.entity.Patient"
+          name="patient-view">
+        <property name="name"/>
+        <property name="vorname"/>
+        <property name="geburtsdatum"/>
+        <property name="anschrift"/>
+        <property name="plz"/>
+        <property name="ort"/>
+        <property name="geschlecht"/>
+        <property name="voruntersuchungstermine"
                   view="_local"/>
     </view>
 </views>

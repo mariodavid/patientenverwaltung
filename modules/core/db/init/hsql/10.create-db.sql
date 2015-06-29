@@ -20,23 +20,7 @@ create table PA_PATIENT (
     primary key (ID)
 )^
 -- end PA_PATIENT
--- begin PA_TERMIN
-create table PA_TERMIN (
-    ID varchar(36) not null,
-    CREATE_TS timestamp,
-    CREATED_BY varchar(50),
-    VERSION integer,
-    UPDATE_TS timestamp,
-    UPDATED_BY varchar(50),
-    DELETE_TS timestamp,
-    DELETED_BY varchar(50),
-    --
-    ZEITPUNKT timestamp not null,
-    PATIENT_ID varchar(36) not null,
-    --
-    primary key (ID)
-)^
--- end PA_TERMIN
+
 -- begin PA_RAUM
 create table PA_RAUM (
     ID varchar(36) not null,
@@ -117,3 +101,20 @@ create table PA_ARBEITSTAG (
     primary key (ID)
 )^
 -- end PA_ARBEITSTAG
+-- begin PA_VORUNTERSUCHUNGSTERMIN
+create table PA_VORUNTERSUCHUNGSTERMIN (
+    ID varchar(36) not null,
+    CREATE_TS timestamp,
+    CREATED_BY varchar(50),
+    VERSION integer,
+    UPDATE_TS timestamp,
+    UPDATED_BY varchar(50),
+    DELETE_TS timestamp,
+    DELETED_BY varchar(50),
+    --
+    PATIENT_ID varchar(36) not null,
+    ZEITPUNKT timestamp not null,
+    --
+    primary key (ID)
+)^
+-- end PA_VORUNTERSUCHUNGSTERMIN

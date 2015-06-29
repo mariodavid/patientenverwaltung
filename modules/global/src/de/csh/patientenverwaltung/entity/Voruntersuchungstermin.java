@@ -17,18 +17,18 @@ import com.haulmont.cuba.core.entity.StandardEntity;
 /**
  * @author mario
  */
-@Table(name = "PA_TERMIN")
-@Entity(name = "pa$Termin")
-public class Termin extends StandardEntity {
+@Table(name = "PA_VORUNTERSUCHUNGSTERMIN")
+@Entity(name = "pa$Voruntersuchungstermin")
+public class Voruntersuchungstermin extends StandardEntity {
     private static final long serialVersionUID = -6237823540213361482L;
-
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "ZEITPUNKT", nullable = false)
-    protected Date zeitpunkt;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "PATIENT_ID")
     protected Patient patient;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "ZEITPUNKT", nullable = false)
+    protected Date zeitpunkt;
 
     public void setZeitpunkt(Date zeitpunkt) {
         this.zeitpunkt = zeitpunkt;

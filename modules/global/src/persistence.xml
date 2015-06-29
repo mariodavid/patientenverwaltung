@@ -4,7 +4,7 @@
     <persistence-unit name="patientenverwaltung"
                       transaction-type="RESOURCE_LOCAL">
         <class>de.csh.patientenverwaltung.entity.Patient</class>
-        <class>de.csh.patientenverwaltung.entity.Termin</class>
+        <class>de.csh.patientenverwaltung.entity.Voruntersuchungstermin</class>
         <class>de.csh.patientenverwaltung.entity.Raum</class>
         <class>de.csh.patientenverwaltung.entity.Operationstermin</class>
         <class>de.csh.patientenverwaltung.entity.Mitarbeiter</class>

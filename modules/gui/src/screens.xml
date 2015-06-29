@@ -24,4 +24,8 @@
             template="de/csh/patientenverwaltung/gui/arbeitstag/arbeitstag-edit.xml"/>
     <screen id="pa$Arbeitstag.lookup"
             template="de/csh/patientenverwaltung/gui/arbeitstag/arbeitstag-browse.xml"/>
+    <screen id="pa$Voruntersuchungstermin.edit"
+            template="de/csh/patientenverwaltung/gui/voruntersuchungstermin/voruntersuchungstermin-edit.xml"/>
+    <screen id="pa$Voruntersuchungstermin.lookup"
+            template="de/csh/patientenverwaltung/gui/voruntersuchungstermin/voruntersuchungstermin-browse.xml"/>
 </screen-config>

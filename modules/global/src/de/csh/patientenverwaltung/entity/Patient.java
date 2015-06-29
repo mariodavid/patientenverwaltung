@@ -10,6 +10,10 @@ import com.haulmont.chile.core.annotations.MetaProperty;
 import com.haulmont.cuba.core.entity.StandardEntity;
 import com.haulmont.chile.core.annotations.NamePattern;
 import de.csh.patientenverwaltung.util.AgeCalculator;
+import com.haulmont.chile.core.annotations.Composition;
+import com.haulmont.cuba.core.entity.annotation.OnDelete;
+import com.haulmont.cuba.core.global.DeletePolicy;
+import java.util.Set;
 
 /**
  * @author mario
@@ -41,6 +45,20 @@ public class Patient extends StandardEntity {
 
     @Column(name = "GESCHLECHT", nullable = false)
     protected String geschlecht;
+
+    @Composition
+    @OnDelete(DeletePolicy.CASCADE)
+    @OneToMany(mappedBy = "patient")
+    protected Set<Voruntersuchungstermin> voruntersuchungstermine;
+
+    public void setVoruntersuchungstermine(Set<Voruntersuchungstermin> voruntersuchungstermine) {
+        this.voruntersuchungstermine = voruntersuchungstermine;
+    }
+
+    public Set<Voruntersuchungstermin> getVoruntersuchungstermine() {
+        return voruntersuchungstermine;
+    }
+
 
     public void setGeschlecht(Geschlecht geschlecht) {
         this.geschlecht = geschlecht == null ? null : geschlecht.getId();

@@ -12,6 +12,13 @@
             <collectionDatasource id="mitarbeiterDs"
                                   property="mitarbeiter"/>
         </datasource>
+        <collectionDatasource id="raumDs"
+                              class="de.csh.patientenverwaltung.entity.Raum"
+                              view="_local">
+            <query>
+                <![CDATA[select e from pa$Raum e]]>
+            </query>
+        </collectionDatasource>
     </dsContext>
     <layout expand="windowActions"
             spacing="true">
@@ -20,7 +27,8 @@
             <column width="250px">
                 <field id="patient"/>
                 <field id="auge"/>
-                <field id="raum"/>
+                <field id="raum"
+                       optionsDatasource="raumDs"/>
                 <field id="datum"/>
                 <field id="beginn"/>
                 <field id="ende"/>

@@ -28,6 +28,7 @@ public class PatientBrowse extends AbstractLookup {
     public void init(Map<String, Object> params) {
 
         TablePrintFormAction action = new TablePrintFormAction("Patientenakte", this, patientsTable);
+        action.setCaption("Patientenakte drucken");
         patientsTable.addAction(action);
         patientenakteDruckenButton.setAction(action);
     }

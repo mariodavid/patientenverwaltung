@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/5.5/window.xsd"
+        caption="msg://browseCaption"
+        class="de.csh.patientenverwaltung.gui.voruntersuchungstermin.VoruntersuchungsterminBrowse"
+        focusComponent="voruntersuchungsterminsTable"
+        lookupComponent="voruntersuchungsterminsTable"
+        messagesPack="de.csh.patientenverwaltung.gui.voruntersuchungstermin">
+    <dsContext>
+        <collectionDatasource id="voruntersuchungsterminsDs"
+                              class="de.csh.patientenverwaltung.entity.Voruntersuchungstermin"
+                              view="voruntersuchungstermin-view">
+            <query>
+                <![CDATA[select e from pa$Voruntersuchungstermin e]]>
+            </query>
+        </collectionDatasource>
+    </dsContext>
+    <layout expand="voruntersuchungsterminsTable"
+            spacing="true">
+        <filter id="filter"
+                datasource="voruntersuchungsterminsDs">
+            <properties include=".*"/>
+        </filter>
+        <table id="voruntersuchungsterminsTable"
+               width="100%">
+            <actions>
+                <action id="create"/>
+                <action id="edit"/>
+                <action id="remove"/>
+            </actions>
+            <columns>
+                <column id="patient"/>
+                <column id="zeitpunkt"/>
+            </columns>
+            <rows datasource="voruntersuchungsterminsDs"/>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn"
+                        action="voruntersuchungsterminsTable.create"/>
+                <button id="editBtn"
+                        action="voruntersuchungsterminsTable.edit"/>
+                <button id="removeBtn"
+                        action="voruntersuchungsterminsTable.remove"/>
+            </buttonsPanel>
+        </table>
+    </layout>
+</window>

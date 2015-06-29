@@ -8,7 +8,10 @@
     <dsContext>
         <datasource id="patientDs"
                     class="de.csh.patientenverwaltung.entity.Patient"
-                    view="_local"/>
+                    view="patient-view">
+            <collectionDatasource id="voruntersuchungstermineDs"
+                                  property="voruntersuchungstermine"/>
+        </datasource>
     </dsContext>
     <layout expand="windowActions"
             spacing="true">
@@ -31,6 +34,39 @@
                        width="250px"/>
             </column>
         </fieldGroup>
+        <tabSheet id="oneToManyTabs"
+                  height="200px">
+            <tab id="vorunterschungstermineTab"
+                 caption="Voruntersuchungstermine"                 
+                 margin="true"
+                 spacing="true">
+                <table id="voruntersuchungstermineTable"
+                       height="100%"
+                       width="100%">
+                    <actions>
+                        <action id="create"/>
+                        <action id="edit"/>
+                        <action id="remove"/>
+                    </actions>
+                    <columns>
+                        <column id="zeitpunkt"/>
+                    </columns>
+                    <rows datasource="voruntersuchungstermineDs"/>
+                    <buttonsPanel id="buttonsPanel"
+                                  alwaysVisible="true">
+                        <button id="createBtn"
+                                action="voruntersuchungstermineTable.create"/>
+                        <button id="editBtn"
+                                action="voruntersuchungstermineTable.edit"/>
+                        <button id="removeBtn"
+                                action="voruntersuchungstermineTable.remove"/>
+                        <button id="termineinladungDruckenButton"
+                                caption="Termineinladung drucken"
+                                icon="icons/reports-print.png"/>
+                    </buttonsPanel>
+                </table>
+            </tab>
+        </tabSheet>
         <iframe id="windowActions"
                 screen="editWindowActions"/>
     </layout>
