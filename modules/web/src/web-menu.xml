@@ -6,8 +6,8 @@
         <separator/>
         <item id="pa$Termin.lookup"/>
         <item id="pa$Operationstermin.lookup"/>
+        <separator/>
         <item id="pa$Mitarbeiter.lookup"/>
         <item id="pa$Raum.lookup"/>
-        <separator/>
     </menu>
 </menu-config>
