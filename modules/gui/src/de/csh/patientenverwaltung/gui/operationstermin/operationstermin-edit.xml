@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/5.5/window.xsd"
+        caption="msg://editCaption"
+        class="de.csh.patientenverwaltung.gui.operationstermin.OperationsterminEdit"
+        datasource="operationsterminDs"
+        focusComponent="fieldGroup"
+        messagesPack="de.csh.patientenverwaltung.gui.operationstermin">
+    <dsContext>
+        <datasource id="operationsterminDs"
+                    class="de.csh.patientenverwaltung.entity.Operationstermin"
+                    view="operationstermin-view">
+            <collectionDatasource id="mitarbeiterDs"
+                                  property="mitarbeiter"/>
+        </datasource>
+    </dsContext>
+    <layout expand="windowActions"
+            spacing="true">
+        <fieldGroup id="fieldGroup"
+                    datasource="operationsterminDs">
+            <column width="250px">
+                <field id="patient"/>
+                <field id="auge"/>
+                <field id="raum"/>
+                <field id="datum"/>
+                <field id="beginn"/>
+                <field id="ende"/>
+            </column>
+        </fieldGroup>
+        <groupBox id="mitarbeiterBox"
+                  caption="msg://de.csh.patientenverwaltung.entity/Operationstermin.mitarbeiter">
+            <table id="mitarbeiterTable"
+                   height="200px"
+                   width="100%">
+                <actions>
+                    <action id="add"/>
+                    <action id="remove"/>
+                </actions>
+                <columns>
+                    <column id="name"/>
+                    <column id="vorname"/>
+                </columns>
+                <rows datasource="mitarbeiterDs"/>
+                <buttonsPanel>
+                    <button action="mitarbeiterTable.add"/>
+                    <button action="mitarbeiterTable.remove"/>
+                </buttonsPanel>
+            </table>
+        </groupBox>
+        <iframe id="windowActions"
+                screen="editWindowActions"/>
+    </layout>
+</window>

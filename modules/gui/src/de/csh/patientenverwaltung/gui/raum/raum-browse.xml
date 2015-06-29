@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/5.5/window.xsd"
+        caption="msg://browseCaption"
+        class="de.csh.patientenverwaltung.gui.raum.RaumBrowse"
+        focusComponent="raumsTable"
+        lookupComponent="raumsTable"
+        messagesPack="de.csh.patientenverwaltung.gui.raum">
+    <dsContext>
+        <collectionDatasource id="raumsDs"
+                              class="de.csh.patientenverwaltung.entity.Raum"
+                              view="_local">
+            <query>
+                <![CDATA[select e from pa$Raum e]]>
+            </query>
+        </collectionDatasource>
+    </dsContext>
+    <layout expand="raumsTable"
+            spacing="true">
+        <filter id="filter"
+                datasource="raumsDs">
+            <properties include=".*"/>
+        </filter>
+        <table id="raumsTable"
+               width="100%">
+            <actions>
+                <action id="create"/>
+                <action id="edit"/>
+                <action id="remove"/>
+            </actions>
+            <columns>
+                <column id="name"/>
+            </columns>
+            <rows datasource="raumsDs"/>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn"
+                        action="raumsTable.create"/>
+                <button id="editBtn"
+                        action="raumsTable.edit"/>
+                <button id="removeBtn"
+                        action="raumsTable.remove"/>
+            </buttonsPanel>
+        </table>
+    </layout>
+</window>

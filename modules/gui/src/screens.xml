@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<screen-config xmlns="http://schemas.haulmont.com/cuba/5.5/screens.xsd">
+    <screen id="pa$Patient.edit"
+            template="de/csh/patientenverwaltung/gui/patient/patient-edit.xml"/>
+    <screen id="pa$Patient.lookup"
+            template="de/csh/patientenverwaltung/gui/patient/patient-browse.xml"/>
+    <screen id="pa$Termin.edit"
+            template="de/csh/patientenverwaltung/gui/termin/termin-edit.xml"/>
+    <screen id="pa$Termin.lookup"
+            template="de/csh/patientenverwaltung/gui/termin/termin-browse.xml"/>
+    <screen id="pa$Raum.edit"
+            template="de/csh/patientenverwaltung/gui/raum/raum-edit.xml"/>
+    <screen id="pa$Raum.lookup"
+            template="de/csh/patientenverwaltung/gui/raum/raum-browse.xml"/>
+    <screen id="pa$Operationstermin.edit"
+            template="de/csh/patientenverwaltung/gui/operationstermin/operationstermin-edit.xml"/>
+    <screen id="pa$Operationstermin.lookup"
+            template="de/csh/patientenverwaltung/gui/operationstermin/operationstermin-browse.xml"/>
+    <screen id="pa$Mitarbeiter.edit"
+            template="de/csh/patientenverwaltung/gui/mitarbeiter/mitarbeiter-edit.xml"/>
+    <screen id="pa$Mitarbeiter.lookup"
+            template="de/csh/patientenverwaltung/gui/mitarbeiter/mitarbeiter-browse.xml"/>
+    <screen id="pa$Arbeitstag.edit"
+            template="de/csh/patientenverwaltung/gui/arbeitstag/arbeitstag-edit.xml"/>
+    <screen id="pa$Arbeitstag.lookup"
+            template="de/csh/patientenverwaltung/gui/arbeitstag/arbeitstag-browse.xml"/>
+</screen-config>

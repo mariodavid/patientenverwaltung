@@ -1,0 +1,5 @@
+create table PA_OPERATIONSTERMIN_MITARBEITER_LINK (
+    MITARBEITER_ID varchar(36) not null,
+    OPERATIONSTERMIN_ID varchar(36) not null,
+    primary key (MITARBEITER_ID, OPERATIONSTERMIN_ID)
+);

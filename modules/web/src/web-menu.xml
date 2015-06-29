@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<menu-config xmlns="http://schemas.haulmont.com/cuba/5.5/menu.xsd">
+    <menu id="application"
+          insertBefore="reports">
+        <item id="pa$Patient.lookup"/>
+        <separator/>
+        <item id="pa$Termin.lookup"/>
+        <item id="pa$Operationstermin.lookup"/>
+        <item id="pa$Mitarbeiter.lookup"/>
+        <item id="pa$Raum.lookup"/>
+        <separator/>
+    </menu>
+</menu-config>

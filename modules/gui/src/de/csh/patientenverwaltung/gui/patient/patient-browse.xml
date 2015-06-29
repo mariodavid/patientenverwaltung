@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/5.5/window.xsd"
+        caption="msg://browseCaption"
+        class="de.csh.patientenverwaltung.gui.patient.PatientBrowse"
+        focusComponent="patientsTable"
+        lookupComponent="patientsTable"
+        messagesPack="de.csh.patientenverwaltung.gui.patient">
+    <dsContext>
+        <collectionDatasource id="patientsDs"
+                              class="de.csh.patientenverwaltung.entity.Patient"
+                              view="_local">
+            <query>
+                <![CDATA[select e from pa$Patient e]]>
+            </query>
+        </collectionDatasource>
+    </dsContext>
+    <layout expand="patientsTable"
+            spacing="true">
+        <filter id="filter"
+                datasource="patientsDs">
+            <properties include=".*"/>
+        </filter>
+        <table id="patientsTable"
+               width="100%">
+            <actions>
+                <action id="create"/>
+                <action id="edit"/>
+                <action id="remove"/>
+            </actions>
+            <columns>
+                <column id="name"/>
+                <column id="vorname"/>
+                <column id="geburtsdatum"/>
+                <column id="alter"
+                        caption="Alter"/>
+                <column id="anschrift"/>
+                <column id="plz"/>
+                <column id="ort"/>
+                <column id="geschlecht"/>
+            </columns>
+            <rows datasource="patientsDs"/>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn"
+                        action="patientsTable.create"/>
+                <button id="editBtn"
+                        action="patientsTable.edit"/>
+                <button id="removeBtn"
+                        action="patientsTable.remove"/>
+            </buttonsPanel>
+        </table>
+    </layout>
+</window>

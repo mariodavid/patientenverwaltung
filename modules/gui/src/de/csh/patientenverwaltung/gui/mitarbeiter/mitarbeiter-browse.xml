@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/5.5/window.xsd"
+        caption="msg://browseCaption"
+        class="de.csh.patientenverwaltung.gui.mitarbeiter.MitarbeiterBrowse"
+        focusComponent="mitarbeitersTable"
+        lookupComponent="mitarbeitersTable"
+        messagesPack="de.csh.patientenverwaltung.gui.mitarbeiter">
+    <dsContext>
+        <collectionDatasource id="mitarbeitersDs"
+                              class="de.csh.patientenverwaltung.entity.Mitarbeiter"
+                              view="_local">
+            <query>
+                <![CDATA[select e from pa$Mitarbeiter e]]>
+            </query>
+        </collectionDatasource>
+    </dsContext>
+    <layout expand="mitarbeitersTable"
+            spacing="true">
+        <filter id="filter"
+                datasource="mitarbeitersDs">
+            <properties include=".*"/>
+        </filter>
+        <table id="mitarbeitersTable"
+               width="100%">
+            <actions>
+                <action id="create"/>
+                <action id="edit"/>
+                <action id="remove"/>
+            </actions>
+            <columns>
+                <column id="name"/>
+                <column id="vorname"/>
+            </columns>
+            <rows datasource="mitarbeitersDs"/>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn"
+                        action="mitarbeitersTable.create"/>
+                <button id="editBtn"
+                        action="mitarbeitersTable.edit"/>
+                <button id="removeBtn"
+                        action="mitarbeitersTable.remove"/>
+            </buttonsPanel>
+        </table>
+    </layout>
+</window>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<views xmlns="http://schemas.haulmont.com/cuba/5.5/view.xsd">
+    <view class="de.csh.patientenverwaltung.entity.Termin"
+          name="termin-view">
+        <property name="zeitpunkt"/>
+        <property name="patient"
+                  view="_local"/>
+    </view>
+    <view class="de.csh.patientenverwaltung.entity.Operationstermin"
+          name="operationstermin-view">
+        <property name="patient"
+                  view="_local"/>
+        <property name="auge"/>
+        <property name="raum"
+                  view="_local"/>
+        <property name="datum"/>
+        <property name="beginn"/>
+        <property name="ende"/>
+        <property name="mitarbeiter"
+                  view="_local"/>
+    </view>
+    <view class="de.csh.patientenverwaltung.entity.Mitarbeiter"
+          name="mitarbeiter-view">
+        <property name="name"/>
+        <property name="vorname"/>
+        <property name="operationstermine"
+                  view="_minimal">
+            <property name="datum"/>
+            <property name="beginn"/>
+            <property name="ende"/>
+        </property>
+        <property name="arbeitszeiten"
+                  view="_local"/>
+    </view>
+</views>

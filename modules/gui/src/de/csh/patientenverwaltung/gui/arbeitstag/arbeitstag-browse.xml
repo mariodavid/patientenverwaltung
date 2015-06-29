@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/5.5/window.xsd"
+        caption="msg://browseCaption"
+        class="de.csh.patientenverwaltung.gui.arbeitstag.ArbeitstagBrowse"
+        focusComponent="arbeitstagsTable"
+        lookupComponent="arbeitstagsTable"
+        messagesPack="de.csh.patientenverwaltung.gui.arbeitstag">
+    <dsContext>
+        <collectionDatasource id="arbeitstagsDs"
+                              class="de.csh.patientenverwaltung.entity.Arbeitstag"
+                              view="_local">
+            <query>
+                <![CDATA[select e from pa$Arbeitstag e]]>
+            </query>
+        </collectionDatasource>
+    </dsContext>
+    <layout expand="arbeitstagsTable"
+            spacing="true">
+        <filter id="filter"
+                datasource="arbeitstagsDs">
+            <properties include=".*"/>
+        </filter>
+        <table id="arbeitstagsTable"
+               width="100%">
+            <actions>
+                <action id="create"/>
+                <action id="edit"/>
+                <action id="remove"/>
+            </actions>
+            <columns>
+                <column id="wochentag"/>
+                <column id="beginn"/>
+                <column id="ende"/>
+            </columns>
+            <rows datasource="arbeitstagsDs"/>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn"
+                        action="arbeitstagsTable.create"/>
+                <button id="editBtn"
+                        action="arbeitstagsTable.edit"/>
+                <button id="removeBtn"
+                        action="arbeitstagsTable.remove"/>
+            </buttonsPanel>
+        </table>
+    </layout>
+</window>

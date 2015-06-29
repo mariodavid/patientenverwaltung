@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/5.5/window.xsd"
+        caption="msg://browseCaption"
+        class="de.csh.patientenverwaltung.gui.operationstermin.OperationsterminBrowse"
+        focusComponent="operationsterminsTable"
+        lookupComponent="operationsterminsTable"
+        messagesPack="de.csh.patientenverwaltung.gui.operationstermin">
+    <dsContext>
+        <collectionDatasource id="operationsterminsDs"
+                              class="de.csh.patientenverwaltung.entity.Operationstermin"
+                              view="operationstermin-view">
+            <query>
+                <![CDATA[select e from pa$Operationstermin e]]>
+            </query>
+        </collectionDatasource>
+    </dsContext>
+    <layout expand="operationsterminsTable"
+            spacing="true">
+        <filter id="filter"
+                datasource="operationsterminsDs">
+            <properties include=".*"/>
+        </filter>
+        <table id="operationsterminsTable"
+               width="100%">
+            <actions>
+                <action id="create"/>
+                <action id="edit"/>
+                <action id="remove"/>
+            </actions>
+            <columns>
+                <column id="patient"/>
+                <column id="auge"/>
+                <column id="raum"/>
+                <column id="datum"/>
+                <column id="beginn"/>
+                <column id="ende"/>
+            </columns>
+            <rows datasource="operationsterminsDs"/>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn"
+                        action="operationsterminsTable.create"/>
+                <button id="editBtn"
+                        action="operationsterminsTable.edit"/>
+                <button id="removeBtn"
+                        action="operationsterminsTable.remove"/>
+            </buttonsPanel>
+        </table>
+    </layout>
+</window>

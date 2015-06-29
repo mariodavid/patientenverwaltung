@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/5.5/window.xsd"
+        caption="msg://browseCaption"
+        class="de.csh.patientenverwaltung.gui.termin.TerminBrowse"
+        focusComponent="terminsTable"
+        lookupComponent="terminsTable"
+        messagesPack="de.csh.patientenverwaltung.gui.termin">
+    <dsContext>
+        <collectionDatasource id="terminsDs"
+                              class="de.csh.patientenverwaltung.entity.Termin"
+                              view="termin-view">
+            <query>
+                <![CDATA[select e from pa$Termin e]]>
+            </query>
+        </collectionDatasource>
+    </dsContext>
+    <layout expand="terminsTable"
+            spacing="true">
+        <filter id="filter"
+                datasource="terminsDs">
+            <properties include=".*"/>
+        </filter>
+        <table id="terminsTable"
+               width="100%">
+            <actions>
+                <action id="create"/>
+                <action id="edit"/>
+                <action id="remove"/>
+            </actions>
+            <columns>
+                <column id="zeitpunkt"/>
+                <column id="patient"/>
+            </columns>
+            <rows datasource="terminsDs"/>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn"
+                        action="terminsTable.create"/>
+                <button id="editBtn"
+                        action="terminsTable.edit"/>
+                <button id="removeBtn"
+                        action="terminsTable.remove"/>
+            </buttonsPanel>
+        </table>
+    </layout>
+</window>
