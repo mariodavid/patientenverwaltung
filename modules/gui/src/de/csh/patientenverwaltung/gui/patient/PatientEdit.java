@@ -5,7 +5,9 @@ package de.csh.patientenverwaltung.gui.patient;
 
 import com.haulmont.cuba.gui.components.AbstractEditor;
 import com.haulmont.cuba.gui.components.Button;
+import com.haulmont.cuba.gui.components.Component;
 import com.haulmont.cuba.gui.components.Table;
+import com.haulmont.reports.gui.actions.EditorPrintFormAction;
 import com.haulmont.reports.gui.actions.TablePrintFormAction;
 import de.csh.patientenverwaltung.entity.Patient;
 
@@ -17,10 +19,8 @@ import java.util.Map;
  */
 public class PatientEdit extends AbstractEditor<Patient> {
 
-
     @Inject
-    private Button termineinladungDruckenButton;
-
+    private Button patientenakteDruckenButton;
 
     @Inject
     private Table voruntersuchungstermineTable;
@@ -28,10 +28,14 @@ public class PatientEdit extends AbstractEditor<Patient> {
     @Override
     public void init(Map<String, Object> params) {
 
-        TablePrintFormAction action = new TablePrintFormAction("Termineinladung", this, voruntersuchungstermineTable);
-        action.setCaption("Termineinladung drucken");
-        voruntersuchungstermineTable.addAction(action);
-        termineinladungDruckenButton.setAction(action);
+        EditorPrintFormAction patientenakteAction = new EditorPrintFormAction("Patientenakte", this, null);
+        patientenakteAction.setCaption("Patientenakte drucken");
+        patientenakteDruckenButton.setAction(patientenakteAction);
+
     }
 
+    public void termineinladungDruckenAction(Component source) {
+        TablePrintFormAction action = new TablePrintFormAction("Termineinladung", this, voruntersuchungstermineTable);
+        action.actionPerform(source);
+    }
 }

@@ -10,7 +10,7 @@
                          class="de.csh.patientenverwaltung.entity.Operationstermin"
                          view="operationstermin-view">
             <query>
-                <![CDATA[select e from pa$Operationstermin e]]>
+                <![CDATA[select e from pa$Operationstermin e order by e.datum, e.beginn]]>
             </query>
         </groupDatasource>
     </dsContext>
@@ -21,7 +21,6 @@
             <properties include=".*"/>
         </filter>
         <groupTable id="operationsterminsTable"
-                    fixedGrouping="true"
                     width="100%">
             <actions>
                 <action id="create"/>
@@ -30,10 +29,13 @@
             </actions>
             <columns>
                 <group>
-                    <column id="datumMitWochentag"
-                            caption="Datum"/>
+                    <column id="datum"/>
                 </group>
-                <column id="datum"
+                <column id="datumMitWochentag"
+                        caption="Datum"
+                        visible="false"/>
+                <column id="kalenderwocheMitJahr"
+                        caption="KW"
                         visible="false"/>
                 <column id="beginn"/>
                 <column id="ende"/>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--
+  ~ Copyright (c) ${YEAR} ${PACKAGE_NAME}
+  -->
+
+<window xmlns="http://schemas.haulmont.com/cuba/5.5/window.xsd"
+        caption="msg://caption"
+        class="de.csh.patientenverwaltung.web.calendar.CalendarScreen"
+        messagesPack="de.csh.patientenverwaltung.web.calendar">
+    <dsContext>
+        <groupDatasource id="operationsterminsDs"
+                         class="de.csh.patientenverwaltung.entity.Operationstermin"
+                         view="operationstermin-view">
+            <query>
+                <![CDATA[select e from pa$Operationstermin e]]>
+            </query>
+        </groupDatasource>
+    </dsContext>
+    <layout expand="calendarHbox"
+            spacing="true">
+        <hbox width="100%">
+            <hbox align="MIDDLE_LEFT"
+                  spacing="true"/>
+            <label id="monthLabel"
+                   align="MIDDLE_CENTER"
+                   stylename="h1"/>
+            <hbox align="MIDDLE_RIGHT"
+                  spacing="true">
+                <button id="addTimeEntry"
+                        caption="msg://addTimeEntry"
+                        invoke="addTimeEntry"
+                        visible="false"/>
+                <!--<linkButton id="showCommandLine"-->
+                            <!--action="showCommandLine"-->
+                            <!--icon="icons/gear.png"/>-->
+                <linkButton align="MIDDLE_LEFT"
+                            icon="font-icon:CHEVRON_LEFT"
+                            invoke="showPreviousMonth"/>
+                <linkButton caption="msg://today"
+                            invoke="setToday"/>
+                <linkButton align="MIDDLE_RIGHT"
+                            icon="font-icon:CHEVRON_RIGHT"
+                            invoke="showNextMonth"/>
+                <dateField id="monthSelector"
+                           align="MIDDLE_LEFT"
+                           resolution="DAY"
+                           stylename="simple"/>
+            </hbox>
+        </hbox>
+        <hbox id="calendarHbox"
+              expand="calBox"
+              width="100%">
+            <vbox id="calBox"
+                  height="100%"/>
+            <vbox id="summaryBox"
+                  height="100%"
+                  width="150px"/>
+        </hbox>
+        <hbox margin="true,false,false,false"
+              width="100%">
+            <label id="monthSummary"
+                   align="MIDDLE_RIGHT"/>
+        </hbox>
+    </layout>
+</window>

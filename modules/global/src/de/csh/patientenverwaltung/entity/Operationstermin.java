@@ -123,4 +123,25 @@ public class Operationstermin extends StandardEntity {
     }
 
 
+    @Transient
+    @MetaProperty
+    public String getKalenderwocheMitJahr() {
+        String dateStr = AppBeans.get(DatatypeFormatter.class).formatDate(datum);
+        SimpleDateFormat woche = new SimpleDateFormat("w");
+        String kw = woche.format(datum);
+
+        int kwInt = Integer.parseInt(kw);
+
+        if (kwInt < 10) {
+            kw = "0" + kwInt;
+        }
+        SimpleDateFormat jahr = new SimpleDateFormat("yyyy");
+        String jahrStr = jahr.format(datum);
+
+
+
+        return kw + " / " + jahrStr;
+    }
+
+
 }

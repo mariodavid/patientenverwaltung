@@ -15,29 +15,43 @@
     </dsContext>
     <layout expand="windowActions"
             spacing="true">
-        <fieldGroup id="fieldGroup"
-                    datasource="patientDs">
-            <column width="250px">
-                <field id="name"
-                       width="250px"/>
-                <field id="vorname"
-                       width="250px"/>
-                <field id="geburtsdatum"
-                       width="250px"/>
-                <field id="anschrift"
-                       width="250px"/>
-                <field id="plz"
-                       width="250px"/>
-                <field id="ort"
-                       width="250px"/>
-                <field id="geschlecht"
-                       width="250px"/>
-            </column>
-        </fieldGroup>
+        <hbox spacing="true">
+            <fieldGroup id="fieldGroup"
+                        datasource="patientDs">
+                <column width="250px">
+                    <field id="name"
+                           width="250px"/>
+                    <field id="vorname"
+                           width="250px"/>
+                    <field id="geburtsdatum"
+                           width="250px"/>
+                    <field id="anschrift"
+                           width="250px"/>
+                    <field id="plz"
+                           width="250px"/>
+                    <field id="ort"
+                           width="250px"/>
+                    <field id="geschlecht"
+                           width="250px"/>
+                </column>
+            </fieldGroup>
+            <vbox spacing="true"
+                  width="250px">
+                <button id="patientenakteDruckenButton"
+                        caption="Patientenakte drucken"
+                        icon="icons/reports-print.png"
+                        width="100%"/>
+                <button id="termineinladungDruckenButton"
+                        action="voruntersuchungstermineTable.termineinladungDrucken"
+                        icon="icons/reports-print.png"
+                        width="100%"/>
+            </vbox>
+        </hbox>
         <tabSheet id="oneToManyTabs"
-                  height="200px">
+                  height="200px"
+                  width="40%">
             <tab id="vorunterschungstermineTab"
-                 caption="Voruntersuchungstermine"                 
+                 caption="Voruntersuchungstermine"
                  margin="true"
                  spacing="true">
                 <table id="voruntersuchungstermineTable"
@@ -47,6 +61,11 @@
                         <action id="create"/>
                         <action id="edit"/>
                         <action id="remove"/>
+                        <action id="termineinladungDrucken"
+                                trackSelection="true"
+                                invoke="termineinladungDruckenAction"
+                                caption="Termineinladung drucken"
+                                />
                     </actions>
                     <columns>
                         <column id="zeitpunkt"/>
@@ -60,9 +79,6 @@
                                 action="voruntersuchungstermineTable.edit"/>
                         <button id="removeBtn"
                                 action="voruntersuchungstermineTable.remove"/>
-                        <button id="termineinladungDruckenButton"
-                                caption="Termineinladung drucken"
-                                icon="icons/reports-print.png"/>
                     </buttonsPanel>
                 </table>
             </tab>

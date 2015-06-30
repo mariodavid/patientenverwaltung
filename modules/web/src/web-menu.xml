@@ -6,8 +6,9 @@
         <separator/>
         <item id="pa$Voruntersuchungstermin.lookup"/>
         <item id="pa$Operationstermin.lookup"/>
+        <separator/>
         <item id="pa$Mitarbeiter.lookup"/>
         <item id="pa$Raum.lookup"/>
-        <separator/>
     </menu>
+    <item id="calendar-screen"/>
 </menu-config>
