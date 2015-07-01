@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!--
-  ~ Copyright (c) ${YEAR} ${PACKAGE_NAME}
+  ~ Copyright (c) YEAR PACKAGE_NAME
   -->
-
 <window xmlns="http://schemas.haulmont.com/cuba/5.5/window.xsd"
-        caption="msg://caption"
+        caption="OP Kalender"
         class="de.csh.patientenverwaltung.web.calendar.CalendarScreen"
         messagesPack="de.csh.patientenverwaltung.web.calendar">
     <dsContext>
@@ -29,22 +28,22 @@
                 <button id="addTimeEntry"
                         caption="msg://addTimeEntry"
                         invoke="addTimeEntry"
-                        visible="false"/>
-                <!--<linkButton id="showCommandLine"-->
-                            <!--action="showCommandLine"-->
-                            <!--icon="icons/gear.png"/>-->
+                        visible="true"/>
+                <button id="monatsansicht"
+                        caption="Monatsansicht"
+                        invoke="showMonatsansicht"/>
                 <linkButton align="MIDDLE_LEFT"
                             icon="font-icon:CHEVRON_LEFT"
                             invoke="showPreviousMonth"/>
-                <linkButton caption="msg://today"
-                            invoke="setToday"/>
+                <!--<linkButton caption="Heute"-->
+                            <!--invoke="setToday"/>-->
                 <linkButton align="MIDDLE_RIGHT"
                             icon="font-icon:CHEVRON_RIGHT"
                             invoke="showNextMonth"/>
-                <dateField id="monthSelector"
-                           align="MIDDLE_LEFT"
-                           resolution="DAY"
-                           stylename="simple"/>
+                <!--<dateField id="monthSelector"-->
+                           <!--align="MIDDLE_LEFT"-->
+                           <!--resolution="MONTH"-->
+                           <!--stylename="simple"/>-->
             </hbox>
         </hbox>
         <hbox id="calendarHbox"

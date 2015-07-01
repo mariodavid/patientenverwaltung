@@ -19,8 +19,8 @@ import javax.inject.Inject
 /**
  * Created by mario on 30.06.15.
  */
-public class CustomEventProvider implements CalendarEventProvider {
-//public class CustomEventProvider extends BasicEventProvider{
+//public class CustomEventProvider implements CalendarEventProvider {
+public class CustomEventProvider extends BasicEventProvider{
 
     protected OperationsterminService operationsterminService = AppBeans.get(OperationsterminService.NAME);
 
@@ -37,8 +37,8 @@ public class CustomEventProvider implements CalendarEventProvider {
             events.add(new BasicEvent(
                     start: ermittleStart(operationstermin),
                     end: ermittleEnde(operationstermin),
-                    caption: "${operationstermin.patient?.name}, ${operationstermin.patient.vorname}"
-
+                    caption: "${operationstermin.patient?.name}, ${operationstermin.patient.vorname}",
+                    styleName: "meinStyle"
             ));
 
 

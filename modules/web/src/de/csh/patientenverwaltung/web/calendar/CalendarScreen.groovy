@@ -34,6 +34,11 @@ import com.vaadin.ui.components.calendar.CalendarDateRange
 import com.vaadin.ui.components.calendar.event.BasicEvent;
 import com.vaadin.ui.components.calendar.event.CalendarEvent;
 import com.vaadin.ui.components.calendar.event.CalendarEventProvider
+import com.vaadin.ui.components.calendar.handler.BasicDateClickHandler
+import de.csh.patientenverwaltung.entity.Operationstermin
+import de.csh.patientenverwaltung.gui.operationstermin.OperationsterminEdit
+import de.csh.patientenverwaltung.service.OperationsterminService
+import de.csh.patientenverwaltung.util.DateTimeUtils
 import groovy.time.TimeCategory;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang.time.DateUtils;
@@ -61,6 +66,8 @@ class CalendarScreen extends AbstractWindow {
     @Inject
     protected TimeSource timeSource;
 
+    protected Calendar calendar
+
 //    @Inject
 //    protected ValidationTools validationTools;
     @Inject
@@ -80,7 +87,7 @@ class CalendarScreen extends AbstractWindow {
 //        showNotification(dsContext.toString(), IFrame.NotificationType.TRAY)
 
 //        dsContext.getDataSupplier().loadList()
-//        firstDayOfMonth = DateTimeUtils.getFirstDayOfMonth(timeSource.currentTimestamp());
+        firstDayOfMonth = DateTimeUtils.getFirstDayOfMonth(timeSource.currentTimestamp());
 
         initCalendar();
 //        initShowCommandLineAction();
@@ -181,7 +188,7 @@ class CalendarScreen extends AbstractWindow {
 //            }
 //        });
 
-        Calendar calendar = new Calendar("Alle Operationstermine");
+        calendar = new Calendar("Alle Operationstermine");
 
 
         calendar.setWidth("100%");
@@ -191,9 +198,11 @@ class CalendarScreen extends AbstractWindow {
         calendar.setLastVisibleHourOfDay(19)
 //        calendar.setMoreMsgFormat(messages.getMessage(getClass(), "calendar.moreMsgFormat"));
         calendar.setDropHandler(null);
-//        calendar.setHandler(new CalendarComponentEvents.EventMoveHandler() {
-//            @Override
-//            public void eventMove(CalendarComponentEvents.MoveEvent event) {
+        calendar.setHandler(new CalendarComponentEvents.EventMoveHandler() {
+            @Override
+            public void eventMove(CalendarComponentEvents.MoveEvent event) {
+
+                showNotification(event.getNewStart().toString(), IFrame.NotificationType.TRAY)
 //                if (event.getCalendarEvent() instanceof TimeEntryCalendarEventAdapter) {
 //                    TimeEntryCalendarEventAdapter adapter = (TimeEntryCalendarEventAdapter) event.getCalendarEvent();
 //                    adapter.getTimeEntry().setDate(event.getNewStart());
@@ -202,8 +211,8 @@ class CalendarScreen extends AbstractWindow {
 //                    dataSource.changeEventTimeEntity(committed);
 //                    updateSummaryColumn();
 //                }
-//            }
-//        });
+            }
+        });
 //        calendar.setHandler((CalendarComponentEvents.WeekClickHandler) null);
 //        calendar.setHandler(new CalendarComponentEvents.DateClickHandler() {
 //            @Override
@@ -226,7 +235,14 @@ class CalendarScreen extends AbstractWindow {
 //                }
 //            }
 //        });
-        calendar.addActionHandler(new CalendarActionHandler());
+
+        calendar.addActionHandler(new CalendarActionHandler())
+        calendar.setHandler(new CalendarComponentEvents.EventClickHandler() {
+            @Override
+            void eventClick(CalendarComponentEvents.EventClick event) {
+                editTimeEntry(new Operationstermin())
+            }
+        })
 //
 //        Calendar cal = new Calendar("My Calendar");
         calendar.setEventProvider(new CustomEventProvider())
@@ -270,7 +286,7 @@ class CalendarScreen extends AbstractWindow {
     }
 
     public void addTimeEntry() {
-//        editTimeEntry(new TimeEntry());
+        editTimeEntry(new Operationstermin());
     }
 
 //    protected void updateSummaryColumn() {
@@ -358,19 +374,19 @@ class CalendarScreen extends AbstractWindow {
 //        return summariesByWeeks;
 //    }
 
-//    protected void updateCalendarRange() {
-//        Date lastDayOfMonth = DateTimeUtils.getLastDayOfMonth(firstDayOfMonth);
-//
+    protected void updateCalendarRange() {
+        Date lastDayOfMonth = DateTimeUtils.getLastDayOfMonth(firstDayOfMonth);
+
 //        dataSource.updateWithRange(
 //                DateTimeUtils.getFirstDayOfWeek(firstDayOfMonth),
 //                DateTimeUtils.getLastDayOfWeek(lastDayOfMonth));
-//
-//        calendar.setStartDate(firstDayOfMonth);
-//        calendar.setEndDate(lastDayOfMonth);
-//
+
+        calendar.setStartDate(firstDayOfMonth);
+        calendar.setEndDate(lastDayOfMonth);
+
 //        updateSummaryColumn();
 //        updateMonthCaption();
-//    }
+    }
 
 //    protected void updateMonthCaption() {
 //        monthLabel.setValue(String.format("%s %s", getMonthName(firstDayOfMonth), getYear(firstDayOfMonth)));
@@ -385,19 +401,34 @@ class CalendarScreen extends AbstractWindow {
 //        return DateUtils.toCalendar(firstDayOfMonth).get(java.util.Calendar.YEAR);
 //    }
 
-//    protected void editTimeEntry(TimeEntry timeEntry) {
-//        final TimeEntryEdit editor = openEditor("ts$TimeEntry.edit", timeEntry, WindowManager.OpenType.DIALOG);
-//        editor.addListener(new CloseListener() {
-//            @Override
-//            public void windowClosed(String actionId) {
-//                if (COMMIT_ACTION_ID.equals(actionId)) {
+    protected void editTimeEntry(Operationstermin operationstermin) {
+        final OperationsterminEdit editor = openEditor('pa$Operationstermin.edit', operationstermin, WindowManager.OpenType.DIALOG);
+        editor.addListener(new Window.CloseListener() {
+            @Override
+            public void windowClosed(String actionId) {
+                if (COMMIT_ACTION_ID.equals(actionId)) {
 //                    dataSource.changeEventTimeEntity(editor.getItem());
-//                }
-//            }
-//        });
-//    }
 
-//    protected void editHoliday(Holiday holiday) {
+
+                    def optermin = editor.getItem()
+                    def meldung = "Operationstermin: ${optermin.patient.name}, ${optermin.patient.vorname} (${optermin.datum}) erfolgreich angelegt"
+                    showNotification(meldung, IFrame.NotificationType.TRAY)
+
+                    openWindow("calendar-screen", WindowManager.OpenType.THIS_TAB)
+                }
+            }
+        });
+    }
+
+    public void showMonatsansicht ( ) {
+        calendar.setStartDate(new Date());
+        use(TimeCategory) {
+
+            calendar.setEndDate(new Date() + 30.days);
+        }
+    }
+
+    //    protected void editHoliday(Holiday holiday) {
 //        final HolidayEdit editor = openEditor("ts$Holiday.edit", holiday, WindowManager.OpenType.DIALOG);
 //        editor.addListener(new CloseListener() {
 //            @Override
@@ -433,23 +464,27 @@ class CalendarScreen extends AbstractWindow {
             if (events.size() == 0)
                 return [addEventAction];
             else
-                return [addEventAction, copyEventAction, deleteEventAction]
+                return [addEventAction /*, copyEventAction, deleteEventAction */]
         }
 
         @Override
         public void handleAction(Action action, Object sender, Object target) {
-//            if (action == addEventAction) {
-//                // Check that the click was not done on an event
-//                if (target instanceof Date) {
-//                    Date date = (Date) target;
-//                    TimeEntry timeEntry = new TimeEntry();
-//                    timeEntry.setDate(date);
-//                    editTimeEntry(timeEntry);
-//                } else {
-//                    showNotification(messages.getMessage(getClass(), "cantAddTimeEntry"),
-//                            IFrame.NotificationType.WARNING);
-//                }
-//            } else if (action == copyEventAction) {
+            if (action == addEventAction) {
+                // Check that the click was not done on an event
+                if (target instanceof Date) {
+                    Date datum = (Date) target;
+                    Operationstermin operationstermin = new Operationstermin();
+                    operationstermin.setDatum(datum);
+                    if (datum.hours != 0) {
+                        operationstermin.setBeginn(datum)
+                    }
+                    editTimeEntry(operationstermin);
+                } else {
+                    showNotification(messages.getMessage(getClass(), "cantAddTimeEntry"),
+                            IFrame.NotificationType.WARNING);
+                }
+            }
+            //else if (action == copyEventAction) {
 //                // Check that the click was not done on an event
 //                if (target instanceof TimeEntryCalendarEventAdapter) {
 //                    TimeEntry copiedEntry = (TimeEntry) InstanceUtils.copy(((TimeEntryCalendarEventAdapter) target).getTimeEntry());
