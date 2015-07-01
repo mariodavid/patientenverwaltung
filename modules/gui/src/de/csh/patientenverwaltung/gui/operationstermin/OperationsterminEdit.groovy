@@ -34,7 +34,7 @@ public class OperationsterminEdit extends AbstractEditor<Operationstermin> {
                 Date endeDate = null
                 use(TimeCategory) {
                     if (value) {
-                        endeDate = (Date) value + 15.minutes
+                        endeDate = (Date) value + 30.minutes
                     }
                 }
                 ende.setValue(endeDate);

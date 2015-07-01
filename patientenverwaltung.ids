@@ -1,0 +1,778 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="HSQLDB - pa@localhost" uuid="08b3b2aa-81fc-4991-8246-bd68b7b37c9b">
+    <database-info product="HSQL Database Engine" version="2.2.9" jdbc-version="4.0" driver-name="HSQL Database Engine Driver" driver-version="2.3.2">
+      <identifier-quote-string>&quot;</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="upper" quoted-identifiers="exact"/>
+    <schema name="PUBLIC" catalog="PUBLIC"/>
+    <table name="DUAL" schema="PUBLIC" catalog="PUBLIC" type="TABLE">
+      <column name="ID" sqlType="INTEGER" precision="32" scale="0" nullable="true" jdbcType="4"/>
+    </table>
+    <table name="PA_ARBEITSTAG" schema="PUBLIC" catalog="PUBLIC" type="TABLE">
+      <column name="ID" sqlType="VARCHAR" precision="36" scale="0" nullable="false" jdbcType="12"/>
+      <column name="CREATE_TS" sqlType="TIMESTAMP" precision="26" scale="0" nullable="true" jdbcType="93"/>
+      <column name="CREATED_BY" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="VERSION" sqlType="INTEGER" precision="32" scale="0" nullable="true" jdbcType="4"/>
+      <column name="UPDATE_TS" sqlType="TIMESTAMP" precision="26" scale="0" nullable="true" jdbcType="93"/>
+      <column name="UPDATED_BY" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="DELETE_TS" sqlType="TIMESTAMP" precision="26" scale="0" nullable="true" jdbcType="93"/>
+      <column name="DELETED_BY" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="WOCHENTAG" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="BEGINN" sqlType="TIME" precision="8" scale="0" nullable="false" jdbcType="92"/>
+      <column name="ENDE" sqlType="TIME" precision="8" scale="0" nullable="false" jdbcType="92"/>
+      <column name="MITARBEITER_ID" sqlType="VARCHAR" precision="36" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="SYS_PK_10367" columns="ID"/>
+      <foreign-key name="FK_PA_ARBEITSTAG_MITARBEITER_ID" columns="MITARBEITER_ID" ref-table="PA_MITARBEITER" ref-schema="PUBLIC" ref-catalog="PUBLIC" ref-columns="ID" update-rule="3" delete-rule="3"/>
+      <index name="IDX_PA_ARBEITSTAG_MITARBEITER" unique="false" columns="MITARBEITER_ID"/>
+    </table>
+    <table name="PA_MITARBEITER" schema="PUBLIC" catalog="PUBLIC" type="TABLE">
+      <column name="ID" sqlType="VARCHAR" precision="36" scale="0" nullable="false" jdbcType="12"/>
+      <column name="CREATE_TS" sqlType="TIMESTAMP" precision="26" scale="0" nullable="true" jdbcType="93"/>
+      <column name="CREATED_BY" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="VERSION" sqlType="INTEGER" precision="32" scale="0" nullable="true" jdbcType="4"/>
+      <column name="UPDATE_TS" sqlType="TIMESTAMP" precision="26" scale="0" nullable="true" jdbcType="93"/>
+      <column name="UPDATED_BY" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="DELETE_TS" sqlType="TIMESTAMP" precision="26" scale="0" nullable="true" jdbcType="93"/>
+      <column name="DELETED_BY" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="NAME" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="VORNAME" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="SYS_PK_10349" columns="ID"/>
+      <exported-key name="FK_PA_ARBEITSTAG_MITARBEITER_ID" table="PA_ARBEITSTAG" schema="PUBLIC" catalog="PUBLIC" columns="MITARBEITER_ID"/>
+      <exported-key name="FK_POML_MITARBEITER" table="PA_OPERATIONSTERMIN_MITARBEITER_LINK" schema="PUBLIC" catalog="PUBLIC" columns="MITARBEITER_ID"/>
+    </table>
+    <table name="PA_OPERATIONSTERMIN" schema="PUBLIC" catalog="PUBLIC" type="TABLE">
+      <column name="ID" sqlType="VARCHAR" precision="36" scale="0" nullable="false" jdbcType="12"/>
+      <column name="CREATE_TS" sqlType="TIMESTAMP" precision="26" scale="0" nullable="true" jdbcType="93"/>
+      <column name="CREATED_BY" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="VERSION" sqlType="INTEGER" precision="32" scale="0" nullable="true" jdbcType="4"/>
+      <column name="UPDATE_TS" sqlType="TIMESTAMP" precision="26" scale="0" nullable="true" jdbcType="93"/>
+      <column name="UPDATED_BY" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="DELETE_TS" sqlType="TIMESTAMP" precision="26" scale="0" nullable="true" jdbcType="93"/>
+      <column name="DELETED_BY" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="PATIENT_ID" sqlType="VARCHAR" precision="36" scale="0" nullable="true" jdbcType="12"/>
+      <column name="AUGE" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="RAUM_ID" sqlType="VARCHAR" precision="36" scale="0" nullable="true" jdbcType="12"/>
+      <column name="DATUM" sqlType="DATE" precision="10" scale="0" nullable="false" jdbcType="91"/>
+      <column name="BEGINN" sqlType="TIME" precision="8" scale="0" nullable="false" jdbcType="92"/>
+      <column name="ENDE" sqlType="TIME" precision="8" scale="0" nullable="false" jdbcType="92"/>
+      <primary-key name="SYS_PK_10331" columns="ID"/>
+      <foreign-key name="FK_PA_OPERATIONSTERMIN_PATIENT_ID" columns="PATIENT_ID" ref-table="PA_PATIENT" ref-schema="PUBLIC" ref-catalog="PUBLIC" ref-columns="ID" update-rule="3" delete-rule="3"/>
+      <foreign-key name="FK_PA_OPERATIONSTERMIN_RAUM_ID" columns="RAUM_ID" ref-table="PA_RAUM" ref-schema="PUBLIC" ref-catalog="PUBLIC" ref-columns="ID" update-rule="3" delete-rule="3"/>
+      <exported-key name="FK_POML_OPERATIONSTERMIN" table="PA_OPERATIONSTERMIN_MITARBEITER_LINK" schema="PUBLIC" catalog="PUBLIC" columns="OPERATIONSTERMIN_ID"/>
+      <index name="IDX_PA_OPERATIONSTERMIN_PATIENT" unique="false" columns="PATIENT_ID"/>
+      <index name="IDX_PA_OPERATIONSTERMIN_RAUM" unique="false" columns="RAUM_ID"/>
+    </table>
+    <table name="PA_OPERATIONSTERMIN_MITARBEITER_LINK" schema="PUBLIC" catalog="PUBLIC" type="TABLE">
+      <column name="MITARBEITER_ID" sqlType="VARCHAR" precision="36" scale="0" nullable="false" jdbcType="12"/>
+      <column name="OPERATIONSTERMIN_ID" sqlType="VARCHAR" precision="36" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="SYS_PK_10358" columns="MITARBEITER_ID,OPERATIONSTERMIN_ID"/>
+      <foreign-key name="FK_POML_MITARBEITER" columns="MITARBEITER_ID" ref-table="PA_MITARBEITER" ref-schema="PUBLIC" ref-catalog="PUBLIC" ref-columns="ID" update-rule="3" delete-rule="3"/>
+      <foreign-key name="FK_POML_OPERATIONSTERMIN" columns="OPERATIONSTERMIN_ID" ref-table="PA_OPERATIONSTERMIN" ref-schema="PUBLIC" ref-catalog="PUBLIC" ref-columns="ID" update-rule="3" delete-rule="3"/>
+    </table>
+    <table name="PA_PATIENT" schema="PUBLIC" catalog="PUBLIC" type="TABLE">
+      <column name="ID" sqlType="VARCHAR" precision="36" scale="0" nullable="false" jdbcType="12"/>
+      <column name="CREATE_TS" sqlType="TIMESTAMP" precision="26" scale="0" nullable="true" jdbcType="93"/>
+      <column name="CREATED_BY" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="VERSION" sqlType="INTEGER" precision="32" scale="0" nullable="true" jdbcType="4"/>
+      <column name="UPDATE_TS" sqlType="TIMESTAMP" precision="26" scale="0" nullable="true" jdbcType="93"/>
+      <column name="UPDATED_BY" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="DELETE_TS" sqlType="TIMESTAMP" precision="26" scale="0" nullable="true" jdbcType="93"/>
+      <column name="DELETED_BY" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="NAME" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="VORNAME" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="GEBURTSDATUM" sqlType="DATE" precision="10" scale="0" nullable="false" jdbcType="91"/>
+      <column name="ANSCHRIFT" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="PLZ" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="ORT" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="GESCHLECHT" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="SYS_PK_10317" columns="ID"/>
+      <exported-key name="FK_PA_OPERATIONSTERMIN_PATIENT_ID" table="PA_OPERATIONSTERMIN" schema="PUBLIC" catalog="PUBLIC" columns="PATIENT_ID"/>
+      <exported-key name="FK_PA_VORUNTERSUCHUNGSTERMIN_PATIENT_ID" table="PA_VORUNTERSUCHUNGSTERMIN" schema="PUBLIC" catalog="PUBLIC" columns="PATIENT_ID"/>
+    </table>
+    <table name="PA_RAUM" schema="PUBLIC" catalog="PUBLIC" type="TABLE">
+      <column name="ID" sqlType="VARCHAR" precision="36" scale="0" nullable="false" jdbcType="12"/>
+      <column name="CREATE_TS" sqlType="TIMESTAMP" precision="26" scale="0" nullable="true" jdbcType="93"/>
+      <column name="CREATED_BY" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="VERSION" sqlType="INTEGER" precision="32" scale="0" nullable="true" jdbcType="4"/>
+      <column name="UPDATE_TS" sqlType="TIMESTAMP" precision="26" scale="0" nullable="true" jdbcType="93"/>
+      <column name="UPDATED_BY" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="DELETE_TS" sqlType="TIMESTAMP" precision="26" scale="0" nullable="true" jdbcType="93"/>
+      <column name="DELETED_BY" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="NAME" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="SYS_PK_10343" columns="ID"/>
+      <exported-key name="FK_PA_OPERATIONSTERMIN_RAUM_ID" table="PA_OPERATIONSTERMIN" schema="PUBLIC" catalog="PUBLIC" columns="RAUM_ID"/>
+    </table>
+    <table name="PA_VORUNTERSUCHUNGSTERMIN" schema="PUBLIC" catalog="PUBLIC" type="TABLE">
+      <column name="ID" sqlType="VARCHAR" precision="36" scale="0" nullable="false" jdbcType="12"/>
+      <column name="CREATE_TS" sqlType="TIMESTAMP" precision="26" scale="0" nullable="true" jdbcType="93"/>
+      <column name="CREATED_BY" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="VERSION" sqlType="INTEGER" precision="32" scale="0" nullable="true" jdbcType="4"/>
+      <column name="UPDATE_TS" sqlType="TIMESTAMP" precision="26" scale="0" nullable="true" jdbcType="93"/>
+      <column name="UPDATED_BY" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="DELETE_TS" sqlType="TIMESTAMP" precision="26" scale="0" nullable="true" jdbcType="93"/>
+      <column name="DELETED_BY" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="PATIENT_ID" sqlType="VARCHAR" precision="36" scale="0" nullable="false" jdbcType="12"/>
+      <column name="ZEITPUNKT" sqlType="TIMESTAMP" precision="26" scale="0" nullable="false" jdbcType="93"/>
+      <primary-key name="SYS_PK_10405" columns="ID"/>
+      <foreign-key name="FK_PA_VORUNTERSUCHUNGSTERMIN_PATIENT_ID" columns="PATIENT_ID" ref-table="PA_PATIENT" ref-schema="PUBLIC" ref-catalog="PUBLIC" ref-columns="ID" update-rule="3" delete-rule="3"/>
+      <index name="IDX_PA_VORUNTERSUCHUNGSTERMIN_PATIENT" unique="false" columns="PATIENT_ID"/>
+    </table>
+    <table name="REPORT_GROUP" schema="PUBLIC" catalog="PUBLIC" type="TABLE">
+      <column name="ID" sqlType="VARCHAR" precision="36" scale="0" nullable="false" jdbcType="12"/>
+      <column name="CREATE_TS" sqlType="TIMESTAMP" precision="26" scale="0" nullable="true" jdbcType="93"/>
+      <column name="CREATED_BY" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="VERSION" sqlType="INTEGER" precision="32" scale="0" nullable="true" jdbcType="4"/>
+      <column name="UPDATE_TS" sqlType="TIMESTAMP" precision="26" scale="0" nullable="true" jdbcType="93"/>
+      <column name="UPDATED_BY" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="TITLE" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="CODE" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="LOCALE_NAMES" sqlType="VARCHAR" precision="7000" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="SYS_PK_10379" columns="ID"/>
+      <exported-key name="FK_REPORT_REPORT_TO_REPORT_GROUP" table="REPORT_REPORT" schema="PUBLIC" catalog="PUBLIC" columns="GROUP_ID"/>
+    </table>
+    <table name="REPORT_REPORT" schema="PUBLIC" catalog="PUBLIC" type="TABLE">
+      <column name="ID" sqlType="VARCHAR" precision="36" scale="0" nullable="false" jdbcType="12"/>
+      <column name="CREATE_TS" sqlType="TIMESTAMP" precision="26" scale="0" nullable="true" jdbcType="93"/>
+      <column name="CREATED_BY" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="VERSION" sqlType="INTEGER" precision="32" scale="0" nullable="true" jdbcType="4"/>
+      <column name="UPDATE_TS" sqlType="TIMESTAMP" precision="26" scale="0" nullable="true" jdbcType="93"/>
+      <column name="UPDATED_BY" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="NAME" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="CODE" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="LOCALE_NAMES" sqlType="VARCHAR" precision="7000" scale="0" nullable="true" jdbcType="12"/>
+      <column name="GROUP_ID" sqlType="VARCHAR" precision="36" scale="0" nullable="false" jdbcType="12"/>
+      <column name="REPORT_TYPE" sqlType="INTEGER" precision="32" scale="0" nullable="true" jdbcType="4"/>
+      <column name="DEFAULT_TEMPLATE_ID" sqlType="VARCHAR" precision="36" scale="0" nullable="true" jdbcType="12"/>
+      <column name="XML" sqlType="VARCHAR" precision="16777216" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="SYS_PK_10385" columns="ID"/>
+      <foreign-key name="FK_REPORT_REPORT_TO_REPORT_GROUP" columns="GROUP_ID" ref-table="REPORT_GROUP" ref-schema="PUBLIC" ref-catalog="PUBLIC" ref-columns="ID" update-rule="3" delete-rule="3"/>
+      <foreign-key name="FK_REPORT_REPORT_TO_DEF_TEMPLATE" columns="DEFAULT_TEMPLATE_ID" ref-table="REPORT_TEMPLATE" ref-schema="PUBLIC" ref-catalog="PUBLIC" ref-columns="ID" update-rule="3" delete-rule="3"/>
+      <exported-key name="FK_REPORT_TEMPLATE_TO_REPORT" table="REPORT_TEMPLATE" schema="PUBLIC" catalog="PUBLIC" columns="REPORT_ID"/>
+    </table>
+    <table name="REPORT_TEMPLATE" schema="PUBLIC" catalog="PUBLIC" type="TABLE">
+      <column name="ID" sqlType="VARCHAR" precision="36" scale="0" nullable="false" jdbcType="12"/>
+      <column name="CREATE_TS" sqlType="TIMESTAMP" precision="26" scale="0" nullable="true" jdbcType="93"/>
+      <column name="CREATED_BY" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="VERSION" sqlType="INTEGER" precision="32" scale="0" nullable="true" jdbcType="4"/>
+      <column name="UPDATE_TS" sqlType="TIMESTAMP" precision="26" scale="0" nullable="true" jdbcType="93"/>
+      <column name="UPDATED_BY" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="REPORT_ID" sqlType="VARCHAR" precision="36" scale="0" nullable="false" jdbcType="12"/>
+      <column name="CODE" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="OUTPUT_TYPE" sqlType="INTEGER" precision="32" scale="0" nullable="false" jdbcType="4" def="MA=="/>
+      <column name="IS_DEFAULT" sqlType="BOOLEAN" precision="0" scale="0" nullable="true" jdbcType="16" def="RkFMU0U="/>
+      <column name="IS_CUSTOM" sqlType="BOOLEAN" precision="0" scale="0" nullable="true" jdbcType="16" def="RkFMU0U="/>
+      <column name="CUSTOM_DEFINED_BY" sqlType="INTEGER" precision="32" scale="0" nullable="true" jdbcType="4" def="MTAw"/>
+      <column name="CUSTOM_CLASS" sqlType="VARCHAR" precision="4000" scale="0" nullable="true" jdbcType="12"/>
+      <column name="OUTPUT_NAME_PATTERN" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="NAME" sqlType="VARCHAR" precision="500" scale="0" nullable="true" jdbcType="12"/>
+      <column name="CONTENT" sqlType="VARBINARY" precision="16777216" scale="0" nullable="true" jdbcType="-3"/>
+      <primary-key name="SYS_PK_10395" columns="ID"/>
+      <foreign-key name="FK_REPORT_TEMPLATE_TO_REPORT" columns="REPORT_ID" ref-table="REPORT_REPORT" ref-schema="PUBLIC" ref-catalog="PUBLIC" ref-columns="ID" update-rule="3" delete-rule="0"/>
+      <exported-key name="FK_REPORT_REPORT_TO_DEF_TEMPLATE" table="REPORT_REPORT" schema="PUBLIC" catalog="PUBLIC" columns="DEFAULT_TEMPLATE_ID"/>
+    </table>
+    <table name="SEC_CONSTRAINT" schema="PUBLIC" catalog="PUBLIC" type="TABLE">
+      <column name="ID" sqlType="VARCHAR" precision="36" scale="0" nullable="false" jdbcType="12"/>
+      <column name="CREATE_TS" sqlType="TIMESTAMP" precision="26" scale="0" nullable="true" jdbcType="93"/>
+      <column name="CREATED_BY" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="VERSION" sqlType="INTEGER" precision="32" scale="0" nullable="true" jdbcType="4"/>
+      <column name="UPDATE_TS" sqlType="TIMESTAMP" precision="26" scale="0" nullable="true" jdbcType="93"/>
+      <column name="UPDATED_BY" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="DELETE_TS" sqlType="TIMESTAMP" precision="26" scale="0" nullable="true" jdbcType="93"/>
+      <column name="DELETED_BY" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="ENTITY_NAME" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="JOIN_CLAUSE" sqlType="VARCHAR" precision="500" scale="0" nullable="true" jdbcType="12"/>
+      <column name="WHERE_CLAUSE" sqlType="VARCHAR" precision="1000" scale="0" nullable="true" jdbcType="12"/>
+      <column name="GROUP_ID" sqlType="VARCHAR" precision="36" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="SYS_PK_10152" columns="ID"/>
+      <foreign-key name="SEC_CONSTRAINT_GROUP" columns="GROUP_ID" ref-table="SEC_GROUP" ref-schema="PUBLIC" ref-catalog="PUBLIC" ref-columns="ID" update-rule="3" delete-rule="3"/>
+    </table>
+    <table name="SEC_ENTITY_LOG" schema="PUBLIC" catalog="PUBLIC" type="TABLE">
+      <column name="ID" sqlType="VARCHAR" precision="36" scale="0" nullable="false" jdbcType="12"/>
+      <column name="CREATE_TS" sqlType="TIMESTAMP" precision="26" scale="0" nullable="true" jdbcType="93"/>
+      <column name="CREATED_BY" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="EVENT_TS" sqlType="TIMESTAMP" precision="26" scale="0" nullable="true" jdbcType="93"/>
+      <column name="USER_ID" sqlType="VARCHAR" precision="36" scale="0" nullable="true" jdbcType="12"/>
+      <column name="CHANGE_TYPE" sqlType="CHARACTER" precision="1" scale="0" nullable="true" jdbcType="1"/>
+      <column name="ENTITY" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12"/>
+      <column name="ENTITY_ID" sqlType="VARCHAR" precision="36" scale="0" nullable="true" jdbcType="12"/>
+      <column name="CHANGES" sqlType="VARCHAR" precision="16777216" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="SYS_PK_10191" columns="ID"/>
+      <foreign-key name="FK_SEC_ENTITY_LOG_USER" columns="USER_ID" ref-table="SEC_USER" ref-schema="PUBLIC" ref-catalog="PUBLIC" ref-columns="ID" update-rule="3" delete-rule="3"/>
+      <exported-key name="FK_SEC_ENTITY_LOG_ATTR_ITEM" table="SEC_ENTITY_LOG_ATTR" schema="PUBLIC" catalog="PUBLIC" columns="ITEM_ID"/>
+    </table>
+    <table name="SEC_ENTITY_LOG_ATTR" schema="PUBLIC" catalog="PUBLIC" type="TABLE">
+      <column name="ID" sqlType="VARCHAR" precision="36" scale="0" nullable="false" jdbcType="12"/>
+      <column name="CREATE_TS" sqlType="TIMESTAMP" precision="26" scale="0" nullable="true" jdbcType="93"/>
+      <column name="CREATED_BY" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="ITEM_ID" sqlType="VARCHAR" precision="36" scale="0" nullable="true" jdbcType="12"/>
+      <column name="NAME" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="VALUE" sqlType="VARCHAR" precision="1500" scale="0" nullable="true" jdbcType="12"/>
+      <column name="VALUE_ID" sqlType="VARCHAR" precision="36" scale="0" nullable="true" jdbcType="12"/>
+      <column name="MESSAGES_PACK" sqlType="VARCHAR" precision="200" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="SYS_PK_10197" columns="ID"/>
+      <foreign-key name="FK_SEC_ENTITY_LOG_ATTR_ITEM" columns="ITEM_ID" ref-table="SEC_ENTITY_LOG" ref-schema="PUBLIC" ref-catalog="PUBLIC" ref-columns="ID" update-rule="3" delete-rule="3"/>
+    </table>
+    <table name="SEC_FILTER" schema="PUBLIC" catalog="PUBLIC" type="TABLE">
+      <column name="ID" sqlType="VARCHAR" precision="36" scale="0" nullable="false" jdbcType="12"/>
+      <column name="CREATE_TS" sqlType="TIMESTAMP" precision="26" scale="0" nullable="true" jdbcType="93"/>
+      <column name="CREATED_BY" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="VERSION" sqlType="INTEGER" precision="32" scale="0" nullable="true" jdbcType="4"/>
+      <column name="UPDATE_TS" sqlType="TIMESTAMP" precision="26" scale="0" nullable="true" jdbcType="93"/>
+      <column name="UPDATED_BY" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="DELETE_TS" sqlType="TIMESTAMP" precision="26" scale="0" nullable="true" jdbcType="93"/>
+      <column name="DELETED_BY" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="COMPONENT" sqlType="VARCHAR" precision="200" scale="0" nullable="true" jdbcType="12"/>
+      <column name="NAME" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="CODE" sqlType="VARCHAR" precision="200" scale="0" nullable="true" jdbcType="12"/>
+      <column name="XML" sqlType="VARCHAR" precision="16777216" scale="0" nullable="true" jdbcType="12"/>
+      <column name="USER_ID" sqlType="VARCHAR" precision="36" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="SYS_PK_10203" columns="ID"/>
+      <foreign-key name="FK_SEC_FILTER_USER" columns="USER_ID" ref-table="SEC_USER" ref-schema="PUBLIC" ref-catalog="PUBLIC" ref-columns="ID" update-rule="3" delete-rule="3"/>
+    </table>
+    <table name="SEC_GROUP" schema="PUBLIC" catalog="PUBLIC" type="TABLE">
+      <column name="ID" sqlType="VARCHAR" precision="36" scale="0" nullable="false" jdbcType="12"/>
+      <column name="CREATE_TS" sqlType="TIMESTAMP" precision="26" scale="0" nullable="true" jdbcType="93"/>
+      <column name="CREATED_BY" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="VERSION" sqlType="INTEGER" precision="32" scale="0" nullable="true" jdbcType="4"/>
+      <column name="UPDATE_TS" sqlType="TIMESTAMP" precision="26" scale="0" nullable="true" jdbcType="93"/>
+      <column name="UPDATED_BY" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="DELETE_TS" sqlType="TIMESTAMP" precision="26" scale="0" nullable="true" jdbcType="93"/>
+      <column name="DELETED_BY" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="NAME" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="PARENT_ID" sqlType="VARCHAR" precision="36" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="SYS_PK_10111" columns="ID"/>
+      <foreign-key name="SEC_GROUP_PARENT" columns="PARENT_ID" ref-table="SEC_GROUP" ref-schema="PUBLIC" ref-catalog="PUBLIC" ref-columns="ID" update-rule="3" delete-rule="3"/>
+      <exported-key name="SEC_CONSTRAINT_GROUP" table="SEC_CONSTRAINT" schema="PUBLIC" catalog="PUBLIC" columns="GROUP_ID"/>
+      <exported-key name="SEC_GROUP_PARENT" table="SEC_GROUP" schema="PUBLIC" catalog="PUBLIC" columns="PARENT_ID"/>
+      <exported-key name="SEC_GROUP_HIERARCHY_GROUP" table="SEC_GROUP_HIERARCHY" schema="PUBLIC" catalog="PUBLIC" columns="GROUP_ID"/>
+      <exported-key name="SEC_GROUP_HIERARCHY_PARENT" table="SEC_GROUP_HIERARCHY" schema="PUBLIC" catalog="PUBLIC" columns="PARENT_ID"/>
+      <exported-key name="SEC_SESSION_ATTR_GROUP" table="SEC_SESSION_ATTR" schema="PUBLIC" catalog="PUBLIC" columns="GROUP_ID"/>
+      <exported-key name="SEC_USER_GROUP" table="SEC_USER" schema="PUBLIC" catalog="PUBLIC" columns="GROUP_ID"/>
+    </table>
+    <table name="SEC_GROUP_HIERARCHY" schema="PUBLIC" catalog="PUBLIC" type="TABLE">
+      <column name="ID" sqlType="VARCHAR" precision="36" scale="0" nullable="false" jdbcType="12"/>
+      <column name="CREATE_TS" sqlType="TIMESTAMP" precision="26" scale="0" nullable="true" jdbcType="93"/>
+      <column name="CREATED_BY" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="GROUP_ID" sqlType="VARCHAR" precision="36" scale="0" nullable="true" jdbcType="12"/>
+      <column name="PARENT_ID" sqlType="VARCHAR" precision="36" scale="0" nullable="true" jdbcType="12"/>
+      <column name="HIERARCHY_LEVEL" sqlType="INTEGER" precision="32" scale="0" nullable="true" jdbcType="4"/>
+      <primary-key name="SYS_PK_10117" columns="ID"/>
+      <foreign-key name="SEC_GROUP_HIERARCHY_GROUP" columns="GROUP_ID" ref-table="SEC_GROUP" ref-schema="PUBLIC" ref-catalog="PUBLIC" ref-columns="ID" update-rule="3" delete-rule="3"/>
+      <foreign-key name="SEC_GROUP_HIERARCHY_PARENT" columns="PARENT_ID" ref-table="SEC_GROUP" ref-schema="PUBLIC" ref-catalog="PUBLIC" ref-columns="ID" update-rule="3" delete-rule="3"/>
+    </table>
+    <table name="SEC_LOGGED_ATTR" schema="PUBLIC" catalog="PUBLIC" type="TABLE">
+      <column name="ID" sqlType="VARCHAR" precision="36" scale="0" nullable="false" jdbcType="12"/>
+      <column name="CREATE_TS" sqlType="TIMESTAMP" precision="26" scale="0" nullable="true" jdbcType="93"/>
+      <column name="CREATED_BY" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="ENTITY_ID" sqlType="VARCHAR" precision="36" scale="0" nullable="true" jdbcType="12"/>
+      <column name="NAME" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="SYS_PK_10184" columns="ID"/>
+      <foreign-key name="FK_SEC_LOGGED_ATTR_ENTITY" columns="ENTITY_ID" ref-table="SEC_LOGGED_ENTITY" ref-schema="PUBLIC" ref-catalog="PUBLIC" ref-columns="ID" update-rule="3" delete-rule="3"/>
+    </table>
+    <table name="SEC_LOGGED_ENTITY" schema="PUBLIC" catalog="PUBLIC" type="TABLE">
+      <column name="ID" sqlType="VARCHAR" precision="36" scale="0" nullable="false" jdbcType="12"/>
+      <column name="CREATE_TS" sqlType="TIMESTAMP" precision="26" scale="0" nullable="true" jdbcType="93"/>
+      <column name="CREATED_BY" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="NAME" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12"/>
+      <column name="AUTO" sqlType="BOOLEAN" precision="0" scale="0" nullable="true" jdbcType="16"/>
+      <column name="MANUAL" sqlType="BOOLEAN" precision="0" scale="0" nullable="true" jdbcType="16"/>
+      <primary-key name="SYS_PK_10179" columns="ID"/>
+      <exported-key name="FK_SEC_LOGGED_ATTR_ENTITY" table="SEC_LOGGED_ATTR" schema="PUBLIC" catalog="PUBLIC" columns="ENTITY_ID"/>
+    </table>
+    <table name="SEC_PERMISSION" schema="PUBLIC" catalog="PUBLIC" type="TABLE">
+      <column name="ID" sqlType="VARCHAR" precision="36" scale="0" nullable="false" jdbcType="12"/>
+      <column name="CREATE_TS" sqlType="TIMESTAMP" precision="26" scale="0" nullable="true" jdbcType="93"/>
+      <column name="CREATED_BY" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="VERSION" sqlType="INTEGER" precision="32" scale="0" nullable="true" jdbcType="4"/>
+      <column name="UPDATE_TS" sqlType="TIMESTAMP" precision="26" scale="0" nullable="true" jdbcType="93"/>
+      <column name="UPDATED_BY" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="DELETE_TS" sqlType="TIMESTAMP" precision="26" scale="0" nullable="true" jdbcType="93"/>
+      <column name="DELETED_BY" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="PERMISSION_TYPE" sqlType="INTEGER" precision="32" scale="0" nullable="true" jdbcType="4"/>
+      <column name="TARGET" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12"/>
+      <column name="VALUE" sqlType="INTEGER" precision="32" scale="0" nullable="true" jdbcType="4"/>
+      <column name="ROLE_ID" sqlType="VARCHAR" precision="36" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="SYS_PK_10145" columns="ID"/>
+      <foreign-key name="SEC_PERMISSION_ROLE" columns="ROLE_ID" ref-table="SEC_ROLE" ref-schema="PUBLIC" ref-catalog="PUBLIC" ref-columns="ID" update-rule="3" delete-rule="3"/>
+    </table>
+    <table name="SEC_PRESENTATION" schema="PUBLIC" catalog="PUBLIC" type="TABLE">
+      <column name="ID" sqlType="VARCHAR" precision="36" scale="0" nullable="false" jdbcType="12"/>
+      <column name="CREATE_TS" sqlType="TIMESTAMP" precision="26" scale="0" nullable="true" jdbcType="93"/>
+      <column name="CREATED_BY" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="UPDATE_TS" sqlType="TIMESTAMP" precision="26" scale="0" nullable="true" jdbcType="93"/>
+      <column name="UPDATED_BY" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="COMPONENT" sqlType="VARCHAR" precision="200" scale="0" nullable="true" jdbcType="12"/>
+      <column name="NAME" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="XML" sqlType="VARCHAR" precision="7000" scale="0" nullable="true" jdbcType="12"/>
+      <column name="USER_ID" sqlType="VARCHAR" precision="36" scale="0" nullable="true" jdbcType="12"/>
+      <column name="IS_AUTO_SAVE" sqlType="BOOLEAN" precision="0" scale="0" nullable="true" jdbcType="16"/>
+      <primary-key name="SYS_PK_10221" columns="ID"/>
+      <foreign-key name="SEC_PRESENTATION_USER" columns="USER_ID" ref-table="SEC_USER" ref-schema="PUBLIC" ref-catalog="PUBLIC" ref-columns="ID" update-rule="3" delete-rule="3"/>
+      <exported-key name="FK_SEC_SEARCH_FOLDER_PRESENTATION" table="SEC_SEARCH_FOLDER" schema="PUBLIC" catalog="PUBLIC" columns="PRESENTATION_ID"/>
+    </table>
+    <table name="SEC_REMEMBER_ME" schema="PUBLIC" catalog="PUBLIC" type="TABLE">
+      <column name="ID" sqlType="VARCHAR" precision="36" scale="0" nullable="false" jdbcType="12"/>
+      <column name="CREATE_TS" sqlType="TIMESTAMP" precision="26" scale="0" nullable="true" jdbcType="93"/>
+      <column name="CREATED_BY" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="VERSION" sqlType="INTEGER" precision="32" scale="0" nullable="true" jdbcType="4"/>
+      <column name="USER_ID" sqlType="VARCHAR" precision="36" scale="0" nullable="false" jdbcType="12"/>
+      <column name="TOKEN" sqlType="VARCHAR" precision="32" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="SYS_PK_10307" columns="ID"/>
+      <foreign-key name="FK_SEC_REMEMBER_ME_USER" columns="USER_ID" ref-table="SEC_USER" ref-schema="PUBLIC" ref-catalog="PUBLIC" ref-columns="ID" update-rule="3" delete-rule="3"/>
+    </table>
+    <table name="SEC_ROLE" schema="PUBLIC" catalog="PUBLIC" type="TABLE">
+      <column name="ID" sqlType="VARCHAR" precision="36" scale="0" nullable="false" jdbcType="12"/>
+      <column name="CREATE_TS" sqlType="TIMESTAMP" precision="26" scale="0" nullable="true" jdbcType="93"/>
+      <column name="CREATED_BY" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="VERSION" sqlType="INTEGER" precision="32" scale="0" nullable="true" jdbcType="4"/>
+      <column name="UPDATE_TS" sqlType="TIMESTAMP" precision="26" scale="0" nullable="true" jdbcType="93"/>
+      <column name="UPDATED_BY" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="DELETE_TS" sqlType="TIMESTAMP" precision="26" scale="0" nullable="true" jdbcType="93"/>
+      <column name="DELETED_BY" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="NAME" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="LOC_NAME" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="DESCRIPTION" sqlType="VARCHAR" precision="1000" scale="0" nullable="true" jdbcType="12"/>
+      <column name="IS_DEFAULT_ROLE" sqlType="BOOLEAN" precision="0" scale="0" nullable="true" jdbcType="16"/>
+      <column name="ROLE_TYPE" sqlType="INTEGER" precision="32" scale="0" nullable="true" jdbcType="4"/>
+      <primary-key name="SYS_PK_10106" columns="ID"/>
+      <exported-key name="SEC_PERMISSION_ROLE" table="SEC_PERMISSION" schema="PUBLIC" catalog="PUBLIC" columns="ROLE_ID"/>
+      <exported-key name="SEC_USER_ROLE_ROLE" table="SEC_USER_ROLE" schema="PUBLIC" catalog="PUBLIC" columns="ROLE_ID"/>
+    </table>
+    <table name="SEC_SCREEN_HISTORY" schema="PUBLIC" catalog="PUBLIC" type="TABLE">
+      <column name="ID" sqlType="VARCHAR" precision="36" scale="0" nullable="false" jdbcType="12"/>
+      <column name="CREATE_TS" sqlType="TIMESTAMP" precision="26" scale="0" nullable="true" jdbcType="93"/>
+      <column name="CREATED_BY" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="USER_ID" sqlType="VARCHAR" precision="36" scale="0" nullable="true" jdbcType="12"/>
+      <column name="CAPTION" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="URL" sqlType="VARCHAR" precision="4000" scale="0" nullable="true" jdbcType="12"/>
+      <column name="ENTITY_ID" sqlType="VARCHAR" precision="36" scale="0" nullable="true" jdbcType="12"/>
+      <column name="SUBSTITUTED_USER_ID" sqlType="VARCHAR" precision="36" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="SYS_PK_10241" columns="ID"/>
+      <foreign-key name="FK_SEC_HISTORY_SUBSTITUTED_USER" columns="SUBSTITUTED_USER_ID" ref-table="SEC_USER" ref-schema="PUBLIC" ref-catalog="PUBLIC" ref-columns="ID" update-rule="3" delete-rule="3"/>
+      <foreign-key name="FK_SEC_HISTORY_USER" columns="USER_ID" ref-table="SEC_USER" ref-schema="PUBLIC" ref-catalog="PUBLIC" ref-columns="ID" update-rule="3" delete-rule="3"/>
+      <index name="IDX_SEC_SCREEN_HIST_SUB_USER" unique="false" columns="SUBSTITUTED_USER_ID"/>
+    </table>
+    <table name="SEC_SEARCH_FOLDER" schema="PUBLIC" catalog="PUBLIC" type="TABLE">
+      <column name="FOLDER_ID" sqlType="VARCHAR" precision="36" scale="0" nullable="false" jdbcType="12"/>
+      <column name="FILTER_COMPONENT" sqlType="VARCHAR" precision="200" scale="0" nullable="true" jdbcType="12"/>
+      <column name="FILTER_XML" sqlType="VARCHAR" precision="7000" scale="0" nullable="true" jdbcType="12"/>
+      <column name="USER_ID" sqlType="VARCHAR" precision="36" scale="0" nullable="true" jdbcType="12"/>
+      <column name="PRESENTATION_ID" sqlType="VARCHAR" precision="36" scale="0" nullable="true" jdbcType="12"/>
+      <column name="APPLY_DEFAULT" sqlType="BOOLEAN" precision="0" scale="0" nullable="true" jdbcType="16"/>
+      <column name="IS_SET" sqlType="BOOLEAN" precision="0" scale="0" nullable="true" jdbcType="16"/>
+      <column name="ENTITY_TYPE" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="SYS_PK_10227" columns="FOLDER_ID"/>
+      <foreign-key name="FK_SEC_SEARCH_FOLDER_PRESENTATION" columns="PRESENTATION_ID" ref-table="SEC_PRESENTATION" ref-schema="PUBLIC" ref-catalog="PUBLIC" ref-columns="ID" update-rule="3" delete-rule="2"/>
+      <foreign-key name="FK_SEC_SEARCH_FOLDER_USER" columns="USER_ID" ref-table="SEC_USER" ref-schema="PUBLIC" ref-catalog="PUBLIC" ref-columns="ID" update-rule="3" delete-rule="3"/>
+      <foreign-key name="FK_SEC_SEARCH_FOLDER_FOLDER" columns="FOLDER_ID" ref-table="SYS_FOLDER" ref-schema="PUBLIC" ref-catalog="PUBLIC" ref-columns="ID" update-rule="3" delete-rule="3"/>
+    </table>
+    <table name="SEC_SESSION_ATTR" schema="PUBLIC" catalog="PUBLIC" type="TABLE">
+      <column name="ID" sqlType="VARCHAR" precision="36" scale="0" nullable="false" jdbcType="12"/>
+      <column name="CREATE_TS" sqlType="TIMESTAMP" precision="26" scale="0" nullable="true" jdbcType="93"/>
+      <column name="CREATED_BY" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="VERSION" sqlType="INTEGER" precision="32" scale="0" nullable="true" jdbcType="4"/>
+      <column name="UPDATE_TS" sqlType="TIMESTAMP" precision="26" scale="0" nullable="true" jdbcType="93"/>
+      <column name="UPDATED_BY" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="DELETE_TS" sqlType="TIMESTAMP" precision="26" scale="0" nullable="true" jdbcType="93"/>
+      <column name="DELETED_BY" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="NAME" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="STR_VALUE" sqlType="VARCHAR" precision="1000" scale="0" nullable="true" jdbcType="12"/>
+      <column name="DATATYPE" sqlType="VARCHAR" precision="20" scale="0" nullable="true" jdbcType="12"/>
+      <column name="GROUP_ID" sqlType="VARCHAR" precision="36" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="SYS_PK_10158" columns="ID"/>
+      <foreign-key name="SEC_SESSION_ATTR_GROUP" columns="GROUP_ID" ref-table="SEC_GROUP" ref-schema="PUBLIC" ref-catalog="PUBLIC" ref-columns="ID" update-rule="3" delete-rule="3"/>
+    </table>
+    <table name="SEC_USER" schema="PUBLIC" catalog="PUBLIC" type="TABLE">
+      <column name="ID" sqlType="VARCHAR" precision="36" scale="0" nullable="false" jdbcType="12"/>
+      <column name="CREATE_TS" sqlType="TIMESTAMP" precision="26" scale="0" nullable="true" jdbcType="93"/>
+      <column name="CREATED_BY" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="VERSION" sqlType="INTEGER" precision="32" scale="0" nullable="true" jdbcType="4"/>
+      <column name="UPDATE_TS" sqlType="TIMESTAMP" precision="26" scale="0" nullable="true" jdbcType="93"/>
+      <column name="UPDATED_BY" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="DELETE_TS" sqlType="TIMESTAMP" precision="26" scale="0" nullable="true" jdbcType="93"/>
+      <column name="DELETED_BY" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="LOGIN" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="LOGIN_LC" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="PASSWORD" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="NAME" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="FIRST_NAME" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="LAST_NAME" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="MIDDLE_NAME" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="POSITION_" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="EMAIL" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12"/>
+      <column name="LANGUAGE_" sqlType="VARCHAR" precision="20" scale="0" nullable="true" jdbcType="12"/>
+      <column name="TIME_ZONE" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="TIME_ZONE_AUTO" sqlType="BOOLEAN" precision="0" scale="0" nullable="true" jdbcType="16"/>
+      <column name="ACTIVE" sqlType="BOOLEAN" precision="0" scale="0" nullable="true" jdbcType="16"/>
+      <column name="GROUP_ID" sqlType="VARCHAR" precision="36" scale="0" nullable="true" jdbcType="12"/>
+      <column name="IP_MASK" sqlType="VARCHAR" precision="200" scale="0" nullable="true" jdbcType="12"/>
+      <column name="CHANGE_PASSWORD_AT_LOGON" sqlType="BOOLEAN" precision="0" scale="0" nullable="true" jdbcType="16"/>
+      <primary-key name="SYS_PK_10125" columns="ID"/>
+      <foreign-key name="SEC_USER_GROUP" columns="GROUP_ID" ref-table="SEC_GROUP" ref-schema="PUBLIC" ref-catalog="PUBLIC" ref-columns="ID" update-rule="3" delete-rule="3"/>
+      <exported-key name="FK_SEC_ENTITY_LOG_USER" table="SEC_ENTITY_LOG" schema="PUBLIC" catalog="PUBLIC" columns="USER_ID"/>
+      <exported-key name="FK_SEC_FILTER_USER" table="SEC_FILTER" schema="PUBLIC" catalog="PUBLIC" columns="USER_ID"/>
+      <exported-key name="SEC_PRESENTATION_USER" table="SEC_PRESENTATION" schema="PUBLIC" catalog="PUBLIC" columns="USER_ID"/>
+      <exported-key name="FK_SEC_REMEMBER_ME_USER" table="SEC_REMEMBER_ME" schema="PUBLIC" catalog="PUBLIC" columns="USER_ID"/>
+      <exported-key name="FK_SEC_HISTORY_SUBSTITUTED_USER" table="SEC_SCREEN_HISTORY" schema="PUBLIC" catalog="PUBLIC" columns="SUBSTITUTED_USER_ID"/>
+      <exported-key name="FK_SEC_HISTORY_USER" table="SEC_SCREEN_HISTORY" schema="PUBLIC" catalog="PUBLIC" columns="USER_ID"/>
+      <exported-key name="FK_SEC_SEARCH_FOLDER_USER" table="SEC_SEARCH_FOLDER" schema="PUBLIC" catalog="PUBLIC" columns="USER_ID"/>
+      <exported-key name="SEC_USER_ROLE_USER" table="SEC_USER_ROLE" schema="PUBLIC" catalog="PUBLIC" columns="USER_ID"/>
+      <exported-key name="SEC_USER_SETTING_USER" table="SEC_USER_SETTING" schema="PUBLIC" catalog="PUBLIC" columns="USER_ID"/>
+      <exported-key name="FK_SEC_USER_SUBSTITUTION_SUBSTITUTED_USER" table="SEC_USER_SUBSTITUTION" schema="PUBLIC" catalog="PUBLIC" columns="SUBSTITUTED_USER_ID"/>
+      <exported-key name="FK_SEC_USER_SUBSTITUTION_USER" table="SEC_USER_SUBSTITUTION" schema="PUBLIC" catalog="PUBLIC" columns="USER_ID"/>
+      <exported-key name="FK_SYS_ENTITY_SNAPSHOT_AUTHOR_ID" table="SYS_ENTITY_SNAPSHOT" schema="PUBLIC" catalog="PUBLIC" columns="AUTHOR_ID"/>
+    </table>
+    <table name="SEC_USER_ROLE" schema="PUBLIC" catalog="PUBLIC" type="TABLE">
+      <column name="ID" sqlType="VARCHAR" precision="36" scale="0" nullable="false" jdbcType="12"/>
+      <column name="CREATE_TS" sqlType="TIMESTAMP" precision="26" scale="0" nullable="true" jdbcType="93"/>
+      <column name="CREATED_BY" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="VERSION" sqlType="INTEGER" precision="32" scale="0" nullable="true" jdbcType="4"/>
+      <column name="UPDATE_TS" sqlType="TIMESTAMP" precision="26" scale="0" nullable="true" jdbcType="93"/>
+      <column name="UPDATED_BY" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="DELETE_TS" sqlType="TIMESTAMP" precision="26" scale="0" nullable="true" jdbcType="93"/>
+      <column name="DELETED_BY" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="USER_ID" sqlType="VARCHAR" precision="36" scale="0" nullable="true" jdbcType="12"/>
+      <column name="ROLE_ID" sqlType="VARCHAR" precision="36" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="SYS_PK_10136" columns="ID"/>
+      <foreign-key name="SEC_USER_ROLE_ROLE" columns="ROLE_ID" ref-table="SEC_ROLE" ref-schema="PUBLIC" ref-catalog="PUBLIC" ref-columns="ID" update-rule="3" delete-rule="3"/>
+      <foreign-key name="SEC_USER_ROLE_USER" columns="USER_ID" ref-table="SEC_USER" ref-schema="PUBLIC" ref-catalog="PUBLIC" ref-columns="ID" update-rule="3" delete-rule="3"/>
+    </table>
+    <table name="SEC_USER_SETTING" schema="PUBLIC" catalog="PUBLIC" type="TABLE">
+      <column name="ID" sqlType="VARCHAR" precision="36" scale="0" nullable="false" jdbcType="12"/>
+      <column name="CREATE_TS" sqlType="TIMESTAMP" precision="26" scale="0" nullable="true" jdbcType="93"/>
+      <column name="CREATED_BY" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="USER_ID" sqlType="VARCHAR" precision="36" scale="0" nullable="true" jdbcType="12"/>
+      <column name="CLIENT_TYPE" sqlType="CHARACTER" precision="1" scale="0" nullable="true" jdbcType="1"/>
+      <column name="NAME" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="VALUE" sqlType="VARCHAR" precision="16777216" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="SYS_PK_10164" columns="ID"/>
+      <foreign-key name="SEC_USER_SETTING_USER" columns="USER_ID" ref-table="SEC_USER" ref-schema="PUBLIC" ref-catalog="PUBLIC" ref-columns="ID" update-rule="3" delete-rule="3"/>
+    </table>
+    <table name="SEC_USER_SUBSTITUTION" schema="PUBLIC" catalog="PUBLIC" type="TABLE">
+      <column name="ID" sqlType="VARCHAR" precision="36" scale="0" nullable="false" jdbcType="12"/>
+      <column name="CREATE_TS" sqlType="TIMESTAMP" precision="26" scale="0" nullable="true" jdbcType="93"/>
+      <column name="CREATED_BY" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="VERSION" sqlType="INTEGER" precision="32" scale="0" nullable="true" jdbcType="4"/>
+      <column name="UPDATE_TS" sqlType="TIMESTAMP" precision="26" scale="0" nullable="true" jdbcType="93"/>
+      <column name="UPDATED_BY" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="DELETE_TS" sqlType="TIMESTAMP" precision="26" scale="0" nullable="true" jdbcType="93"/>
+      <column name="DELETED_BY" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="USER_ID" sqlType="VARCHAR" precision="36" scale="0" nullable="true" jdbcType="12"/>
+      <column name="SUBSTITUTED_USER_ID" sqlType="VARCHAR" precision="36" scale="0" nullable="true" jdbcType="12"/>
+      <column name="START_DATE" sqlType="TIMESTAMP" precision="26" scale="0" nullable="true" jdbcType="93"/>
+      <column name="END_DATE" sqlType="TIMESTAMP" precision="26" scale="0" nullable="true" jdbcType="93"/>
+      <primary-key name="SYS_PK_10171" columns="ID"/>
+      <foreign-key name="FK_SEC_USER_SUBSTITUTION_SUBSTITUTED_USER" columns="SUBSTITUTED_USER_ID" ref-table="SEC_USER" ref-schema="PUBLIC" ref-catalog="PUBLIC" ref-columns="ID" update-rule="3" delete-rule="3"/>
+      <foreign-key name="FK_SEC_USER_SUBSTITUTION_USER" columns="USER_ID" ref-table="SEC_USER" ref-schema="PUBLIC" ref-catalog="PUBLIC" ref-columns="ID" update-rule="3" delete-rule="3"/>
+    </table>
+    <table name="SYS_APP_FOLDER" schema="PUBLIC" catalog="PUBLIC" type="TABLE">
+      <column name="FOLDER_ID" sqlType="VARCHAR" precision="36" scale="0" nullable="false" jdbcType="12"/>
+      <column name="FILTER_COMPONENT" sqlType="VARCHAR" precision="200" scale="0" nullable="true" jdbcType="12"/>
+      <column name="FILTER_XML" sqlType="VARCHAR" precision="7000" scale="0" nullable="true" jdbcType="12"/>
+      <column name="VISIBILITY_SCRIPT" sqlType="VARCHAR" precision="16777216" scale="0" nullable="true" jdbcType="12"/>
+      <column name="QUANTITY_SCRIPT" sqlType="VARCHAR" precision="16777216" scale="0" nullable="true" jdbcType="12"/>
+      <column name="APPLY_DEFAULT" sqlType="BOOLEAN" precision="0" scale="0" nullable="true" jdbcType="16"/>
+      <primary-key name="SYS_PK_10215" columns="FOLDER_ID"/>
+      <foreign-key name="FK_SYS_APP_FOLDER_FOLDER" columns="FOLDER_ID" ref-table="SYS_FOLDER" ref-schema="PUBLIC" ref-catalog="PUBLIC" ref-columns="ID" update-rule="3" delete-rule="3"/>
+    </table>
+    <table name="SYS_ATTR_VALUE" schema="PUBLIC" catalog="PUBLIC" type="TABLE">
+      <column name="ID" sqlType="VARCHAR" precision="36" scale="0" nullable="false" jdbcType="12"/>
+      <column name="CREATE_TS" sqlType="TIMESTAMP" precision="26" scale="0" nullable="true" jdbcType="93"/>
+      <column name="CREATED_BY" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="VERSION" sqlType="INTEGER" precision="32" scale="0" nullable="true" jdbcType="4"/>
+      <column name="UPDATE_TS" sqlType="TIMESTAMP" precision="26" scale="0" nullable="true" jdbcType="93"/>
+      <column name="UPDATED_BY" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="DELETE_TS" sqlType="TIMESTAMP" precision="26" scale="0" nullable="true" jdbcType="93"/>
+      <column name="DELETED_BY" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="CATEGORY_ATTR_ID" sqlType="VARCHAR" precision="36" scale="0" nullable="true" jdbcType="12"/>
+      <column name="ENTITY_ID" sqlType="VARCHAR" precision="36" scale="0" nullable="true" jdbcType="12"/>
+      <column name="STRING_VALUE" sqlType="VARCHAR" precision="4000" scale="0" nullable="true" jdbcType="12"/>
+      <column name="INTEGER_VALUE" sqlType="INTEGER" precision="32" scale="0" nullable="true" jdbcType="4"/>
+      <column name="DOUBLE_VALUE" sqlType="NUMERIC" precision="128" scale="0" nullable="true" jdbcType="2"/>
+      <column name="DATE_VALUE" sqlType="DATE" precision="10" scale="0" nullable="true" jdbcType="91"/>
+      <column name="BOOLEAN_VALUE" sqlType="BOOLEAN" precision="0" scale="0" nullable="true" jdbcType="16"/>
+      <column name="ENTITY_VALUE" sqlType="VARCHAR" precision="36" scale="0" nullable="true" jdbcType="12"/>
+      <column name="CODE" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="SYS_PK_10281" columns="ID"/>
+      <foreign-key name="SYS_ATTR_VALUE_CATEGORY_ATTR_ID" columns="CATEGORY_ATTR_ID" ref-table="SYS_CATEGORY_ATTR" ref-schema="PUBLIC" ref-catalog="PUBLIC" ref-columns="ID" update-rule="3" delete-rule="3"/>
+    </table>
+    <table name="SYS_CATEGORY" schema="PUBLIC" catalog="PUBLIC" type="TABLE">
+      <column name="ID" sqlType="VARCHAR" precision="36" scale="0" nullable="false" jdbcType="12"/>
+      <column name="CREATE_TS" sqlType="TIMESTAMP" precision="26" scale="0" nullable="true" jdbcType="93"/>
+      <column name="CREATED_BY" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="VERSION" sqlType="INTEGER" precision="32" scale="0" nullable="true" jdbcType="4"/>
+      <column name="UPDATE_TS" sqlType="TIMESTAMP" precision="26" scale="0" nullable="true" jdbcType="93"/>
+      <column name="UPDATED_BY" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="DELETE_TS" sqlType="TIMESTAMP" precision="26" scale="0" nullable="true" jdbcType="93"/>
+      <column name="DELETED_BY" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="NAME" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="SPECIAL" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="ENTITY_TYPE" sqlType="VARCHAR" precision="30" scale="0" nullable="true" jdbcType="12"/>
+      <column name="IS_DEFAULT" sqlType="BOOLEAN" precision="0" scale="0" nullable="true" jdbcType="16"/>
+      <column name="DISCRIMINATOR" sqlType="INTEGER" precision="32" scale="0" nullable="true" jdbcType="4"/>
+      <primary-key name="SYS_PK_10269" columns="ID"/>
+      <exported-key name="SYS_CATEGORY_ATTR_CATEGORY_ID" table="SYS_CATEGORY_ATTR" schema="PUBLIC" catalog="PUBLIC" columns="CATEGORY_ID"/>
+    </table>
+    <table name="SYS_CATEGORY_ATTR" schema="PUBLIC" catalog="PUBLIC" type="TABLE">
+      <column name="ID" sqlType="VARCHAR" precision="36" scale="0" nullable="false" jdbcType="12"/>
+      <column name="CREATE_TS" sqlType="TIMESTAMP" precision="26" scale="0" nullable="true" jdbcType="93"/>
+      <column name="CREATED_BY" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="VERSION" sqlType="INTEGER" precision="32" scale="0" nullable="true" jdbcType="4"/>
+      <column name="UPDATE_TS" sqlType="TIMESTAMP" precision="26" scale="0" nullable="true" jdbcType="93"/>
+      <column name="UPDATED_BY" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="DELETE_TS" sqlType="TIMESTAMP" precision="26" scale="0" nullable="true" jdbcType="93"/>
+      <column name="DELETED_BY" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="CATEGORY_ENTITY_TYPE" sqlType="VARCHAR" precision="4000" scale="0" nullable="true" jdbcType="12"/>
+      <column name="NAME" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="CODE" sqlType="VARCHAR" precision="100" scale="0" nullable="false" jdbcType="12"/>
+      <column name="CATEGORY_ID" sqlType="VARCHAR" precision="36" scale="0" nullable="true" jdbcType="12"/>
+      <column name="IS_ENTITY" sqlType="BOOLEAN" precision="0" scale="0" nullable="true" jdbcType="16"/>
+      <column name="DATA_TYPE" sqlType="VARCHAR" precision="200" scale="0" nullable="true" jdbcType="12"/>
+      <column name="DEFAULT_STRING" sqlType="VARCHAR" precision="4000" scale="0" nullable="true" jdbcType="12"/>
+      <column name="DEFAULT_INT" sqlType="INTEGER" precision="32" scale="0" nullable="true" jdbcType="4"/>
+      <column name="DEFAULT_DOUBLE" sqlType="NUMERIC" precision="128" scale="0" nullable="true" jdbcType="2"/>
+      <column name="DEFAULT_DATE" sqlType="DATE" precision="10" scale="0" nullable="true" jdbcType="91"/>
+      <column name="DEFAULT_DATE_IS_CURRENT" sqlType="BOOLEAN" precision="0" scale="0" nullable="true" jdbcType="16"/>
+      <column name="DEFAULT_BOOLEAN" sqlType="BOOLEAN" precision="0" scale="0" nullable="true" jdbcType="16"/>
+      <column name="DEFAULT_ENTITY_VALUE" sqlType="VARCHAR" precision="36" scale="0" nullable="true" jdbcType="12"/>
+      <column name="ENUMERATION" sqlType="VARCHAR" precision="500" scale="0" nullable="true" jdbcType="12"/>
+      <column name="ORDER_NO" sqlType="INTEGER" precision="32" scale="0" nullable="true" jdbcType="4"/>
+      <column name="SCREEN" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="REQUIRED" sqlType="BOOLEAN" precision="0" scale="0" nullable="true" jdbcType="16"/>
+      <column name="LOOKUP" sqlType="BOOLEAN" precision="0" scale="0" nullable="true" jdbcType="16"/>
+      <column name="TARGET_SCREENS" sqlType="VARCHAR" precision="4000" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="SYS_PK_10273" columns="ID"/>
+      <foreign-key name="SYS_CATEGORY_ATTR_CATEGORY_ID" columns="CATEGORY_ID" ref-table="SYS_CATEGORY" ref-schema="PUBLIC" ref-catalog="PUBLIC" ref-columns="ID" update-rule="3" delete-rule="3"/>
+      <exported-key name="SYS_ATTR_VALUE_CATEGORY_ATTR_ID" table="SYS_ATTR_VALUE" schema="PUBLIC" catalog="PUBLIC" columns="CATEGORY_ATTR_ID"/>
+      <index name="IDX_CAT_ATTR_ENT_TYPE_AND_CODE" unique="true" columns="CATEGORY_ENTITY_TYPE,CODE"/>
+    </table>
+    <table name="SYS_CONFIG" schema="PUBLIC" catalog="PUBLIC" type="TABLE">
+      <column name="ID" sqlType="VARCHAR" precision="36" scale="0" nullable="false" jdbcType="12"/>
+      <column name="CREATE_TS" sqlType="TIMESTAMP" precision="26" scale="0" nullable="true" jdbcType="93"/>
+      <column name="CREATED_BY" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="VERSION" sqlType="INTEGER" precision="32" scale="0" nullable="true" jdbcType="4"/>
+      <column name="UPDATE_TS" sqlType="TIMESTAMP" precision="26" scale="0" nullable="true" jdbcType="93"/>
+      <column name="UPDATED_BY" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="NAME" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="VALUE" sqlType="VARCHAR" precision="16777216" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="SYS_PK_10076" columns="ID"/>
+    </table>
+    <table name="SYS_DB_CHANGELOG" schema="PUBLIC" catalog="PUBLIC" type="TABLE">
+      <column name="SCRIPT_NAME" sqlType="VARCHAR" precision="300" scale="0" nullable="false" jdbcType="12"/>
+      <column name="CREATE_TS" sqlType="TIMESTAMP" precision="26" scale="0" nullable="true" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA="/>
+      <column name="IS_INIT" sqlType="INTEGER" precision="32" scale="0" nullable="true" jdbcType="4" def="MA=="/>
+      <primary-key name="SYS_PK_10066" columns="SCRIPT_NAME"/>
+    </table>
+    <table name="SYS_ENTITY_SNAPSHOT" schema="PUBLIC" catalog="PUBLIC" type="TABLE">
+      <column name="ID" sqlType="VARCHAR" precision="36" scale="0" nullable="false" jdbcType="12"/>
+      <column name="CREATE_TS" sqlType="TIMESTAMP" precision="26" scale="0" nullable="true" jdbcType="93"/>
+      <column name="CREATED_BY" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="ENTITY_META_CLASS" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="ENTITY_ID" sqlType="VARCHAR" precision="36" scale="0" nullable="true" jdbcType="12"/>
+      <column name="AUTHOR_ID" sqlType="VARCHAR" precision="36" scale="0" nullable="true" jdbcType="12"/>
+      <column name="VIEW_XML" sqlType="VARCHAR" precision="16777216" scale="0" nullable="true" jdbcType="12"/>
+      <column name="SNAPSHOT_XML" sqlType="VARCHAR" precision="16777216" scale="0" nullable="true" jdbcType="12"/>
+      <column name="SNAPSHOT_DATE" sqlType="TIMESTAMP" precision="26" scale="0" nullable="true" jdbcType="93"/>
+      <primary-key name="SYS_PK_10263" columns="ID"/>
+      <foreign-key name="FK_SYS_ENTITY_SNAPSHOT_AUTHOR_ID" columns="AUTHOR_ID" ref-table="SEC_USER" ref-schema="PUBLIC" ref-catalog="PUBLIC" ref-columns="ID" update-rule="3" delete-rule="3"/>
+    </table>
+    <table name="SYS_ENTITY_STATISTICS" schema="PUBLIC" catalog="PUBLIC" type="TABLE">
+      <column name="ID" sqlType="VARCHAR" precision="36" scale="0" nullable="false" jdbcType="12"/>
+      <column name="CREATE_TS" sqlType="TIMESTAMP" precision="26" scale="0" nullable="true" jdbcType="93"/>
+      <column name="CREATED_BY" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="UPDATE_TS" sqlType="TIMESTAMP" precision="26" scale="0" nullable="true" jdbcType="93"/>
+      <column name="UPDATED_BY" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="NAME" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="INSTANCE_COUNT" sqlType="BIGINT" precision="64" scale="0" nullable="true" jdbcType="-5"/>
+      <column name="FETCH_UI" sqlType="INTEGER" precision="32" scale="0" nullable="true" jdbcType="4"/>
+      <column name="MAX_FETCH_UI" sqlType="INTEGER" precision="32" scale="0" nullable="true" jdbcType="4"/>
+      <column name="LAZY_COLLECTION_THRESHOLD" sqlType="INTEGER" precision="32" scale="0" nullable="true" jdbcType="4"/>
+      <column name="LOOKUP_SCREEN_THRESHOLD" sqlType="INTEGER" precision="32" scale="0" nullable="true" jdbcType="4"/>
+      <primary-key name="SYS_PK_10091" columns="ID"/>
+    </table>
+    <table name="SYS_FILE" schema="PUBLIC" catalog="PUBLIC" type="TABLE">
+      <column name="ID" sqlType="VARCHAR" precision="36" scale="0" nullable="false" jdbcType="12"/>
+      <column name="CREATE_TS" sqlType="TIMESTAMP" precision="26" scale="0" nullable="true" jdbcType="93"/>
+      <column name="CREATED_BY" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="VERSION" sqlType="INTEGER" precision="32" scale="0" nullable="true" jdbcType="4"/>
+      <column name="UPDATE_TS" sqlType="TIMESTAMP" precision="26" scale="0" nullable="true" jdbcType="93"/>
+      <column name="UPDATED_BY" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="DELETE_TS" sqlType="TIMESTAMP" precision="26" scale="0" nullable="true" jdbcType="93"/>
+      <column name="DELETED_BY" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="NAME" sqlType="VARCHAR" precision="500" scale="0" nullable="false" jdbcType="12"/>
+      <column name="EXT" sqlType="VARCHAR" precision="20" scale="0" nullable="true" jdbcType="12"/>
+      <column name="FILE_SIZE" sqlType="BIGINT" precision="64" scale="0" nullable="true" jdbcType="-5"/>
+      <column name="CREATE_DATE" sqlType="TIMESTAMP" precision="26" scale="0" nullable="true" jdbcType="93"/>
+      <primary-key name="SYS_PK_10081" columns="ID"/>
+      <exported-key name="FK_SYS_SENDING_ATTACHMENT_CONTENT_FILE" table="SYS_SENDING_ATTACHMENT" schema="PUBLIC" catalog="PUBLIC" columns="CONTENT_FILE_ID"/>
+      <exported-key name="FK_SYS_SENDING_MESSAGE_CONTENT_FILE" table="SYS_SENDING_MESSAGE" schema="PUBLIC" catalog="PUBLIC" columns="CONTENT_TEXT_FILE_ID"/>
+    </table>
+    <table name="SYS_FOLDER" schema="PUBLIC" catalog="PUBLIC" type="TABLE">
+      <column name="ID" sqlType="VARCHAR" precision="36" scale="0" nullable="false" jdbcType="12"/>
+      <column name="CREATE_TS" sqlType="TIMESTAMP" precision="26" scale="0" nullable="true" jdbcType="93"/>
+      <column name="CREATED_BY" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="VERSION" sqlType="INTEGER" precision="32" scale="0" nullable="true" jdbcType="4"/>
+      <column name="UPDATE_TS" sqlType="TIMESTAMP" precision="26" scale="0" nullable="true" jdbcType="93"/>
+      <column name="UPDATED_BY" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="DELETE_TS" sqlType="TIMESTAMP" precision="26" scale="0" nullable="true" jdbcType="93"/>
+      <column name="DELETED_BY" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="FOLDER_TYPE" sqlType="CHARACTER" precision="1" scale="0" nullable="true" jdbcType="1"/>
+      <column name="PARENT_ID" sqlType="VARCHAR" precision="36" scale="0" nullable="true" jdbcType="12"/>
+      <column name="NAME" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12"/>
+      <column name="TAB_NAME" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12"/>
+      <column name="SORT_ORDER" sqlType="INTEGER" precision="32" scale="0" nullable="true" jdbcType="4"/>
+      <primary-key name="SYS_PK_10209" columns="ID"/>
+      <foreign-key name="FK_SYS_FOLDER_PARENT" columns="PARENT_ID" ref-table="SYS_FOLDER" ref-schema="PUBLIC" ref-catalog="PUBLIC" ref-columns="ID" update-rule="3" delete-rule="3"/>
+      <exported-key name="FK_SEC_SEARCH_FOLDER_FOLDER" table="SEC_SEARCH_FOLDER" schema="PUBLIC" catalog="PUBLIC" columns="FOLDER_ID"/>
+      <exported-key name="FK_SYS_APP_FOLDER_FOLDER" table="SYS_APP_FOLDER" schema="PUBLIC" catalog="PUBLIC" columns="FOLDER_ID"/>
+      <exported-key name="FK_SYS_FOLDER_PARENT" table="SYS_FOLDER" schema="PUBLIC" catalog="PUBLIC" columns="PARENT_ID"/>
+    </table>
+    <table name="SYS_FTS_QUEUE" schema="PUBLIC" catalog="PUBLIC" type="TABLE">
+      <column name="ID" sqlType="VARCHAR" precision="36" scale="0" nullable="false" jdbcType="12"/>
+      <column name="CREATE_TS" sqlType="TIMESTAMP" precision="26" scale="0" nullable="true" jdbcType="93"/>
+      <column name="CREATED_BY" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="ENTITY_ID" sqlType="VARCHAR" precision="36" scale="0" nullable="true" jdbcType="12"/>
+      <column name="ENTITY_NAME" sqlType="VARCHAR" precision="200" scale="0" nullable="true" jdbcType="12"/>
+      <column name="CHANGE_TYPE" sqlType="CHARACTER" precision="1" scale="0" nullable="true" jdbcType="1"/>
+      <column name="SOURCE_HOST" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="INDEXING_HOST" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="SYS_PK_10237" columns="ID"/>
+      <index name="IDX_SYS_FTS_QUEUE_IDXHOST_CRTS" unique="false" columns="INDEXING_HOST,CREATE_TS"/>
+    </table>
+    <table name="SYS_JMX_INSTANCE" schema="PUBLIC" catalog="PUBLIC" type="TABLE">
+      <column name="ID" sqlType="VARCHAR" precision="36" scale="0" nullable="false" jdbcType="12"/>
+      <column name="CREATE_TS" sqlType="TIMESTAMP" precision="26" scale="0" nullable="true" jdbcType="93"/>
+      <column name="CREATED_BY" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="VERSION" sqlType="INTEGER" precision="32" scale="0" nullable="true" jdbcType="4"/>
+      <column name="UPDATE_TS" sqlType="TIMESTAMP" precision="26" scale="0" nullable="true" jdbcType="93"/>
+      <column name="UPDATED_BY" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="DELETE_TS" sqlType="TIMESTAMP" precision="26" scale="0" nullable="true" jdbcType="93"/>
+      <column name="DELETED_BY" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="NODE_NAME" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="ADDRESS" sqlType="VARCHAR" precision="500" scale="0" nullable="false" jdbcType="12"/>
+      <column name="LOGIN" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="PASSWORD" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="SYS_PK_10297" columns="ID"/>
+    </table>
+    <table name="SYS_LOCK_CONFIG" schema="PUBLIC" catalog="PUBLIC" type="TABLE">
+      <column name="ID" sqlType="VARCHAR" precision="36" scale="0" nullable="false" jdbcType="12"/>
+      <column name="CREATE_TS" sqlType="TIMESTAMP" precision="26" scale="0" nullable="true" jdbcType="93"/>
+      <column name="CREATED_BY" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="NAME" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12"/>
+      <column name="TIMEOUT_SEC" sqlType="INTEGER" precision="32" scale="0" nullable="true" jdbcType="4"/>
+      <primary-key name="SYS_PK_10087" columns="ID"/>
+    </table>
+    <table name="SYS_QUERY_RESULT" schema="PUBLIC" catalog="PUBLIC" type="TABLE">
+      <column name="ID" sqlType="INTEGER" precision="32" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="SESSION_ID" sqlType="VARCHAR" precision="36" scale="0" nullable="false" jdbcType="12"/>
+      <column name="QUERY_KEY" sqlType="INTEGER" precision="32" scale="0" nullable="false" jdbcType="4"/>
+      <column name="ENTITY_ID" sqlType="VARCHAR" precision="36" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="SYS_PK_10287" columns="ID"/>
+    </table>
+    <table name="SYS_SCHEDULED_EXECUTION" schema="PUBLIC" catalog="PUBLIC" type="TABLE">
+      <column name="ID" sqlType="VARCHAR" precision="36" scale="0" nullable="false" jdbcType="12"/>
+      <column name="CREATE_TS" sqlType="TIMESTAMP" precision="26" scale="0" nullable="true" jdbcType="93"/>
+      <column name="CREATED_BY" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="TASK_ID" sqlType="VARCHAR" precision="36" scale="0" nullable="true" jdbcType="12"/>
+      <column name="SERVER" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="START_TIME" sqlType="TIMESTAMP" precision="26" scale="0" nullable="true" jdbcType="93"/>
+      <column name="FINISH_TIME" sqlType="TIMESTAMP" precision="26" scale="0" nullable="true" jdbcType="93"/>
+      <column name="RESULT" sqlType="VARCHAR" precision="16777216" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="SYS_PK_10100" columns="ID"/>
+      <foreign-key name="SYS_SCHEDULED_EXECUTION_TASK" columns="TASK_ID" ref-table="SYS_SCHEDULED_TASK" ref-schema="PUBLIC" ref-catalog="PUBLIC" ref-columns="ID" update-rule="3" delete-rule="3"/>
+      <index name="IDX_SYS_SCHEDULED_EXECUTION_TASK_START_TIME" unique="false" columns="TASK_ID,START_TIME"/>
+    </table>
+    <table name="SYS_SCHEDULED_TASK" schema="PUBLIC" catalog="PUBLIC" type="TABLE">
+      <column name="ID" sqlType="VARCHAR" precision="36" scale="0" nullable="false" jdbcType="12"/>
+      <column name="CREATE_TS" sqlType="TIMESTAMP" precision="26" scale="0" nullable="true" jdbcType="93"/>
+      <column name="CREATED_BY" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="UPDATE_TS" sqlType="TIMESTAMP" precision="26" scale="0" nullable="true" jdbcType="93"/>
+      <column name="UPDATED_BY" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="DELETE_TS" sqlType="TIMESTAMP" precision="26" scale="0" nullable="true" jdbcType="93"/>
+      <column name="DELETED_BY" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="BEAN_NAME" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="METHOD_NAME" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="METHOD_PARAMS" sqlType="VARCHAR" precision="1000" scale="0" nullable="true" jdbcType="12"/>
+      <column name="DEFINED_BY" sqlType="VARCHAR" precision="1" scale="0" nullable="true" jdbcType="12" def="J0In"/>
+      <column name="CLASS_NAME" sqlType="VARCHAR" precision="500" scale="0" nullable="true" jdbcType="12"/>
+      <column name="SCRIPT_NAME" sqlType="VARCHAR" precision="500" scale="0" nullable="true" jdbcType="12"/>
+      <column name="USER_NAME" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="IS_SINGLETON" sqlType="BOOLEAN" precision="0" scale="0" nullable="true" jdbcType="16"/>
+      <column name="IS_ACTIVE" sqlType="BOOLEAN" precision="0" scale="0" nullable="true" jdbcType="16"/>
+      <column name="PERIOD" sqlType="INTEGER" precision="32" scale="0" nullable="true" jdbcType="4"/>
+      <column name="TIMEOUT" sqlType="INTEGER" precision="32" scale="0" nullable="true" jdbcType="4"/>
+      <column name="START_DATE" sqlType="TIMESTAMP" precision="26" scale="0" nullable="true" jdbcType="93"/>
+      <column name="TIME_FRAME" sqlType="INTEGER" precision="32" scale="0" nullable="true" jdbcType="4"/>
+      <column name="START_DELAY" sqlType="INTEGER" precision="32" scale="0" nullable="true" jdbcType="4"/>
+      <column name="PERMITTED_SERVERS" sqlType="VARCHAR" precision="500" scale="0" nullable="true" jdbcType="12"/>
+      <column name="LOG_START" sqlType="BOOLEAN" precision="0" scale="0" nullable="true" jdbcType="16"/>
+      <column name="LOG_FINISH" sqlType="BOOLEAN" precision="0" scale="0" nullable="true" jdbcType="16"/>
+      <column name="LAST_START_TIME" sqlType="TIMESTAMP" precision="26" scale="0" nullable="true" jdbcType="93"/>
+      <column name="LAST_START_SERVER" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="DESCRIPTION" sqlType="VARCHAR" precision="1000" scale="0" nullable="true" jdbcType="12"/>
+      <column name="CRON" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12"/>
+      <column name="SCHEDULING_TYPE" sqlType="VARCHAR" precision="1" scale="0" nullable="true" jdbcType="12" def="J1An"/>
+      <primary-key name="SYS_PK_10095" columns="ID"/>
+      <exported-key name="SYS_SCHEDULED_EXECUTION_TASK" table="SYS_SCHEDULED_EXECUTION" schema="PUBLIC" catalog="PUBLIC" columns="TASK_ID"/>
+    </table>
+    <table name="SYS_SENDING_ATTACHMENT" schema="PUBLIC" catalog="PUBLIC" type="TABLE">
+      <column name="ID" sqlType="VARCHAR" precision="36" scale="0" nullable="false" jdbcType="12"/>
+      <column name="CREATE_TS" sqlType="TIMESTAMP" precision="26" scale="0" nullable="true" jdbcType="93"/>
+      <column name="CREATED_BY" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="VERSION" sqlType="INTEGER" precision="32" scale="0" nullable="true" jdbcType="4"/>
+      <column name="UPDATE_TS" sqlType="TIMESTAMP" precision="26" scale="0" nullable="true" jdbcType="93"/>
+      <column name="UPDATED_BY" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="DELETE_TS" sqlType="TIMESTAMP" precision="26" scale="0" nullable="true" jdbcType="93"/>
+      <column name="DELETED_BY" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="MESSAGE_ID" sqlType="VARCHAR" precision="36" scale="0" nullable="true" jdbcType="12"/>
+      <column name="CONTENT" sqlType="VARBINARY" precision="16777216" scale="0" nullable="true" jdbcType="-3"/>
+      <column name="CONTENT_FILE_ID" sqlType="VARCHAR" precision="36" scale="0" nullable="true" jdbcType="12"/>
+      <column name="CONTENT_ID" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="NAME" sqlType="VARCHAR" precision="500" scale="0" nullable="true" jdbcType="12"/>
+      <column name="DISPOSITION" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="TEXT_ENCODING" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="SYS_PK_10255" columns="ID"/>
+      <foreign-key name="FK_SYS_SENDING_ATTACHMENT_CONTENT_FILE" columns="CONTENT_FILE_ID" ref-table="SYS_FILE" ref-schema="PUBLIC" ref-catalog="PUBLIC" ref-columns="ID" update-rule="3" delete-rule="3"/>
+      <foreign-key name="FK_SYS_SENDING_ATTACHMENT_SENDING_MESSAGE" columns="MESSAGE_ID" ref-table="SYS_SENDING_MESSAGE" ref-schema="PUBLIC" ref-catalog="PUBLIC" ref-columns="ID" update-rule="3" delete-rule="3"/>
+      <index name="SYS_SENDING_ATTACHMENT_MESSAGE_IDX" unique="false" columns="MESSAGE_ID"/>
+    </table>
+    <table name="SYS_SENDING_MESSAGE" schema="PUBLIC" catalog="PUBLIC" type="TABLE">
+      <column name="ID" sqlType="VARCHAR" precision="36" scale="0" nullable="false" jdbcType="12"/>
+      <column name="CREATE_TS" sqlType="TIMESTAMP" precision="26" scale="0" nullable="true" jdbcType="93"/>
+      <column name="CREATED_BY" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="VERSION" sqlType="INTEGER" precision="32" scale="0" nullable="true" jdbcType="4"/>
+      <column name="UPDATE_TS" sqlType="TIMESTAMP" precision="26" scale="0" nullable="true" jdbcType="93"/>
+      <column name="UPDATED_BY" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="DELETE_TS" sqlType="TIMESTAMP" precision="26" scale="0" nullable="true" jdbcType="93"/>
+      <column name="DELETED_BY" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="ADDRESS_TO" sqlType="VARCHAR" precision="500" scale="0" nullable="true" jdbcType="12"/>
+      <column name="ADDRESS_FROM" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12"/>
+      <column name="CAPTION" sqlType="VARCHAR" precision="500" scale="0" nullable="true" jdbcType="12"/>
+      <column name="EMAIL_HEADERS" sqlType="VARCHAR" precision="500" scale="0" nullable="true" jdbcType="12"/>
+      <column name="CONTENT_TEXT" sqlType="VARCHAR" precision="16777216" scale="0" nullable="true" jdbcType="12"/>
+      <column name="CONTENT_TEXT_FILE_ID" sqlType="VARCHAR" precision="36" scale="0" nullable="true" jdbcType="12"/>
+      <column name="DEADLINE" sqlType="TIMESTAMP" precision="26" scale="0" nullable="true" jdbcType="93"/>
+      <column name="STATUS" sqlType="INTEGER" precision="32" scale="0" nullable="true" jdbcType="4"/>
+      <column name="DATE_SENT" sqlType="TIMESTAMP" precision="26" scale="0" nullable="true" jdbcType="93"/>
+      <column name="ATTEMPTS_COUNT" sqlType="INTEGER" precision="32" scale="0" nullable="true" jdbcType="4"/>
+      <column name="ATTEMPTS_MADE" sqlType="INTEGER" precision="32" scale="0" nullable="true" jdbcType="4"/>
+      <column name="ATTACHMENTS_NAME" sqlType="VARCHAR" precision="500" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="SYS_PK_10249" columns="ID"/>
+      <foreign-key name="FK_SYS_SENDING_MESSAGE_CONTENT_FILE" columns="CONTENT_TEXT_FILE_ID" ref-table="SYS_FILE" ref-schema="PUBLIC" ref-catalog="PUBLIC" ref-columns="ID" update-rule="3" delete-rule="3"/>
+      <exported-key name="FK_SYS_SENDING_ATTACHMENT_SENDING_MESSAGE" table="SYS_SENDING_ATTACHMENT" schema="PUBLIC" catalog="PUBLIC" columns="MESSAGE_ID"/>
+    </table>
+    <table name="SYS_SERVER" schema="PUBLIC" catalog="PUBLIC" type="TABLE">
+      <column name="ID" sqlType="VARCHAR" precision="36" scale="0" nullable="false" jdbcType="12"/>
+      <column name="CREATE_TS" sqlType="TIMESTAMP" precision="26" scale="0" nullable="true" jdbcType="93"/>
+      <column name="CREATED_BY" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="UPDATE_TS" sqlType="TIMESTAMP" precision="26" scale="0" nullable="true" jdbcType="93"/>
+      <column name="UPDATED_BY" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="NAME" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="IS_RUNNING" sqlType="BOOLEAN" precision="0" scale="0" nullable="true" jdbcType="16"/>
+      <column name="DATA" sqlType="VARCHAR" precision="16777216" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="SYS_PK_10071" columns="ID"/>
+    </table>
+    <procedure name="NEWID" schema="PUBLIC" catalog="PUBLIC" type="2"/>
+  </data-source>
+</component>

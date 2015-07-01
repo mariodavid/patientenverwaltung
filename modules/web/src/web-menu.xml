@@ -4,11 +4,11 @@
           insertBefore="reports">
         <item id="pa$Patient.lookup"/>
         <separator/>
+        <item id="calendar-screen"/>
         <item id="pa$Voruntersuchungstermin.lookup"/>
         <item id="pa$Operationstermin.lookup"/>
         <separator/>
         <item id="pa$Mitarbeiter.lookup"/>
         <item id="pa$Raum.lookup"/>
     </menu>
-    <item id="calendar-screen"/>
 </menu-config>

@@ -34,7 +34,7 @@ public class OperationsterminServiceBean implements OperationsterminService {
         log.warn("startDate = [" + startDate + "], endDate = [" + endDate + "]");
         LoadContext loadContext = new LoadContext(Operationstermin.class);
         loadContext.setView("operationstermin-view");
-        String queryStr = "select e from pa$Operationstermin e where (e.beginn between :start and :end)";
+        String queryStr = "select e from pa$Operationstermin e where (e.datum between :start and :end)";
 
         loadContext.setQueryString(queryStr)
                 .setParameter("start", startDate)

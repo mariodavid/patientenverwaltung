@@ -185,8 +185,10 @@ class CalendarScreen extends AbstractWindow {
 
 
         calendar.setWidth("100%");
-        calendar.setHeight("87%");
-        calendar.setTimeFormat(Calendar.TimeFormat.Format24H);
+        calendar.setHeight("100%");
+        calendar.setTimeFormat(Calendar.TimeFormat.Format24H)
+        calendar.setFirstVisibleHourOfDay(7)
+        calendar.setLastVisibleHourOfDay(19)
 //        calendar.setMoreMsgFormat(messages.getMessage(getClass(), "calendar.moreMsgFormat"));
         calendar.setDropHandler(null);
 //        calendar.setHandler(new CalendarComponentEvents.EventMoveHandler() {
