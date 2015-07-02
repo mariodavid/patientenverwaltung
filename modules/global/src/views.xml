@@ -2,22 +2,27 @@
 <views xmlns="http://schemas.haulmont.com/cuba/5.5/view.xsd">
     <view class="de.csh.patientenverwaltung.entity.Voruntersuchungstermin"
           name="voruntersuchungstermin-view">
-        <property name="zeitpunkt"/>
         <property name="patient"
                   view="_local"/>
+        <property name="beginn"/>
+        <property name="datum"/>
+        <property name="ende"/>
     </view>
     <view class="de.csh.patientenverwaltung.entity.Operationstermin"
           name="operationstermin-view">
         <property name="patient"
                   view="_local"/>
         <property name="auge"/>
-        <property name="raum"
-                  view="_local"/>
         <property name="datum"/>
         <property name="beginn"/>
         <property name="ende"/>
         <property name="mitarbeiter"
                   view="_local"/>
+        <property name="ersteOperation"/>
+        <property name="besonderheiten"/>
+        <property name="patientBenachrichtigt"/>
+        <property name="erstelltVon"
+                  view="_minimal"/>
     </view>
     <view class="de.csh.patientenverwaltung.entity.Mitarbeiter"
           name="mitarbeiter-view">
@@ -42,6 +47,27 @@
         <property name="ort"/>
         <property name="geschlecht"/>
         <property name="voruntersuchungstermine"
+                  view="_local"/>
+        <property name="augenarzt"
+                  view="_minimal"/>
+        <property name="operationstermine"
+                  view="_local"/>
+        <property name="krakenkasse"
+                  view="_minimal"/>
+    </view>
+    <view class="de.csh.patientenverwaltung.entity.Augenarzt"
+          name="augenarzt-view">
+        <property name="anrede"/>
+        <property name="titel"/>
+        <property name="name"/>
+        <property name="vorname"/>
+        <property name="anschrift"/>
+        <property name="plz"/>
+        <property name="ort"/>
+        <property name="telefon"/>
+        <property name="fax"/>
+        <property name="email"/>
+        <property name="angestellte"
                   view="_local"/>
     </view>
 </views>

@@ -8,7 +8,7 @@
     <dsContext>
         <collectionDatasource id="patientsDs"
                               class="de.csh.patientenverwaltung.entity.Patient"
-                              view="_local">
+                              view="patient-view">
             <query>
                 <![CDATA[select e from pa$Patient e]]>
             </query>
@@ -38,6 +38,8 @@
                 <column id="plz"/>
                 <column id="ort"/>
                 <column id="geschlecht"/>
+                <column id="augenarzt"/>
+                <column id="krakenkasse"/>
             </columns>
             <rows datasource="patientsDs"/>
             <rowsCount/>

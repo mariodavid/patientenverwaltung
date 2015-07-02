@@ -26,6 +26,64 @@
       <foreign-key name="FK_PA_ARBEITSTAG_MITARBEITER_ID" columns="MITARBEITER_ID" ref-table="PA_MITARBEITER" ref-schema="PUBLIC" ref-catalog="PUBLIC" ref-columns="ID" update-rule="3" delete-rule="3"/>
       <index name="IDX_PA_ARBEITSTAG_MITARBEITER" unique="false" columns="MITARBEITER_ID"/>
     </table>
+    <table name="PA_AUGENARZT" schema="PUBLIC" catalog="PUBLIC" type="TABLE">
+      <column name="ID" sqlType="VARCHAR" precision="36" scale="0" nullable="false" jdbcType="12"/>
+      <column name="CREATE_TS" sqlType="TIMESTAMP" precision="26" scale="0" nullable="true" jdbcType="93"/>
+      <column name="CREATED_BY" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="VERSION" sqlType="INTEGER" precision="32" scale="0" nullable="true" jdbcType="4"/>
+      <column name="UPDATE_TS" sqlType="TIMESTAMP" precision="26" scale="0" nullable="true" jdbcType="93"/>
+      <column name="UPDATED_BY" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="DELETE_TS" sqlType="TIMESTAMP" precision="26" scale="0" nullable="true" jdbcType="93"/>
+      <column name="DELETED_BY" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="ANREDE" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="TITEL" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="NAME" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="VORNAME" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="ANSCHRIFT" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="PLZ" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="ORT" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="TELEFON" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="FAX" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="EMAIL" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="SYS_PK_59927" columns="ID"/>
+      <exported-key name="FK_PA_AUGENARZT_ANGESTELLTE_AUGENARZT_ID" table="PA_AUGENARZT_ANGESTELLTE" schema="PUBLIC" catalog="PUBLIC" columns="AUGENARZT_ID"/>
+      <exported-key name="FK_PA_PATIENT_AUGENARZT_ID" table="PA_PATIENT" schema="PUBLIC" catalog="PUBLIC" columns="AUGENARZT_ID"/>
+    </table>
+    <table name="PA_AUGENARZT_ANGESTELLTE" schema="PUBLIC" catalog="PUBLIC" type="TABLE">
+      <column name="ID" sqlType="VARCHAR" precision="36" scale="0" nullable="false" jdbcType="12"/>
+      <column name="CREATE_TS" sqlType="TIMESTAMP" precision="26" scale="0" nullable="true" jdbcType="93"/>
+      <column name="CREATED_BY" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="VERSION" sqlType="INTEGER" precision="32" scale="0" nullable="true" jdbcType="4"/>
+      <column name="UPDATE_TS" sqlType="TIMESTAMP" precision="26" scale="0" nullable="true" jdbcType="93"/>
+      <column name="UPDATED_BY" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="DELETE_TS" sqlType="TIMESTAMP" precision="26" scale="0" nullable="true" jdbcType="93"/>
+      <column name="DELETED_BY" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="NAME" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="VORNAME" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="AUGENARZT_ID" sqlType="VARCHAR" precision="36" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="SYS_PK_60239" columns="ID"/>
+      <foreign-key name="FK_PA_AUGENARZT_ANGESTELLTE_AUGENARZT_ID" columns="AUGENARZT_ID" ref-table="PA_AUGENARZT" ref-schema="PUBLIC" ref-catalog="PUBLIC" ref-columns="ID" update-rule="3" delete-rule="3"/>
+      <index name="IDX_PA_AUGENARZT_ANGESTELLTE_AUGENARZT" unique="false" columns="AUGENARZT_ID"/>
+    </table>
+    <table name="PA_KRAKENKASSE" schema="PUBLIC" catalog="PUBLIC" type="TABLE">
+      <column name="ID" sqlType="VARCHAR" precision="36" scale="0" nullable="false" jdbcType="12"/>
+      <column name="CREATE_TS" sqlType="TIMESTAMP" precision="26" scale="0" nullable="true" jdbcType="93"/>
+      <column name="CREATED_BY" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="VERSION" sqlType="INTEGER" precision="32" scale="0" nullable="true" jdbcType="4"/>
+      <column name="UPDATE_TS" sqlType="TIMESTAMP" precision="26" scale="0" nullable="true" jdbcType="93"/>
+      <column name="UPDATED_BY" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="DELETE_TS" sqlType="TIMESTAMP" precision="26" scale="0" nullable="true" jdbcType="93"/>
+      <column name="DELETED_BY" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="NAME" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="ANSCHRIFT" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="PLZ" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="ORT" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="TELEFON" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="FAX" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="EMAIL" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="SYS_PK_69048" columns="ID"/>
+      <exported-key name="FK_PA_PATIENT_KRAKENKASSE_ID" table="PA_PATIENT" schema="PUBLIC" catalog="PUBLIC" columns="KRAKENKASSE_ID"/>
+    </table>
     <table name="PA_MITARBEITER" schema="PUBLIC" catalog="PUBLIC" type="TABLE">
       <column name="ID" sqlType="VARCHAR" precision="36" scale="0" nullable="false" jdbcType="12"/>
       <column name="CREATE_TS" sqlType="TIMESTAMP" precision="26" scale="0" nullable="true" jdbcType="93"/>
@@ -39,6 +97,7 @@
       <column name="VORNAME" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
       <primary-key name="SYS_PK_10349" columns="ID"/>
       <exported-key name="FK_PA_ARBEITSTAG_MITARBEITER_ID" table="PA_ARBEITSTAG" schema="PUBLIC" catalog="PUBLIC" columns="MITARBEITER_ID"/>
+      <exported-key name="FK_PA_OPERATIONSTERMIN_ERSTELLT_VON_ID" table="PA_OPERATIONSTERMIN" schema="PUBLIC" catalog="PUBLIC" columns="ERSTELLT_VON_ID"/>
       <exported-key name="FK_POML_MITARBEITER" table="PA_OPERATIONSTERMIN_MITARBEITER_LINK" schema="PUBLIC" catalog="PUBLIC" columns="MITARBEITER_ID"/>
     </table>
     <table name="PA_OPERATIONSTERMIN" schema="PUBLIC" catalog="PUBLIC" type="TABLE">
@@ -50,18 +109,21 @@
       <column name="UPDATED_BY" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
       <column name="DELETE_TS" sqlType="TIMESTAMP" precision="26" scale="0" nullable="true" jdbcType="93"/>
       <column name="DELETED_BY" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
-      <column name="PATIENT_ID" sqlType="VARCHAR" precision="36" scale="0" nullable="true" jdbcType="12"/>
+      <column name="PATIENT_ID" sqlType="VARCHAR" precision="36" scale="0" nullable="false" jdbcType="12"/>
       <column name="AUGE" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
-      <column name="RAUM_ID" sqlType="VARCHAR" precision="36" scale="0" nullable="true" jdbcType="12"/>
       <column name="DATUM" sqlType="DATE" precision="10" scale="0" nullable="false" jdbcType="91"/>
       <column name="BEGINN" sqlType="TIME" precision="8" scale="0" nullable="false" jdbcType="92"/>
       <column name="ENDE" sqlType="TIME" precision="8" scale="0" nullable="false" jdbcType="92"/>
+      <column name="ERSTE_OPERATION" sqlType="BOOLEAN" precision="0" scale="0" nullable="true" jdbcType="16"/>
+      <column name="BESONDERHEITEN" sqlType="VARCHAR" precision="4000" scale="0" nullable="true" jdbcType="12"/>
+      <column name="PATIENT_BENACHRICHTIGT" sqlType="BOOLEAN" precision="0" scale="0" nullable="true" jdbcType="16"/>
+      <column name="ERSTELLT_VON_ID" sqlType="VARCHAR" precision="36" scale="0" nullable="true" jdbcType="12"/>
       <primary-key name="SYS_PK_10331" columns="ID"/>
+      <foreign-key name="FK_PA_OPERATIONSTERMIN_ERSTELLT_VON_ID" columns="ERSTELLT_VON_ID" ref-table="PA_MITARBEITER" ref-schema="PUBLIC" ref-catalog="PUBLIC" ref-columns="ID" update-rule="3" delete-rule="3"/>
       <foreign-key name="FK_PA_OPERATIONSTERMIN_PATIENT_ID" columns="PATIENT_ID" ref-table="PA_PATIENT" ref-schema="PUBLIC" ref-catalog="PUBLIC" ref-columns="ID" update-rule="3" delete-rule="3"/>
-      <foreign-key name="FK_PA_OPERATIONSTERMIN_RAUM_ID" columns="RAUM_ID" ref-table="PA_RAUM" ref-schema="PUBLIC" ref-catalog="PUBLIC" ref-columns="ID" update-rule="3" delete-rule="3"/>
       <exported-key name="FK_POML_OPERATIONSTERMIN" table="PA_OPERATIONSTERMIN_MITARBEITER_LINK" schema="PUBLIC" catalog="PUBLIC" columns="OPERATIONSTERMIN_ID"/>
+      <index name="IDX_PA_OPERATIONSTERMIN_ERSTELLT_VON" unique="false" columns="ERSTELLT_VON_ID"/>
       <index name="IDX_PA_OPERATIONSTERMIN_PATIENT" unique="false" columns="PATIENT_ID"/>
-      <index name="IDX_PA_OPERATIONSTERMIN_RAUM" unique="false" columns="RAUM_ID"/>
     </table>
     <table name="PA_OPERATIONSTERMIN_MITARBEITER_LINK" schema="PUBLIC" catalog="PUBLIC" type="TABLE">
       <column name="MITARBEITER_ID" sqlType="VARCHAR" precision="36" scale="0" nullable="false" jdbcType="12"/>
@@ -83,12 +145,18 @@
       <column name="VORNAME" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
       <column name="GEBURTSDATUM" sqlType="DATE" precision="10" scale="0" nullable="false" jdbcType="91"/>
       <column name="ANSCHRIFT" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
-      <column name="PLZ" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
-      <column name="ORT" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="PLZ" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="ORT" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
       <column name="GESCHLECHT" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="AUGENARZT_ID" sqlType="VARCHAR" precision="36" scale="0" nullable="true" jdbcType="12"/>
+      <column name="KRAKENKASSE_ID" sqlType="VARCHAR" precision="36" scale="0" nullable="true" jdbcType="12"/>
       <primary-key name="SYS_PK_10317" columns="ID"/>
+      <foreign-key name="FK_PA_PATIENT_AUGENARZT_ID" columns="AUGENARZT_ID" ref-table="PA_AUGENARZT" ref-schema="PUBLIC" ref-catalog="PUBLIC" ref-columns="ID" update-rule="3" delete-rule="3"/>
+      <foreign-key name="FK_PA_PATIENT_KRAKENKASSE_ID" columns="KRAKENKASSE_ID" ref-table="PA_KRAKENKASSE" ref-schema="PUBLIC" ref-catalog="PUBLIC" ref-columns="ID" update-rule="3" delete-rule="3"/>
       <exported-key name="FK_PA_OPERATIONSTERMIN_PATIENT_ID" table="PA_OPERATIONSTERMIN" schema="PUBLIC" catalog="PUBLIC" columns="PATIENT_ID"/>
       <exported-key name="FK_PA_VORUNTERSUCHUNGSTERMIN_PATIENT_ID" table="PA_VORUNTERSUCHUNGSTERMIN" schema="PUBLIC" catalog="PUBLIC" columns="PATIENT_ID"/>
+      <index name="IDX_PA_PATIENT_AUGENARZT" unique="false" columns="AUGENARZT_ID"/>
+      <index name="IDX_PA_PATIENT_KRAKENKASSE" unique="false" columns="KRAKENKASSE_ID"/>
     </table>
     <table name="PA_RAUM" schema="PUBLIC" catalog="PUBLIC" type="TABLE">
       <column name="ID" sqlType="VARCHAR" precision="36" scale="0" nullable="false" jdbcType="12"/>
@@ -101,7 +169,6 @@
       <column name="DELETED_BY" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
       <column name="NAME" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
       <primary-key name="SYS_PK_10343" columns="ID"/>
-      <exported-key name="FK_PA_OPERATIONSTERMIN_RAUM_ID" table="PA_OPERATIONSTERMIN" schema="PUBLIC" catalog="PUBLIC" columns="RAUM_ID"/>
     </table>
     <table name="PA_VORUNTERSUCHUNGSTERMIN" schema="PUBLIC" catalog="PUBLIC" type="TABLE">
       <column name="ID" sqlType="VARCHAR" precision="36" scale="0" nullable="false" jdbcType="12"/>
@@ -114,6 +181,9 @@
       <column name="DELETED_BY" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
       <column name="PATIENT_ID" sqlType="VARCHAR" precision="36" scale="0" nullable="false" jdbcType="12"/>
       <column name="ZEITPUNKT" sqlType="TIMESTAMP" precision="26" scale="0" nullable="false" jdbcType="93"/>
+      <column name="DATUM" sqlType="DATE" precision="10" scale="0" nullable="false" jdbcType="91"/>
+      <column name="BEGINN" sqlType="TIME" precision="8" scale="0" nullable="true" jdbcType="92"/>
+      <column name="ENDE" sqlType="TIME" precision="8" scale="0" nullable="false" jdbcType="92"/>
       <primary-key name="SYS_PK_10405" columns="ID"/>
       <foreign-key name="FK_PA_VORUNTERSUCHUNGSTERMIN_PATIENT_ID" columns="PATIENT_ID" ref-table="PA_PATIENT" ref-schema="PUBLIC" ref-catalog="PUBLIC" ref-columns="ID" update-rule="3" delete-rule="3"/>
       <index name="IDX_PA_VORUNTERSUCHUNGSTERMIN_PATIENT" unique="false" columns="PATIENT_ID"/>

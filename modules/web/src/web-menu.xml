@@ -10,5 +10,7 @@
         <separator/>
         <item id="pa$Mitarbeiter.lookup"/>
         <item id="pa$Raum.lookup"/>
+        <item id="pa$Augenarzt.lookup"/>
+        <item id="pa$Krakenkasse.lookup"/>
     </menu>
 </menu-config>

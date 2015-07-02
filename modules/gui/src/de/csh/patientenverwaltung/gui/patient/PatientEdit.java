@@ -23,7 +23,7 @@ public class PatientEdit extends AbstractEditor<Patient> {
     private Button patientenakteDruckenButton;
 
     @Inject
-    private Table voruntersuchungstermineTable;
+    private Table operationstermineTable;
 
     @Override
     public void init(Map<String, Object> params) {
@@ -35,7 +35,7 @@ public class PatientEdit extends AbstractEditor<Patient> {
     }
 
     public void termineinladungDruckenAction(Component source) {
-        TablePrintFormAction action = new TablePrintFormAction("Termineinladung", this, voruntersuchungstermineTable);
+        TablePrintFormAction action = new TablePrintFormAction("Termineinladung", this, operationstermineTable);
         action.actionPerform(source);
     }
 }

@@ -12,14 +12,15 @@ create table PA_PATIENT (
     NAME varchar(255) not null,
     VORNAME varchar(255) not null,
     GEBURTSDATUM date not null,
+    AUGENARZT_ID varchar(36),
     ANSCHRIFT varchar(255) not null,
-    PLZ varchar(255),
-    ORT varchar(255),
+    PLZ varchar(255) not null,
+    ORT varchar(255) not null,
     GESCHLECHT varchar(50) not null,
+    KRAKENKASSE_ID varchar(36),
     --
     primary key (ID)
-)^
--- end PA_PATIENT
+)^-- end PA_PATIENT
 
 -- begin PA_RAUM
 create table PA_RAUM (
@@ -48,12 +49,15 @@ create table PA_OPERATIONSTERMIN (
     DELETE_TS timestamp,
     DELETED_BY varchar(50),
     --
-    PATIENT_ID varchar(36),
+    PATIENT_ID varchar(36) not null,
     AUGE varchar(50),
-    RAUM_ID varchar(36),
     DATUM date not null,
     BEGINN time not null,
     ENDE time not null,
+    ERSTE_OPERATION boolean,
+    BESONDERHEITEN varchar(4000),
+    PATIENT_BENACHRICHTIGT boolean,
+    ERSTELLT_VON_ID varchar(36),
     --
     primary key (ID)
 )^
@@ -113,8 +117,75 @@ create table PA_VORUNTERSUCHUNGSTERMIN (
     DELETED_BY varchar(50),
     --
     PATIENT_ID varchar(36) not null,
-    ZEITPUNKT timestamp not null,
+    DATUM date not null,
+    BEGINN time not null,
+    ENDE time not null,
     --
     primary key (ID)
 )^
 -- end PA_VORUNTERSUCHUNGSTERMIN
+-- begin PA_AUGENARZT
+create table PA_AUGENARZT (
+    ID varchar(36) not null,
+    CREATE_TS timestamp,
+    CREATED_BY varchar(50),
+    VERSION integer,
+    UPDATE_TS timestamp,
+    UPDATED_BY varchar(50),
+    DELETE_TS timestamp,
+    DELETED_BY varchar(50),
+    --
+    ANREDE varchar(50),
+    TITEL varchar(50),
+    NAME varchar(255) not null,
+    VORNAME varchar(255) not null,
+    ANSCHRIFT varchar(255) not null,
+    PLZ varchar(255),
+    ORT varchar(255),
+    TELEFON varchar(255),
+    FAX varchar(255),
+    EMAIL varchar(255),
+    --
+    primary key (ID)
+)^
+-- end PA_AUGENARZT
+-- begin PA_AUGENARZT_ANGESTELLTE
+create table PA_AUGENARZT_ANGESTELLTE (
+    ID varchar(36) not null,
+    CREATE_TS timestamp,
+    CREATED_BY varchar(50),
+    VERSION integer,
+    UPDATE_TS timestamp,
+    UPDATED_BY varchar(50),
+    DELETE_TS timestamp,
+    DELETED_BY varchar(50),
+    --
+    NAME varchar(255),
+    VORNAME varchar(255),
+    AUGENARZT_ID varchar(36),
+    --
+    primary key (ID)
+)^
+-- end PA_AUGENARZT_ANGESTELLTE
+-- begin PA_KRAKENKASSE
+create table PA_KRAKENKASSE (
+    ID varchar(36) not null,
+    CREATE_TS timestamp,
+    CREATED_BY varchar(50),
+    VERSION integer,
+    UPDATE_TS timestamp,
+    UPDATED_BY varchar(50),
+    DELETE_TS timestamp,
+    DELETED_BY varchar(50),
+    --
+    NAME varchar(255),
+    ANSCHRIFT varchar(255),
+    PLZ varchar(255),
+    ORT varchar(255),
+    TELEFON varchar(255),
+    FAX varchar(255),
+    EMAIL varchar(255),
+    --
+    primary key (ID)
+)^
+-- end PA_KRAKENKASSE

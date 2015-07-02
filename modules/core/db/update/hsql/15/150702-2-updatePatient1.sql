@@ -1,0 +1,2 @@
+alter table PA_PATIENT add constraint FK_PA_PATIENT_AUGENARZT_ID foreign key (AUGENARZT_ID) references PA_AUGENARZT(ID);
+create index IDX_PA_PATIENT_AUGENARZT on PA_PATIENT (AUGENARZT_ID);

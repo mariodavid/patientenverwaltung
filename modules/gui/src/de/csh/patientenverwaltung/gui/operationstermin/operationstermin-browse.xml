@@ -40,10 +40,11 @@
                 <column id="beginn"/>
                 <column id="ende"/>
                 <column id="patient"/>
-                <column id="auge"
-                        collapsed="true"/>
-                <column id="raum"
-                        collapsed="true"/>
+                <column id="auge" />
+                <column id="ersteOperation"/>
+                <column id="patientBenachrichtigt"/>
+                <column id="besonderheiten" maxTextLength="30"/>
+                <column id="erstelltVon"/>
             </columns>
             <rows datasource="operationsterminsDs"/>
             <rowsCount/>

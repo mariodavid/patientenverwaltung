@@ -25,18 +25,31 @@
                    stylename="h1"/>
             <hbox align="MIDDLE_RIGHT"
                   spacing="true">
-                <button id="addTimeEntry"
-                        caption="msg://addTimeEntry"
-                        invoke="addTimeEntry"
-                        visible="true"/>
-                <button id="monatsansicht"
-                        caption="Monatsansicht"
-                        invoke="showMonatsansicht"/>
+
+                <popupButton id="addButton"
+                             caption="Neu">
+                    <actions>
+                        <action id="operationstermin" caption="Operationstermin" invoke="addTimeEntry"/>
+                        <action id="voruntersuchungstermin" caption="Voruntersuchungstermin" invoke="addVoruntersuchungstermin"/>
+                    </actions>
+                </popupButton>
+
+
+                <popupButton id="ansicht"
+                             caption="Ansicht">
+                    <actions>
+                        <action id="tagesansicht" caption="Tag" invoke="showTagesansicht"/>
+                        <action id="wochenansicht" caption="Woche" invoke="showWochenansicht"/>
+                        <action id="zweiWochenansicht" caption="2 Wochen" invoke="showZweiWochenansicht"/>
+                        <action id="monatsansicht" caption="Monat" invoke="showMonatsansicht"/>
+                    </actions>
+                </popupButton>
+                <button caption="Heute"
+                        invoke="showTagesansicht"/>
+
                 <linkButton align="MIDDLE_LEFT"
                             icon="font-icon:CHEVRON_LEFT"
                             invoke="showPreviousMonth"/>
-                <!--<linkButton caption="Heute"-->
-                            <!--invoke="setToday"/>-->
                 <linkButton align="MIDDLE_RIGHT"
                             icon="font-icon:CHEVRON_RIGHT"
                             invoke="showNextMonth"/>

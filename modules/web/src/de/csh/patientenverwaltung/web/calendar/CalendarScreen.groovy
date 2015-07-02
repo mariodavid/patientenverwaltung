@@ -4,18 +4,12 @@
 
 package de.csh.patientenverwaltung.web.calendar
 
-import com.haulmont.chile.core.model.utils.InstanceUtils;
-import com.haulmont.cuba.core.entity.Entity;
 import com.haulmont.cuba.core.global.*
-import com.haulmont.cuba.gui.ComponentsHelper;
 import com.haulmont.cuba.gui.WindowManager;
 import com.haulmont.cuba.gui.components.*
-import com.haulmont.cuba.gui.data.DsContext;
-import com.haulmont.cuba.gui.data.ValueListener;
-import com.haulmont.cuba.security.entity.User;
 import com.haulmont.cuba.security.global.UserSession;
-import com.haulmont.cuba.web.gui.components.WebComponentsHelper;
-import com.haulmont.cuba.web.toolkit.ui.CubaVerticalActionsLayout;
+import com.haulmont.cuba.web.gui.components.WebComponentsHelper
+
 //import com.haulmont.timesheets.entity.Holiday;
 //import com.haulmont.timesheets.entity.TimeEntry;
 //import com.haulmont.timesheets.entity.TimeEntryStatus;
@@ -25,22 +19,18 @@ import com.haulmont.cuba.web.toolkit.ui.CubaVerticalActionsLayout;
 //import com.haulmont.timesheets.gui.holiday.HolidayEdit;
 //import com.haulmont.timesheets.gui.timeentry.TimeEntryEdit;
 //import com.haulmont.timesheets.web.toolkit.ui.TimeSheetsCalendar;
-import com.vaadin.event.Action;
-import com.vaadin.shared.ui.label.ContentMode;
+import com.vaadin.event.Action
 import com.vaadin.ui.AbstractOrderedLayout;
 import com.vaadin.ui.Calendar;
 import com.vaadin.ui.components.calendar.CalendarComponentEvents;
 import com.vaadin.ui.components.calendar.CalendarDateRange
-import com.vaadin.ui.components.calendar.event.BasicEvent;
-import com.vaadin.ui.components.calendar.event.CalendarEvent;
-import com.vaadin.ui.components.calendar.event.CalendarEventProvider
-import com.vaadin.ui.components.calendar.handler.BasicDateClickHandler
+import com.vaadin.ui.components.calendar.event.CalendarEvent
 import de.csh.patientenverwaltung.entity.Operationstermin
+import de.csh.patientenverwaltung.entity.Voruntersuchungstermin
 import de.csh.patientenverwaltung.gui.operationstermin.OperationsterminEdit
-import de.csh.patientenverwaltung.service.OperationsterminService
+import de.csh.patientenverwaltung.gui.voruntersuchungstermin.VoruntersuchungsterminEdit
 import de.csh.patientenverwaltung.util.DateTimeUtils
-import groovy.time.TimeCategory;
-import org.apache.commons.collections.CollectionUtils;
+import groovy.time.TimeCategory
 import org.apache.commons.lang.time.DateUtils;
 
 import javax.inject.Inject
@@ -105,8 +95,8 @@ class CalendarScreen extends AbstractWindow {
 //            public void handle(List<TimeEntry> resultTimeEntries) {
 //                if (CollectionUtils.isNotEmpty(resultTimeEntries)) {
 //                    //todo eude what if there are more than 1 entry
-//                    final TimeEntry timeEntry = resultTimeEntries.get(0);
-//                    ResultAndCause validationResult = validationTools.validateTags(timeEntry);
+//                    final TimeEntry voruntersuchungstermin = resultTimeEntries.get(0);
+//                    ResultAndCause validationResult = validationTools.validateTags(voruntersuchungstermin);
 //                    if (validationResult.isNegative) {
 //                        showOptionDialog(getMessage("caption.attention"),
 //                                validationResult.cause + getMessage("confirmation.manuallyTagSetting"),
@@ -115,17 +105,17 @@ class CalendarScreen extends AbstractWindow {
 //                                        new DialogAction(DialogAction.Type.YES) {
 //                                            @Override
 //                                            public void actionPerform(Component component) {
-//                                                doHandle(timeEntry);
+//                                                doHandle(voruntersuchungstermin);
 //                                            }
 //                                        },
 //                                        new DialogAction(DialogAction.Type.NO)));
 //                    } else {
-//                        doHandle(timeEntry);
+//                        doHandle(voruntersuchungstermin);
 //                    }
 //                }
 //            }
 //
-//            private void doHandle(TimeEntry timeEntry) {
+//            private void doHandle(TimeEntry voruntersuchungstermin) {
 //                final List<TimeEntry> results = new ArrayList<>();
 //                java.util.Calendar javaCalendar = java.util.Calendar.getInstance();
 //                javaCalendar.setTime(firstDayOfMonth);
@@ -134,7 +124,7 @@ class CalendarScreen extends AbstractWindow {
 //
 //                while (currentMonth == nextDayMonth) {
 //                    if (dateTools.isWorkday(javaCalendar.getTime())) {
-//                        TimeEntry copy = (TimeEntry) InstanceUtils.copy(timeEntry);
+//                        TimeEntry copy = (TimeEntry) InstanceUtils.copy(voruntersuchungstermin);
 //                        copy.setId(uuidSource.createUuid());
 //                        copy.setDate(javaCalendar.getTime());
 //                        copy.setStatus(TimeEntryStatus.NEW);
@@ -188,7 +178,7 @@ class CalendarScreen extends AbstractWindow {
 //            }
 //        });
 
-        calendar = new Calendar("Alle Operationstermine");
+        calendar = new Calendar();
 
 
         calendar.setWidth("100%");
@@ -196,6 +186,8 @@ class CalendarScreen extends AbstractWindow {
         calendar.setTimeFormat(Calendar.TimeFormat.Format24H)
         calendar.setFirstVisibleHourOfDay(7)
         calendar.setLastVisibleHourOfDay(19)
+        calendar.setFirstVisibleDayOfWeek(0)
+        calendar.setLastVisibleDayOfWeek(5)
 //        calendar.setMoreMsgFormat(messages.getMessage(getClass(), "calendar.moreMsgFormat"));
         calendar.setDropHandler(null);
         calendar.setHandler(new CalendarComponentEvents.EventMoveHandler() {
@@ -207,7 +199,7 @@ class CalendarScreen extends AbstractWindow {
 //                    TimeEntryCalendarEventAdapter adapter = (TimeEntryCalendarEventAdapter) event.getCalendarEvent();
 //                    adapter.getTimeEntry().setDate(event.getNewStart());
 //                    TimeEntry committed = getDsContext().getDataSupplier().commit(adapter.getTimeEntry(),
-//                            viewRepository.getView(TimeEntry.class, "timeEntry-full"));
+//                            viewRepository.getView(TimeEntry.class, "voruntersuchungstermin-full"));
 //                    dataSource.changeEventTimeEntity(committed);
 //                    updateSummaryColumn();
 //                }
@@ -217,46 +209,33 @@ class CalendarScreen extends AbstractWindow {
 //        calendar.setHandler(new CalendarComponentEvents.DateClickHandler() {
 //            @Override
 //            public void dateClick(CalendarComponentEvents.DateClickEvent event) {
-//                TimeEntry timeEntry = new TimeEntry();
-//                timeEntry.setDate(event.getDate());
-//                editTimeEntry(timeEntry);
+//                TimeEntry voruntersuchungstermin = new TimeEntry();
+//                voruntersuchungstermin.setDate(event.getDate());
+//                editOperationstermin(voruntersuchungstermin);
 //            }
 //        });
 //        calendar.setHandler((CalendarComponentEvents.EventResizeHandler) null);
-//        calendar.setHandler(new CalendarComponentEvents.EventClickHandler() {
-//            @Override
-//            public void eventClick(CalendarComponentEvents.EventClick event) {
-//                if (event.getCalendarEvent() instanceof TimeEntryCalendarEventAdapter) {
-//                    TimeEntryCalendarEventAdapter eventAdapter = (TimeEntryCalendarEventAdapter) event.getCalendarEvent();
-//                    editTimeEntry(eventAdapter.getTimeEntry());
-//                } else if (event.getCalendarEvent() instanceof HolidayCalendarEventAdapter) {
-//                    HolidayCalendarEventAdapter eventAdapter = (HolidayCalendarEventAdapter) event.getCalendarEvent();
-//                    editHoliday(eventAdapter.getHoliday());
-//                }
-//            }
-//        });
 
-        calendar.addActionHandler(new CalendarActionHandler())
         calendar.setHandler(new CalendarComponentEvents.EventClickHandler() {
             @Override
-            void eventClick(CalendarComponentEvents.EventClick event) {
-                editTimeEntry(new Operationstermin())
+            public void eventClick(CalendarComponentEvents.EventClick event) {
+                if (event.getCalendarEvent() instanceof TimeEntryCalendarEventAdapter) {
+
+                    TimeEntryCalendarEventAdapter eventAdapter = (TimeEntryCalendarEventAdapter) event.getCalendarEvent();
+                    editOperationstermin(eventAdapter.operationstermin);
+                }
+
+                else if (event.getCalendarEvent() instanceof VoruntersuchungsterminCalendarEventAdapter) {
+                    VoruntersuchungsterminCalendarEventAdapter eventAdapter = (VoruntersuchungsterminCalendarEventAdapter) event.getCalendarEvent();
+                    editVoruntersuchungstermin(eventAdapter.voruntersuchungstermin);
+                }
+
             }
-        })
-//
-//        Calendar cal = new Calendar("My Calendar");
+        });
+
+        calendar.addActionHandler(new CalendarActionHandler())
         calendar.setEventProvider(new CustomEventProvider())
 
-//        cal.setTimeFormat(Calendar.TimeFormat.Format24H);
-//        cal.setWidth("100%");
-//        cal.setHeight("100%");
-
-//        GregorianCalendar start = new GregorianCalendar();
-//        GregorianCalendar end   = new GregorianCalendar();
-//        end.add(java.util.Calendar.HOUR, 2);
-//        cal.addEvent(new BasicEvent("Calendar study",
-//                "Learning how to use Vaadin Calendar",
-//                start.getTime(), end.getTime()));
         calendar.setStartDate(new Date());
         use(TimeCategory) {
 
@@ -266,7 +245,7 @@ class CalendarScreen extends AbstractWindow {
         calendarLayout.addComponent(calendar);
 //        calendarLayout.setExpandRatio(calendar, 1);
 //
-//        updateCalendarRange();
+        updateCalendarRange();
 //        updateSummaryColumn();
     }
 
@@ -286,7 +265,7 @@ class CalendarScreen extends AbstractWindow {
     }
 
     public void addTimeEntry() {
-        editTimeEntry(new Operationstermin());
+        editOperationstermin(new Operationstermin());
     }
 
 //    protected void updateSummaryColumn() {
@@ -385,24 +364,24 @@ class CalendarScreen extends AbstractWindow {
         calendar.setEndDate(lastDayOfMonth);
 
 //        updateSummaryColumn();
-//        updateMonthCaption();
+        updateMonthCaption();
     }
 
-//    protected void updateMonthCaption() {
-//        monthLabel.setValue(String.format("%s %s", getMonthName(firstDayOfMonth), getYear(firstDayOfMonth)));
-//    }
+    protected void updateMonthCaption() {
+        monthLabel.setValue(String.format("%s %s", getMonthName(firstDayOfMonth), getYear(firstDayOfMonth)));
+    }
 
-//    protected String getMonthName(Date firstDayOfMonth) {
-//        return DateUtils.toCalendar(firstDayOfMonth).getDisplayName(java.util.Calendar.MONTH, java.util.Calendar.LONG, userSession.getLocale());
-//    }
+    protected String getMonthName(Date firstDayOfMonth) {
+        return DateUtils.toCalendar(firstDayOfMonth).getDisplayName(java.util.Calendar.MONTH, java.util.Calendar.LONG, userSession.getLocale());
+    }
 //
 //
-//    protected int getYear(Date firstDayOfMonth) {
-//        return DateUtils.toCalendar(firstDayOfMonth).get(java.util.Calendar.YEAR);
-//    }
+    protected int getYear(Date firstDayOfMonth) {
+        return DateUtils.toCalendar(firstDayOfMonth).get(java.util.Calendar.YEAR);
+    }
 
-    protected void editTimeEntry(Operationstermin operationstermin) {
-        final OperationsterminEdit editor = openEditor('pa$Operationstermin.edit', operationstermin, WindowManager.OpenType.DIALOG);
+    protected void editOperationstermin(Operationstermin termin) {
+        final OperationsterminEdit editor = openEditor('pa$Operationstermin.edit', termin, WindowManager.OpenType.DIALOG);
         editor.addListener(new Window.CloseListener() {
             @Override
             public void windowClosed(String actionId) {
@@ -419,8 +398,26 @@ class CalendarScreen extends AbstractWindow {
             }
         });
     }
+    protected void editVoruntersuchungstermin(Voruntersuchungstermin termin) {
+        final VoruntersuchungsterminEdit editor = openEditor('pa$Voruntersuchungstermin.edit', termin, WindowManager.OpenType.DIALOG);
+        editor.addListener(new Window.CloseListener() {
+            @Override
+            public void windowClosed(String actionId) {
+                if (COMMIT_ACTION_ID.equals(actionId)) {
+//                    dataSource.changeEventTimeEntity(editor.getItem());
 
-    public void showMonatsansicht ( ) {
+
+                    def voruntersuchungstermin = editor.getItem()
+                    def meldung = "Voruntersuchungstermin: ${voruntersuchungstermin.patient.name}, ${voruntersuchungstermin.patient.vorname} (${voruntersuchungstermin.datum}) erfolgreich angelegt"
+                    showNotification(meldung, IFrame.NotificationType.TRAY)
+
+                    openWindow("calendar-screen", WindowManager.OpenType.THIS_TAB)
+                }
+            }
+        });
+    }
+
+    public void showMonatsansicht(Component source) {
         calendar.setStartDate(new Date());
         use(TimeCategory) {
 
@@ -428,20 +425,36 @@ class CalendarScreen extends AbstractWindow {
         }
     }
 
-    //    protected void editHoliday(Holiday holiday) {
-//        final HolidayEdit editor = openEditor("ts$Holiday.edit", holiday, WindowManager.OpenType.DIALOG);
-//        editor.addListener(new CloseListener() {
-//            @Override
-//            public void windowClosed(String actionId) {
-//                if (COMMIT_ACTION_ID.equals(actionId)) {
-//                    dataSource.changeEventHoliday(editor.getItem());
-//                }
-//            }
-//        });
-//    }
+    public void showWochenansicht(Component source) {
+        Date wochenbeginn = DateTimeUtils.getFirstDayOfWeek(new Date());
+        Date wochenende = DateTimeUtils.getLastDayOfWeek(new Date());
+
+        calendar.setStartDate(wochenbeginn);
+        calendar.setEndDate(wochenende);
+    }
+
+    public void showTagesansicht() {
+        calendar.setStartDate(new Date());
+        calendar.setEndDate(new Date());
+    }
+
+    public void showZweiWochenansicht ( ) {
+        Date wochenbeginn = DateTimeUtils.getFirstDayOfWeek(new Date());
+        Date wochenende = DateTimeUtils.getLastDayOfWeek(new Date());
+
+        calendar.setStartDate(wochenbeginn);
+        use(TimeCategory) {
+            calendar.setEndDate(wochenende + 7.days);
+        }
+    }
+
+    public void addVoruntersuchungstermin() {
+        editVoruntersuchungstermin(new Voruntersuchungstermin());
+    }
 
     protected class CalendarActionHandler implements Action.Handler {
         protected Action addEventAction = new Action(messages.getMessage(getClass(), "addTimeEntry"));
+        protected Action addVoruntersuchungsterminAction = new Action(messages.getMessage(getClass(), "addVoruntersuchungstermin"));
         protected Action deleteEventAction = new Action(messages.getMessage(getClass(), "deleteTimeEntry"));
         protected Action copyEventAction = new Action(messages.getMessage(getClass(), "copyTimeEntry"));
 
@@ -462,9 +475,9 @@ class CalendarScreen extends AbstractWindow {
             List<CalendarEvent> events = calendar.getEvents(dateRange.getStart(), dateRange.getEnd());
 
             if (events.size() == 0)
-                return [addEventAction];
+                return [addEventAction, addVoruntersuchungsterminAction];
             else
-                return [addEventAction /*, copyEventAction, deleteEventAction */]
+                return [addEventAction, addVoruntersuchungsterminAction /*, copyEventAction, deleteEventAction */]
         }
 
         @Override
@@ -473,28 +486,33 @@ class CalendarScreen extends AbstractWindow {
                 // Check that the click was not done on an event
                 if (target instanceof Date) {
                     Date datum = (Date) target;
-                    Operationstermin operationstermin = new Operationstermin();
-                    operationstermin.setDatum(datum);
+                    Operationstermin termin = new Operationstermin();
+                    termin.setDatum(datum);
                     if (datum.hours != 0) {
-                        operationstermin.setBeginn(datum)
+                        termin.setBeginn(datum)
                     }
-                    editTimeEntry(operationstermin);
+                    editOperationstermin(termin);
                 } else {
                     showNotification(messages.getMessage(getClass(), "cantAddTimeEntry"),
                             IFrame.NotificationType.WARNING);
                 }
             }
-            //else if (action == copyEventAction) {
-//                // Check that the click was not done on an event
-//                if (target instanceof TimeEntryCalendarEventAdapter) {
-//                    TimeEntry copiedEntry = (TimeEntry) InstanceUtils.copy(((TimeEntryCalendarEventAdapter) target).getTimeEntry());
-//                    copiedEntry.setId(uuidSource.createUuid());
-//                    CommitContext context = new CommitContext();
-//                    context.getCommitInstances().add(copiedEntry);
-//                    Set<Entity> entities = getDsContext().getDataSupplier().commit(context);
-//                    dataSource.changeEventTimeEntity((TimeEntry) entities.iterator().next());
-//                }
-//            } else if (action == deleteEventAction) {
+            else if (action == addVoruntersuchungsterminAction) {
+                // Check that the click was not done on an event
+                if (target instanceof Date) {
+                    Date datum = (Date) target;
+                    Voruntersuchungstermin termin = new Voruntersuchungstermin();
+                    termin.setDatum(datum);
+                    if (datum.hours != 0) {
+                        termin.setBeginn(datum)
+                    }
+                    editVoruntersuchungstermin(termin);
+                } else {
+                    showNotification(messages.getMessage(getClass(), "cantAddTimeEntry"),
+                            IFrame.NotificationType.WARNING);
+                }
+            }
+// else if (action == deleteEventAction) {
 //                // Check if the action was clicked on top of an event
 //                if (target instanceof HolidayCalendarEventAdapter) {
 //                    showNotification(messages.getMessage(getClass(), "cantDeleteHoliday"),

@@ -28,4 +28,14 @@
             template="de/csh/patientenverwaltung/gui/voruntersuchungstermin/voruntersuchungstermin-edit.xml"/>
     <screen id="pa$Voruntersuchungstermin.lookup"
             template="de/csh/patientenverwaltung/gui/voruntersuchungstermin/voruntersuchungstermin-browse.xml"/>
+    <screen id="pa$Augenarzt.edit"
+            template="de/csh/patientenverwaltung/gui/augenarzt/augenarzt-edit.xml"/>
+    <screen id="pa$Augenarzt.lookup"
+            template="de/csh/patientenverwaltung/gui/augenarzt/augenarzt-browse.xml"/>
+    <screen id="pa$AugenarztAngestellte.edit"
+            template="de/csh/patientenverwaltung/gui/augenarztangestellte/augenarztangestellte-edit.xml"/>
+    <screen id="pa$Krakenkasse.edit"
+            template="de/csh/patientenverwaltung/gui/krakenkasse/krakenkasse-edit.xml"/>
+    <screen id="pa$Krakenkasse.lookup"
+            template="de/csh/patientenverwaltung/gui/krakenkasse/krakenkasse-browse.xml"/>
 </screen-config>

@@ -1,21 +1,15 @@
 /*
  * Copyright (c) 2015 de.csh.patientenverwaltung.gui.operationstermin
  */
-package de.csh.patientenverwaltung.gui.operationstermin;
+package de.csh.patientenverwaltung.gui.operationstermin
 
-import com.haulmont.cuba.gui.components.AbstractEditor;
-import com.haulmont.cuba.gui.components.Field;
-import com.haulmont.cuba.gui.components.FieldGroup
-import com.haulmont.cuba.gui.components.IFrame;
-import com.haulmont.cuba.gui.components.TimeField;
-import com.haulmont.cuba.gui.data.ValueListener;
+import com.haulmont.cuba.gui.components.AbstractEditor
+import com.haulmont.cuba.gui.components.TimeField
+import com.haulmont.cuba.gui.data.ValueListener
 import de.csh.patientenverwaltung.entity.Operationstermin
-import groovy.time.TimeCategory;
+import groovy.time.TimeCategory
 
-import javax.inject.Inject;
-import javax.inject.Named;
-import java.util.Date;
-import java.util.Map;
+import javax.inject.Named
 
 public class OperationsterminEdit extends AbstractEditor<Operationstermin> {
 

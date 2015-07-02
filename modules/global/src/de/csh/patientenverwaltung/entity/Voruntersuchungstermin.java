@@ -26,17 +26,42 @@ public class Voruntersuchungstermin extends StandardEntity {
     @JoinColumn(name = "PATIENT_ID")
     protected Patient patient;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "ZEITPUNKT", nullable = false)
-    protected Date zeitpunkt;
+    @Temporal(TemporalType.DATE)
+    @Column(name = "DATUM", nullable = false)
+    protected Date datum;
 
-    public void setZeitpunkt(Date zeitpunkt) {
-        this.zeitpunkt = zeitpunkt;
+    @Temporal(TemporalType.TIME)
+    @Column(name = "BEGINN", nullable = false)
+    protected Date beginn;
+
+    @Temporal(TemporalType.TIME)
+    @Column(name = "ENDE", nullable = false)
+    protected Date ende;
+
+    public void setDatum(Date datum) {
+        this.datum = datum;
     }
 
-    public Date getZeitpunkt() {
-        return zeitpunkt;
+    public Date getDatum() {
+        return datum;
     }
+
+    public void setBeginn(Date beginn) {
+        this.beginn = beginn;
+    }
+
+    public Date getBeginn() {
+        return beginn;
+    }
+
+    public void setEnde(Date ende) {
+        this.ende = ende;
+    }
+
+    public Date getEnde() {
+        return ende;
+    }
+
 
     public void setPatient(Patient patient) {
         this.patient = patient;

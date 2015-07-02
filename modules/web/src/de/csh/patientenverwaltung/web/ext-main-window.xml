@@ -5,6 +5,23 @@
         xmlns:main="http://schemas.haulmont.com/cuba/5.5/mainwindow.xsd">
     <layout>
         <split id="foldersSplit"
-               pos="19"/>
+               pos="19">
+            <main:workArea id="workArea">
+                <main:initialLayout>
+                    <vbox align="TOP_RIGHT"
+                          spacing="true"
+                          width="200px">
+                        <button id="patientenLookupButton"
+                                caption="Patienten"
+                                invoke="patientenLookupAction"
+                                width="100%"/>
+                        <button id="opKalenderButton"
+                                caption="OP-Kalender"
+                                invoke="opKalenderOeffnen"
+                                width="100%"/>
+                    </vbox>
+                </main:initialLayout>
+            </main:workArea>
+        </split>
     </layout>
 </window>

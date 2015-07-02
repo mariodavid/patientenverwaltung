@@ -24,16 +24,12 @@ import java.util.Set;
 public class Operationstermin extends StandardEntity {
     private static final long serialVersionUID = -4173261225269925712L;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "PATIENT_ID")
     protected Patient patient;
 
     @Column(name = "AUGE")
     protected String auge;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "RAUM_ID")
-    protected Raum raum;
 
     @Temporal(TemporalType.DATE)
     @Column(name = "DATUM", nullable = false)
@@ -52,6 +48,55 @@ public class Operationstermin extends StandardEntity {
         inverseJoinColumns = @JoinColumn(name = "MITARBEITER_ID"))
     @ManyToMany
     protected Set<Mitarbeiter> mitarbeiter;
+
+    @Column(name = "ERSTE_OPERATION")
+    protected Boolean ersteOperation;
+
+    @Column(name = "BESONDERHEITEN", length = 4000)
+    protected String besonderheiten;
+
+    @Column(name = "PATIENT_BENACHRICHTIGT")
+    protected Boolean patientBenachrichtigt;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "ERSTELLT_VON_ID")
+    protected Mitarbeiter erstelltVon;
+
+    public void setErstelltVon(Mitarbeiter erstelltVon) {
+        this.erstelltVon = erstelltVon;
+    }
+
+    public Mitarbeiter getErstelltVon() {
+        return erstelltVon;
+    }
+
+
+    public void setPatientBenachrichtigt(Boolean patientBenachrichtigt) {
+        this.patientBenachrichtigt = patientBenachrichtigt;
+    }
+
+    public Boolean getPatientBenachrichtigt() {
+        return patientBenachrichtigt;
+    }
+
+
+    public void setBesonderheiten(String besonderheiten) {
+        this.besonderheiten = besonderheiten;
+    }
+
+    public String getBesonderheiten() {
+        return besonderheiten;
+    }
+
+
+    public void setErsteOperation(Boolean ersteOperation) {
+        this.ersteOperation = ersteOperation;
+    }
+
+    public Boolean getErsteOperation() {
+        return ersteOperation;
+    }
+
 
     public void setMitarbeiter(Set<Mitarbeiter> mitarbeiter) {
         this.mitarbeiter = mitarbeiter;
@@ -77,14 +122,6 @@ public class Operationstermin extends StandardEntity {
 
     public Patient getPatient() {
         return patient;
-    }
-
-    public void setRaum(Raum raum) {
-        this.raum = raum;
-    }
-
-    public Raum getRaum() {
-        return raum;
     }
 
     public void setDatum(Date datum) {

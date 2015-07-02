@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/5.5/window.xsd"
+        caption="msg://browseCaption"
+        class="de.csh.patientenverwaltung.gui.augenarzt.AugenarztBrowse"
+        focusComponent="augenarztsTable"
+        lookupComponent="augenarztsTable"
+        messagesPack="de.csh.patientenverwaltung.gui.augenarzt">
+    <dsContext>
+        <collectionDatasource id="augenarztsDs"
+                              class="de.csh.patientenverwaltung.entity.Augenarzt"
+                              view="_local">
+            <query>
+                <![CDATA[select e from pa$Augenarzt e]]>
+            </query>
+        </collectionDatasource>
+    </dsContext>
+    <layout expand="augenarztsTable"
+            spacing="true">
+        <filter id="filter"
+                datasource="augenarztsDs">
+            <properties include=".*"/>
+        </filter>
+        <table id="augenarztsTable"
+               width="100%">
+            <actions>
+                <action id="create"/>
+                <action id="edit"/>
+                <action id="remove"/>
+            </actions>
+            <columns>
+                <column id="anrede"/>
+                <column id="titel"/>
+                <column id="name"/>
+                <column id="vorname"/>
+                <column id="anschrift"/>
+                <column id="plz"/>
+                <column id="ort"/>
+                <column id="telefon"/>
+                <column id="fax"/>
+                <column id="email"/>
+            </columns>
+            <rows datasource="augenarztsDs"/>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn"
+                        action="augenarztsTable.create"/>
+                <button id="editBtn"
+                        action="augenarztsTable.edit"/>
+                <button id="removeBtn"
+                        action="augenarztsTable.remove"/>
+            </buttonsPanel>
+        </table>
+    </layout>
+</window>

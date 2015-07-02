@@ -34,13 +34,17 @@ public class Patient extends StandardEntity {
     @Column(name = "GEBURTSDATUM", nullable = false)
     protected Date geburtsdatum;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "AUGENARZT_ID")
+    protected Augenarzt augenarzt;
+
     @Column(name = "ANSCHRIFT", nullable = false)
     protected String anschrift;
 
-    @Column(name = "PLZ")
+    @Column(name = "PLZ", nullable = false)
     protected String plz;
 
-    @Column(name = "ORT")
+    @Column(name = "ORT", nullable = false)
     protected String ort;
 
     @Column(name = "GESCHLECHT", nullable = false)
@@ -50,6 +54,40 @@ public class Patient extends StandardEntity {
     @OnDelete(DeletePolicy.CASCADE)
     @OneToMany(mappedBy = "patient")
     protected Set<Voruntersuchungstermin> voruntersuchungstermine;
+
+    @OneToMany(mappedBy = "patient")
+    protected Set<Operationstermin> operationstermine;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "KRAKENKASSE_ID")
+    protected Krakenkasse krakenkasse;
+
+    public void setKrakenkasse(Krakenkasse krakenkasse) {
+        this.krakenkasse = krakenkasse;
+    }
+
+    public Krakenkasse getKrakenkasse() {
+        return krakenkasse;
+    }
+
+
+    public void setOperationstermine(Set<Operationstermin> operationstermine) {
+        this.operationstermine = operationstermine;
+    }
+
+    public Set<Operationstermin> getOperationstermine() {
+        return operationstermine;
+    }
+
+
+    public void setAugenarzt(Augenarzt augenarzt) {
+        this.augenarzt = augenarzt;
+    }
+
+    public Augenarzt getAugenarzt() {
+        return augenarzt;
+    }
+
 
     public void setVoruntersuchungstermine(Set<Voruntersuchungstermin> voruntersuchungstermine) {
         this.voruntersuchungstermine = voruntersuchungstermine;

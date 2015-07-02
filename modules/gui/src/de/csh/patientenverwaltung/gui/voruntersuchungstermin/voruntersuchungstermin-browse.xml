@@ -29,7 +29,9 @@
             </actions>
             <columns>
                 <column id="patient"/>
-                <column id="zeitpunkt"/>
+                <column id="datum"/>
+                <column id="beginn"/>
+                <column id="ende"/>
             </columns>
             <rows datasource="voruntersuchungsterminsDs"/>
             <rowsCount/>

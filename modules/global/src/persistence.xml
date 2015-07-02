@@ -9,5 +9,8 @@
         <class>de.csh.patientenverwaltung.entity.Operationstermin</class>
         <class>de.csh.patientenverwaltung.entity.Mitarbeiter</class>
         <class>de.csh.patientenverwaltung.entity.Arbeitstag</class>
+        <class>de.csh.patientenverwaltung.entity.Augenarzt</class>
+        <class>de.csh.patientenverwaltung.entity.AugenarztAngestellte</class>
+        <class>de.csh.patientenverwaltung.entity.Krakenkasse</class>
     </persistence-unit>
 </persistence>

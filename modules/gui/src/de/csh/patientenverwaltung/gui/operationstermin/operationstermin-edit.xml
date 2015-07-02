@@ -19,41 +19,42 @@
                 <![CDATA[select e from pa$Raum e]]>
             </query>
         </collectionDatasource>
+        <collectionDatasource id="erstellVonDs"
+                              class="de.csh.patientenverwaltung.entity.Mitarbeiter"
+                              view="_local">
+            <query>
+                <![CDATA[select e from pa$Mitarbeiter e]]>
+            </query>
+        </collectionDatasource>
     </dsContext>
     <layout expand="windowActions"
             spacing="true">
         <fieldGroup id="fieldGroup"
-                    datasource="operationsterminDs">
+                    datasource="operationsterminDs"
+                    width="100%">
             <column width="250px">
                 <field id="patient"/>
                 <field id="auge"/>
-                <field id="raum"
-                       optionsDatasource="raumDs"/>
-                <field id="datum"/>
-                <field id="beginn"/>
-                <field id="ende"/>
+                <field id="ersteOperation"/>
+                <field id="patientBenachrichtigt"
+                       editable="false"/>
+                <field id="erstelltVon"
+                       optionsDatasource="erstellVonDs"/>
+            </column>
+            <column>
+                <field id="datum"
+                       width="150px"/>
+                <field id="beginn"
+                       width="60px"/>
+                <field id="ende"
+                       width="60px"/>
             </column>
         </fieldGroup>
-        <groupBox id="mitarbeiterBox"
-                  caption="msg://de.csh.patientenverwaltung.entity/Operationstermin.mitarbeiter">
-            <table id="mitarbeiterTable"
-                   height="200px"
-                   width="100%">
-                <actions>
-                    <action id="add"/>
-                    <action id="remove"/>
-                </actions>
-                <columns>
-                    <column id="name"/>
-                    <column id="vorname"/>
-                </columns>
-                <rows datasource="mitarbeiterDs"/>
-                <buttonsPanel>
-                    <button action="mitarbeiterTable.add"/>
-                    <button action="mitarbeiterTable.remove"/>
-                </buttonsPanel>
-            </table>
-        </groupBox>
+        <textArea id="besonderheiten"
+                  caption="Besonderheiten"
+                  datasource="operationsterminDs"
+                  property="besonderheiten"
+                  width="100%"/>
         <iframe id="windowActions"
                 screen="editWindowActions"/>
     </layout>

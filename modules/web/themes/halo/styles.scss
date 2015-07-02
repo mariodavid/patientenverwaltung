@@ -10,3 +10,14 @@
 .v-theme-version {
   display: none;
 }
+
+.v-calendar .v-calendar-event-meinStyle:before {
+  color:#E00000;
+}
+
+.v-calendar-event.v-calendar-event-meinStyle .v-calendar-event-content {
+  background-color:rgba(244, 200, 200, 0.8) !important;
+}
+.v-calendar-event.v-calendar-event-meinStyle .v-calendar-event-caption {
+  color:#E00000;
+}

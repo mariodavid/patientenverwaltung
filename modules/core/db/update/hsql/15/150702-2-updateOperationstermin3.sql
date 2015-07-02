@@ -1,0 +1,1 @@
+alter table PA_OPERATIONSTERMIN add column PATIENT_BENACHRICHTIGT boolean ;
