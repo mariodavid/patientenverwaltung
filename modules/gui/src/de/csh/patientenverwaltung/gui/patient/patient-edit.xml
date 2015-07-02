@@ -12,35 +12,52 @@
             <collectionDatasource id="operationstermineDs"
                                   property="operationstermine"/>
         </datasource>
+        <collectionDatasource id="krankenkasseDs"
+                              class="de.csh.patientenverwaltung.entity.Krankenkasse"
+                              view="_minimal">
+            <query>
+                <![CDATA[select e from pa$Krankenkasse e]]>
+            </query>
+        </collectionDatasource>
+        <collectionDatasource id="augenarztDs"
+                              class="de.csh.patientenverwaltung.entity.Augenarzt"
+                              view="_minimal">
+            <query>
+                <![CDATA[select e from pa$Augenarzt e]]>
+            </query>
+        </collectionDatasource>
     </dsContext>
     <layout expand="windowActions"
             spacing="true">
+        <fieldGroup id="fieldGroup"
+                    datasource="patientDs">
+            <column width="250px">
+                <field id="name"/>
+                <field id="vorname"/>
+                <field id="geburtsdatum"/>
+                <field id="geschlecht"/>
+            </column>
+            <column width="250px">
+                <field id="anschrift"/>
+                <field id="plz"/>
+                <field id="ort"/>
+            </column>
+            <column width="250px">
+                <field id="augenarzt"
+                       optionsDatasource="augenarztDs"/>
+                <field id="krankenkasse"
+                       optionsDatasource="krankenkasseDs"/>
+            </column>
+        </fieldGroup>
         <hbox spacing="true">
-            <fieldGroup id="fieldGroup"
-                        datasource="patientDs">
-                <column width="250px">
-                    <field id="name"/>
-                    <field id="vorname"/>
-                    <field id="geburtsdatum"/>
-                    <field id="anschrift"/>
-                    <field id="plz"/>
-                    <field id="ort"/>
-                    <field id="geschlecht"/>
-                    <field id="augenarzt"/>
-                    <field id="krakenkasse"/>
-                </column>
-            </fieldGroup>
-            <vbox spacing="true"
-                  width="250px">
-                <button id="patientenakteDruckenButton"
-                        caption="Patientenakte drucken"
-                        icon="icons/reports-print.png"
-                        width="100%"/>
-                <button id="termineinladungDruckenButton"
-                        action="operationstermineTable.termineinladungDrucken"
-                        icon="icons/reports-print.png"
-                        width="100%"/>
-            </vbox>
+            <button id="patientenakteDruckenButton"
+                    caption="Patientenakte drucken"
+                    icon="icons/reports-print.png"
+                    width="100%"/>
+            <button id="termineinladungDruckenButton"
+                    action="operationstermineTable.termineinladungDrucken"
+                    icon="icons/reports-print.png"
+                    width="100%"/>
         </hbox>
         <tabSheet id="oneToManyTabs"
                   height="300px">

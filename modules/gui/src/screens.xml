@@ -4,10 +4,6 @@
             template="de/csh/patientenverwaltung/gui/patient/patient-edit.xml"/>
     <screen id="pa$Patient.lookup"
             template="de/csh/patientenverwaltung/gui/patient/patient-browse.xml"/>
-    <screen id="pa$Termin.edit"
-            template="de/csh/patientenverwaltung/gui/termin/termin-edit.xml"/>
-    <screen id="pa$Termin.lookup"
-            template="de/csh/patientenverwaltung/gui/termin/termin-browse.xml"/>
     <screen id="pa$Raum.edit"
             template="de/csh/patientenverwaltung/gui/raum/raum-edit.xml"/>
     <screen id="pa$Raum.lookup"
@@ -34,8 +30,8 @@
             template="de/csh/patientenverwaltung/gui/augenarzt/augenarzt-browse.xml"/>
     <screen id="pa$AugenarztAngestellte.edit"
             template="de/csh/patientenverwaltung/gui/augenarztangestellte/augenarztangestellte-edit.xml"/>
-    <screen id="pa$Krakenkasse.edit"
-            template="de/csh/patientenverwaltung/gui/krakenkasse/krakenkasse-edit.xml"/>
-    <screen id="pa$Krakenkasse.lookup"
-            template="de/csh/patientenverwaltung/gui/krakenkasse/krakenkasse-browse.xml"/>
+    <screen id="pa$Krankenkasse.edit"
+            template="de/csh/patientenverwaltung/gui/krankenkasse/krankenkasse-edit.xml"/>
+    <screen id="pa$Krankenkasse.lookup"
+            template="de/csh/patientenverwaltung/gui/krankenkasse/krankenkasse-browse.xml"/>
 </screen-config>

@@ -11,6 +11,6 @@
         <class>de.csh.patientenverwaltung.entity.Arbeitstag</class>
         <class>de.csh.patientenverwaltung.entity.Augenarzt</class>
         <class>de.csh.patientenverwaltung.entity.AugenarztAngestellte</class>
-        <class>de.csh.patientenverwaltung.entity.Krakenkasse</class>
+        <class>de.csh.patientenverwaltung.entity.Krankenkasse</class>
     </persistence-unit>
 </persistence>

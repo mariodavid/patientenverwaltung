@@ -13,9 +13,9 @@ import com.haulmont.chile.core.annotations.NamePattern;
  * @author mario
  */
 @NamePattern("%s|name")
-@Table(name = "PA_KRAKENKASSE")
-@Entity(name = "pa$Krakenkasse")
-public class Krakenkasse extends StandardEntity {
+@Table(name = "PA_KRANKENKASSE")
+@Entity(name = "pa$Krankenkasse")
+public class Krankenkasse extends StandardEntity {
     private static final long serialVersionUID = -8781537394188281780L;
 
     @Column(name = "NAME")
