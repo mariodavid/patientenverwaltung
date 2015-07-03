@@ -18,7 +18,7 @@ public class VoruntersuchungsterminCalendarEventAdapter extends BasicEvent {
     public String getCaption() {
         Patient patient = voruntersuchungstermin.patient
 
-        return "${patient?.name} ${patient?.vorname}"
+        return "${patient?.name}, ${patient?.vorname}"
     }
 
     @Override
