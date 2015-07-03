@@ -25,6 +25,16 @@
                    stylename="h1"/>
             <hbox align="MIDDLE_RIGHT"
                   spacing="true">
+
+                <linkButton align="MIDDLE_LEFT"
+                            icon="font-icon:CHEVRON_LEFT"
+                            invoke="showPreviousMonth"/>
+                <linkButton align="MIDDLE_RIGHT"
+                            icon="font-icon:CHEVRON_RIGHT"
+                            invoke="showNextMonth"/>
+
+                <button caption="Heute"
+                        invoke="showTagesansicht"/>
                 <popupButton id="addButton"
                              caption="Neu">
                     <actions>
@@ -53,14 +63,6 @@
                                 invoke="showMonatsansicht"/>
                     </actions>
                 </popupButton>
-                <button caption="Heute"
-                        invoke="showTagesansicht"/>
-                <linkButton align="MIDDLE_LEFT"
-                            icon="font-icon:CHEVRON_LEFT"
-                            invoke="showPreviousMonth"/>
-                <linkButton align="MIDDLE_RIGHT"
-                            icon="font-icon:CHEVRON_RIGHT"
-                            invoke="showNextMonth"/>
             </hbox>
         </hbox>
         <hbox id="calendarHbox"
