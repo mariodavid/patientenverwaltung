@@ -58,16 +58,18 @@ public class Patient extends StandardEntity {
     @OneToMany(mappedBy = "patient")
     protected Set<Operationstermin> operationstermine;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "KRAKENKASSE_ID")
-    protected Krakenkasse krakenkasse;
 
-    public void setKrakenkasse(Krakenkasse krakenkasse) {
-        this.krakenkasse = krakenkasse;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "KRANKENKASSE_ID")
+    protected Krankenkasse krankenkasse;
+
+    public void setKrankenkasse(Krankenkasse krankenkasse) {
+        this.krankenkasse = krankenkasse;
     }
 
-    public Krakenkasse getKrakenkasse() {
-        return krakenkasse;
+    public Krankenkasse getKrankenkasse() {
+        return krankenkasse;
     }
 
 

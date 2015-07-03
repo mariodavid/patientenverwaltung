@@ -39,7 +39,7 @@
                 <column id="ort"/>
                 <column id="geschlecht"/>
                 <column id="augenarzt"/>
-                <column id="krakenkasse"/>
+                <column id="krankenkasse"/>
             </columns>
             <rows datasource="patientsDs"/>
             <rowsCount/>

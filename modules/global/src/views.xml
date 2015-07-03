@@ -52,7 +52,7 @@
                   view="_minimal"/>
         <property name="operationstermine"
                   view="_local"/>
-        <property name="krakenkasse"
+        <property name="krankenkasse"
                   view="_minimal"/>
     </view>
     <view class="de.csh.patientenverwaltung.entity.Augenarzt"

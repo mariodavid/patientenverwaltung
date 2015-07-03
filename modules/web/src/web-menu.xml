@@ -7,10 +7,13 @@
         <item id="calendar-screen"/>
         <item id="pa$Voruntersuchungstermin.lookup"/>
         <item id="pa$Operationstermin.lookup"/>
-        <separator/>
+    </menu>
+    <menu id="stammdaten"
+          insertBefore="reports">
         <item id="pa$Mitarbeiter.lookup"/>
         <item id="pa$Raum.lookup"/>
+        <separator/>
         <item id="pa$Augenarzt.lookup"/>
-        <item id="pa$Krakenkasse.lookup"/>
+        <item id="pa$Krankenkasse.lookup"/>
     </menu>
 </menu-config>
