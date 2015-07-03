@@ -64,13 +64,9 @@
             </hbox>
         </hbox>
         <hbox id="calendarHbox"
-              expand="calBox"
               width="100%">
             <vbox id="calBox"
                   height="100%"/>
-            <vbox id="summaryBox"
-                  height="100%"
-                  width="150px"/>
         </hbox>
         <hbox margin="true,false,false,false"
               width="100%">
