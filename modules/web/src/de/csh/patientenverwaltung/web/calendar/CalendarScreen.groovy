@@ -142,7 +142,7 @@ class CalendarScreen extends AbstractWindow {
 //                Set<TimeEntry> committed = (Set) getDsContext().getDataSupplier().commit(context);
 //                List<CalendarEvent> events = new ArrayList<>();
 //                for (TimeEntry entry : committed) {
-//                    events.add(new TimeEntryCalendarEventAdapter(entry));
+//                    events.add(new OperationsterminCalendarEventAdapter(entry));
 //                }
 //                dataSource.addEvents(events);
 //            }
@@ -190,13 +190,14 @@ class CalendarScreen extends AbstractWindow {
         calendar.setLastVisibleDayOfWeek(5)
 //        calendar.setMoreMsgFormat(messages.getMessage(getClass(), "calendar.moreMsgFormat"));
         calendar.setDropHandler(null);
+        calendar.setEventCaptionAsHtml(true)
         calendar.setHandler(new CalendarComponentEvents.EventMoveHandler() {
             @Override
             public void eventMove(CalendarComponentEvents.MoveEvent event) {
 
                 showNotification(event.getNewStart().toString(), IFrame.NotificationType.TRAY)
-//                if (event.getCalendarEvent() instanceof TimeEntryCalendarEventAdapter) {
-//                    TimeEntryCalendarEventAdapter adapter = (TimeEntryCalendarEventAdapter) event.getCalendarEvent();
+//                if (event.getCalendarEvent() instanceof OperationsterminCalendarEventAdapter) {
+//                    OperationsterminCalendarEventAdapter adapter = (OperationsterminCalendarEventAdapter) event.getCalendarEvent();
 //                    adapter.getTimeEntry().setDate(event.getNewStart());
 //                    TimeEntry committed = getDsContext().getDataSupplier().commit(adapter.getTimeEntry(),
 //                            viewRepository.getView(TimeEntry.class, "voruntersuchungstermin-full"));
@@ -219,9 +220,9 @@ class CalendarScreen extends AbstractWindow {
         calendar.setHandler(new CalendarComponentEvents.EventClickHandler() {
             @Override
             public void eventClick(CalendarComponentEvents.EventClick event) {
-                if (event.getCalendarEvent() instanceof TimeEntryCalendarEventAdapter) {
+                if (event.getCalendarEvent() instanceof OperationsterminCalendarEventAdapter) {
 
-                    TimeEntryCalendarEventAdapter eventAdapter = (TimeEntryCalendarEventAdapter) event.getCalendarEvent();
+                    OperationsterminCalendarEventAdapter eventAdapter = (OperationsterminCalendarEventAdapter) event.getCalendarEvent();
                     editOperationstermin(eventAdapter.operationstermin);
                 }
 
@@ -517,8 +518,8 @@ class CalendarScreen extends AbstractWindow {
 //                if (target instanceof HolidayCalendarEventAdapter) {
 //                    showNotification(messages.getMessage(getClass(), "cantDeleteHoliday"),
 //                            IFrame.NotificationType.WARNING);
-//                } else if (target instanceof TimeEntryCalendarEventAdapter) {
-//                    TimeEntryCalendarEventAdapter event = (TimeEntryCalendarEventAdapter) target;
+//                } else if (target instanceof OperationsterminCalendarEventAdapter) {
+//                    OperationsterminCalendarEventAdapter event = (OperationsterminCalendarEventAdapter) target;
 //                    new EventRemoveAction("eventRemove", getFrame(), event).actionPerform(null);
 //                } else {
 //                    showNotification(messages.getMessage(getClass(), "cantDeleteTimeEntry"),
@@ -530,9 +531,9 @@ class CalendarScreen extends AbstractWindow {
 
 //    protected class EventRemoveAction extends ComponentsHelper.CustomRemoveAction {
 //
-//        protected TimeEntryCalendarEventAdapter event;
+//        protected OperationsterminCalendarEventAdapter event;
 //
-//        protected EventRemoveAction(String id, IFrame frame, TimeEntryCalendarEventAdapter event) {
+//        protected EventRemoveAction(String id, IFrame frame, OperationsterminCalendarEventAdapter event) {
 //            super(id, frame);
 //            this.event = event;
 //        }

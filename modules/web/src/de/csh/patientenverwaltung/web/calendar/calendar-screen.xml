@@ -26,47 +26,49 @@
             <hbox align="MIDDLE_RIGHT"
                   spacing="true">
 
-                <popupButton id="addButton"
-                             caption="Neu">
-                    <actions>
-                        <action id="operationstermin" caption="Operationstermin" invoke="addTimeEntry"/>
-                        <action id="voruntersuchungstermin" caption="Voruntersuchungstermin" invoke="addVoruntersuchungstermin"/>
-                    </actions>
-                </popupButton>
-
-
-                <popupButton id="ansicht"
-                             caption="Ansicht">
-                    <actions>
-                        <action id="tagesansicht" caption="Tag" invoke="showTagesansicht"/>
-                        <action id="wochenansicht" caption="Woche" invoke="showWochenansicht"/>
-                        <action id="zweiWochenansicht" caption="2 Wochen" invoke="showZweiWochenansicht"/>
-                        <action id="monatsansicht" caption="Monat" invoke="showMonatsansicht"/>
-                    </actions>
-                </popupButton>
-                <button caption="Heute"
-                        invoke="showTagesansicht"/>
-
                 <linkButton align="MIDDLE_LEFT"
                             icon="font-icon:CHEVRON_LEFT"
                             invoke="showPreviousMonth"/>
                 <linkButton align="MIDDLE_RIGHT"
                             icon="font-icon:CHEVRON_RIGHT"
                             invoke="showNextMonth"/>
-                <!--<dateField id="monthSelector"-->
-                           <!--align="MIDDLE_LEFT"-->
-                           <!--resolution="MONTH"-->
-                           <!--stylename="simple"/>-->
+
+                <button caption="Heute"
+                        invoke="showTagesansicht"/>
+                <popupButton id="addButton"
+                             caption="Neu">
+                    <actions>
+                        <action id="operationstermin"
+                                caption="Operation"
+                                invoke="addTimeEntry"/>
+                        <action id="voruntersuchungstermin"
+                                caption="Voruntersuchung"
+                                invoke="addVoruntersuchungstermin"/>
+                    </actions>
+                </popupButton>
+                <popupButton id="ansicht"
+                             caption="Ansicht">
+                    <actions>
+                        <action id="tagesansicht"
+                                caption="Tag"
+                                invoke="showTagesansicht"/>
+                        <action id="wochenansicht"
+                                caption="Woche"
+                                invoke="showWochenansicht"/>
+                        <action id="zweiWochenansicht"
+                                caption="2 Wochen"
+                                invoke="showZweiWochenansicht"/>
+                        <action id="monatsansicht"
+                                caption="Monat"
+                                invoke="showMonatsansicht"/>
+                    </actions>
+                </popupButton>
             </hbox>
         </hbox>
         <hbox id="calendarHbox"
-              expand="calBox"
               width="100%">
             <vbox id="calBox"
                   height="100%"/>
-            <vbox id="summaryBox"
-                  height="100%"
-                  width="150px"/>
         </hbox>
         <hbox margin="true,false,false,false"
               width="100%">

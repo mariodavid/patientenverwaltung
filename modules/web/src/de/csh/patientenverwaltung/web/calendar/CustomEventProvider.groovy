@@ -5,7 +5,6 @@
 package de.csh.patientenverwaltung.web.calendar
 
 import com.haulmont.cuba.core.global.AppBeans
-import com.vaadin.ui.components.calendar.event.BasicEvent
 import com.vaadin.ui.components.calendar.event.BasicEventProvider
 import com.vaadin.ui.components.calendar.event.CalendarEvent
 import de.csh.patientenverwaltung.entity.Operationstermin
@@ -21,7 +20,7 @@ public class CustomEventProvider extends BasicEventProvider{
     public List<CalendarEvent> getEvents(Date startDate, Date endDate) {
 
         List<Operationstermin> operationstermine = operationsterminService.ermittleOperationstermine(startDate, endDate)
-        List<CalendarEvent> events = operationstermine.collect { new TimeEntryCalendarEventAdapter(operationstermin: it)}
+        List<CalendarEvent> events = operationstermine.collect { new OperationsterminCalendarEventAdapter(operationstermin: it)}
 
 
 

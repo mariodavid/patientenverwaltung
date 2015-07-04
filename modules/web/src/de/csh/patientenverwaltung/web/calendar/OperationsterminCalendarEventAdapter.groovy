@@ -9,21 +9,16 @@ import com.vaadin.ui.components.calendar.event.BasicEvent
 import de.csh.patientenverwaltung.entity.Operationstermin
 import de.csh.patientenverwaltung.entity.Patient
 
-public class TimeEntryCalendarEventAdapter extends BasicEvent {
+public class OperationsterminCalendarEventAdapter extends BasicEvent {
 
     Operationstermin operationstermin;
 
-
-//    public void setTimeEntry(TimeEntry timeEntry) {
-//        this.voruntersuchungstermin = timeEntry;
-//        super.setStyleName(ComponentsHelper.getTimeEntryStatusStyle(this.voruntersuchungstermin));
-//    }
 
     @Override
     public String getCaption() {
         Patient patient = operationstermin.patient
 
-        return "${patient?.name} ${patient?.vorname}"
+        return "${patient?.name}, ${patient?.vorname}"
     }
 
     @Override

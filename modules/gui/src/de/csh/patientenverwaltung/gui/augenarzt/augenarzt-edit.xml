@@ -15,43 +15,55 @@
     </dsContext>
     <layout expand="windowActions"
             spacing="true">
-        <fieldGroup id="fieldGroup"
-                    datasource="augenarztDs">
-            <column width="250px">
-                <field id="anrede"/>
-                <field id="titel"/>
-                <field id="name"/>
-                <field id="vorname"/>
-                <field id="anschrift"/>
-                <field id="plz"/>
-                <field id="ort"/>
-                <field id="telefon"/>
-                <field id="fax"/>
-                <field id="email"/>
-            </column>
-        </fieldGroup>
-        <groupBox id="angestellteBox"
-                  caption="Angestellte">
-            <table id="angestellteTable"
-                   height="200px"
-                   width="100%">
-                <actions>
-                    <action id="create"/>
-                    <action id="edit"/>
-                    <action id="remove"/>
-                </actions>
-                <columns>
-                    <column id="name"/>
-                    <column id="vorname"/>
-                </columns>
-                <rows datasource="angestellteDs"/>
-                <buttonsPanel>
-                    <button action="angestellteTable.create"/>
-                    <button action="angestellteTable.edit"/>
-                    <button action="angestellteTable.remove"/>
-                </buttonsPanel>
-            </table>
-        </groupBox>
+        <tabSheet>
+            <tab id="stammdatenTab"
+                 caption="Stammdaten"
+                 spacing="true" margin="true" >
+                <fieldGroup id="fieldGroup"
+                            datasource="augenarztDs">
+                    <column width="250px">
+                        <field id="anrede"/>
+                        <field id="titel"/>
+                        <field id="name"/>
+                        <field id="vorname"/>
+                    </column>
+                    <column width="250px">
+                        <field id="anschrift"/>
+                        <field id="plz"/>
+                        <field id="ort"/>
+                    </column>
+                    <column width="250px">
+                        <field id="telefon"/>
+                        <field id="fax"/>
+                        <field id="email"/>
+                    </column>
+                </fieldGroup>
+            </tab>
+            <tab id="angestellteTab"
+                 caption="Angestellte"
+                 spacing="true" margin="true" >
+                <table id="angestellteTable"
+                       height="200px"
+                       width="100%">
+                    <actions>
+                        <action id="create"/>
+                        <action id="edit"/>
+                        <action id="remove"/>
+                    </actions>
+                    <columns>
+                        <column id="name"/>
+                        <column id="vorname"/>
+                    </columns>
+                    <rows datasource="angestellteDs"/>
+                    <buttonsPanel>
+                        <button action="angestellteTable.create"/>
+                        <button action="angestellteTable.edit"/>
+                        <button action="angestellteTable.remove"/>
+                    </buttonsPanel>
+                </table>
+            </tab>
+        </tabSheet>
+        
         <iframe id="windowActions"
                 screen="editWindowActions"/>
     </layout>
